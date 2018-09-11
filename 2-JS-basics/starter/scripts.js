@@ -3,6 +3,7 @@ var lastName = 'Vasilopoulos';
 var age = 43;
 var hairColor = 'brown';
 var eyeColor = 'brown';
+// age = 'forty three'; // variable mutation value is coerced into a string
 console.log(`${firstName} ${lastName} is ${age} years old, has ${hairColor} hair and ${eyeColor} eyes.`);
  //#endregion
 
@@ -29,4 +30,21 @@ console.log(job); //variable declared but since there is no value assigned it is
 
 job = 'teacher';
 console.log('job')
+
+console.log(firstName  + ' ' + age); // how to add a space in between logging values of two variable values
+
+// type coercion javascript automatically converts data types from one to another as it's needed. The Age value (number) is automatically converted into a string so it can join the other strings to create one big string.
+
+var job, isMarried; // cleaner to declare multiple variables and assign below
+job = 'musician';
+isMarried = true; // type coercion converts true boolean into a string
+console.log (firstName + ' is a ' + age + ' year old ' + job + '. Is he married? ' + isMarried);
+
+// isMarried = true; // even undefined values can be coerced into a string
+
+// prompt('What is his last name?');
+var lastName = prompt('What is his last name'); // storing an input value as a variable
+console.log(firstName + ' ' + lastName);
+
+
 
