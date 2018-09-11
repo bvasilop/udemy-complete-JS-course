@@ -21,3 +21,12 @@ var person2 = new Person('Theo', 'Vasilopoulos', 4, 'Brown', 'Brown');
 console.log(person1);
 console.log(person2);
 
+var fullAge = true;
+console.log(fullAge);
+
+var job;
+console.log(job); //variable declared but since there is no value assigned it is undefined
+
+job = 'teacher';
+console.log('job')
+
