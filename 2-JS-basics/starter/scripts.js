@@ -48,7 +48,10 @@ console.log (firstName + ' is a ' + age + ' year old ' + job + '. Is he married?
 
 
 //Math Operators
-var now, yearBill, yearLaura, ageJohn, ageMark;
+var now, yearBill, yearLaura, ageJohn, ageMark, yearJohn, fullAge;
+yearJohn = 1989
+fullAge= 18;
+
 ageJohn = 28;
 ageMark = 33;
 now = 2018;
@@ -69,6 +72,38 @@ console.log(typeof johnOlder); //boolean
 console.log(typeof now); //number
 console.log(typeof lastName); //string
 
+// operator precendence
+
+var isFullAge = now - yearJohn >= fullAge; // true
+                                        // the - is executed first because of order of precedence followed bythe >=
+                                        // = is last because assignment operator has the lowest precendence rating
+                                        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+console.log(isFullAge);
+
+var ageJohn = now - yearJohn;
+var ageMark = 35;
+var average = (ageJohn + ageMark) / 2; // () has the highset order of precendence
+console.log(average); // (64 /2) = 64
+
+// Multiple assignments
+var x,y;
+x = y = (3 + 5) * 4 - 6; // right to left is why y and x is not undefined
+console.log(x, y); // 8 * 4 - 6 // 32 - 6 // 26
+                   // x = associativity assignment direction right to left // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+
+// More Operators
+x = x * 2; // same as  below
+//x *= 2;
+x += 10; // same as x + 10
+console.log(x); // 62
+
+// increment operators
+
+x +=1;
+x ++;
+console.log(x); // 64
+x--;
+console.log(x); //63
 
 
 
