@@ -23,11 +23,11 @@ massMark = 78; // kg
 heightJohn = 1.95; // meters
 heightMark = 1.69; // meters
 
-bmiJohn = massJohn / (heightJohn * heightJohn); // 2
-bmiMark = massMark / (heightMark * heightMark); // 0.7
-console.log(bmiJohn);
-console.log(bmiMark);
+bmiJohn = massJohn / (heightJohn * heightJohn);
+bmiMark = massMark / (heightMark * heightMark);
+console.log(bmiJohn); // 24.194608809993426
+console.log(bmiMark); // 27.309968138370508
 
-var isMarkBmiGreater = bmiMark > bmiJohn; // false
-console.log(isMarkBmiGreater);
-console.log('Is Mark\'s BMI greater than John\'s ?' + ' ' + isMarkBmiGreater);
+var isMarkBmiGreater = bmiMark > bmiJohn;
+console.log(isMarkBmiGreater); // true
+console.log('Is Mark\'s BMI greater than John\'s ?' + ' ' + isMarkBmiGreater); // Is Mark's BMI greater than John's ? true

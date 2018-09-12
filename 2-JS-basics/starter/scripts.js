@@ -29,7 +29,7 @@ var job;
 console.log(job); //variable declared but since there is no value assigned it is undefined
 
 job = 'teacher';
-console.log('job')
+console.log('job');
 
 console.log(firstName  + ' ' + age); // how to add a space in between logging values of two variable values
 
@@ -49,7 +49,7 @@ console.log (firstName + ' is a ' + age + ' year old ' + job + '. Is he married?
 
 //Math Operators
 var now, yearBill, yearLaura, ageJohn, ageMark, yearJohn, fullAge;
-yearJohn = 1989
+yearJohn = 1989;
 fullAge= 18;
 
 ageJohn = 28;
