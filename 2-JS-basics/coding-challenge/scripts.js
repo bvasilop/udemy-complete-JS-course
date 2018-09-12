@@ -31,3 +31,9 @@ console.log(bmiMark); // 27.309968138370508
 var isMarkBmiGreater = bmiMark > bmiJohn;
 console.log(isMarkBmiGreater); // true
 console.log('Is Mark\'s BMI greater than John\'s ?' + ' ' + isMarkBmiGreater); // Is Mark's BMI greater than John's ? true
+
+if (bmiMark > bmiJohn) { // returns true or false value. If true then console.log if false then continue to else statement
+    console.log ('Mark\'s BMI is greater than John\'s');
+} else {
+    console.log ('John\'s BMI is greater than Mark\'s');
+}

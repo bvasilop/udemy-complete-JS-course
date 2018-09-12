@@ -105,5 +105,22 @@ console.log(x); // 64
 x--;
 console.log(x); //63
 
+/*****
+ * If / else statements
+ */
 
+var civilStatus = 'single';
 
+if (civilStatus === 'married') { // returns boolean
+    console.log(firstName + ' is married!'); // "Bill is married!
+                                            // if single, then no console log because condition is not true
+} else {
+    console.log(firstName + ' will hopefully marry soon!'); // returns because married condition is not met
+}
+
+var isMarried = true;
+if (isMarried) { // (is Married === true) we don't need to determine if true because the variable has already been set to true
+    console.log(firstName + ' is married!');
+} else {
+    console.log(firstName + ' will hopefully marry soon!');
+}
