@@ -43,8 +43,32 @@ console.log (firstName + ' is a ' + age + ' year old ' + job + '. Is he married?
 // isMarried = true; // even undefined values can be coerced into a string
 
 // prompt('What is his last name?');
-var lastName = prompt('What is his last name'); // storing an input value as a variable
-console.log(firstName + ' ' + lastName);
+// var lastName = prompt('What is his last name'); // storing an input value as a variable
+// console.log(firstName + ' ' + lastName);
+
+
+//Math Operators
+var now, yearBill, yearLaura, ageJohn, ageMark;
+ageJohn = 28;
+ageMark = 33;
+now = 2018;
+yearBill = now - 43;
+yearLaura = now - 42;
+console.log(yearBill, yearLaura);
+console.log(now + 2);
+console.log(now / 2);
+console.log(now * 2);
+
+// Logical Operators
+var johnOlder = ageJohn > ageMark;
+console.log(johnOlder); // false
+
+
+// typeof operator
+console.log(typeof johnOlder); //boolean
+console.log(typeof now); //number
+console.log(typeof lastName); //string
+
 
 
 
