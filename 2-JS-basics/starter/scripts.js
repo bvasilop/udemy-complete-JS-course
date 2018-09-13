@@ -143,3 +143,20 @@ if (age < 13) {
     console.log(firstName + ' is a man.');
 }
 
+/*******************************
+ * The Ternary Operator and Switch Statements (Conditional Operator)
+ */
+
+age >= 18 ? console.log(firstName + ' drinks beer.') : console.log(firstName + ' drinks juice.'); // ternary operator (has three operands)
+// age >= 18 is the condition (1)
+// ? is the if block or statement  (what we want to happen if this condition is true) (2)
+// : is the else block or statement (3)
+
+var drink = age >= 18 ? 'beer' : 'juice'; // if age is greater than 18 then beer if not then juice
+console.log(drink);
+// same as
+/*if (age >=18) {
+    var drink = 'beer';
+} else {
+    var drink = 'juice';
+}*/
