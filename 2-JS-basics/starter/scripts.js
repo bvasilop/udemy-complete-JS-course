@@ -124,3 +124,22 @@ if (isMarried) { // (is Married === true) we don't need to determine if true bec
 } else {
     console.log(firstName + ' will hopefully marry soon!');
 }
+
+/************************
+ * Boolean Logic
+ *
+ *  AND (&&) => true if ALL are true    ---- var A & var B must both be true to return expression A && B === true in all other case the result will return false
+ *  OR (||) => true if ONE is true
+ *  NOT (!) => inverts true/false value
+ */
+
+if (age < 13) {
+    console.log(firstName + ' is a boy.');
+} else if (age >= 13 && age < 20) { // Between 13 and 20 // && and || operator have lower precedence than >= and < so they can be executed first
+    console.log(firstName + ' is a teenager.');
+} else if (age >= 20 && age < 30) {
+    console.log(firstName + ' is a young man.');
+} else {
+    console.log(firstName + ' is a man.');
+}
+
