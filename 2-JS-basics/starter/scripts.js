@@ -191,7 +191,7 @@ if (age < 13) {
 } else {
     console.log(firstName + ' is a man.');
 }*/
-age = 10
+age = 10 // practice with changing values
 switch(true) { //use true to implement if else statements with ranges like fizzbuzz // the case that will be true will be the one that is executed
     case age < 13:
         console.log(firstName + ' is a boy.');
@@ -205,6 +205,28 @@ switch(true) { //use true to implement if else statements with ranges like fizzb
     default:
         console.log(firstName + ' is a man.');
 }
+
+/***********************
+ * Truth and Falsy values and equality operators
+ * falsy value is false when evaluated in if / else statement conditions
+ */
+// falsy values: undefined, null, 0, '', NaN // when evaluated in a if / else  condition
+// truthy values: Not falsy values
+
+var height; // has been declared but NOT defined // undefined is a falsy value // good way of testing if variable has been defined or not
+height = 23; // then height is truthy
+// height = 0; // 0 is falsy unless you make height === 0 // see below
+// height = ''; // NOT defined because it is a falsy value
+if (height || height === 0) { // height is converted to false therefore we enter the else block below // only one has to be true for entire condition to be true
+    console.log('Variable is defined');
+} else {
+    console.log('Variable has NOT been defined');
+}
+// Equality operators
+if (height == '23') { // type coercion so data types of both variables do NOT have to match // the '23' gets converted into a number
+    console.log ('The == operator does type coercion!');
+}
+
 
 
 
