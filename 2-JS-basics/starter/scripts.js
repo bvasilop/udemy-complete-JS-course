@@ -290,11 +290,19 @@ var whatDoYouDo = function(job, firstName) {
         default:
         return firstName + ' does something else';
     }
-}
-whatDoYouDo('teacher', 'Shawn');
-whatDoYouDo('driver', 'Bob');
-whatDoYouDo('designer', 'Mike');
+};
+console.log(whatDoYouDo('teacher', 'Shawn'));
+console.log(whatDoYouDo('driver', 'Bob'));
+console.log(whatDoYouDo('designer', 'Mike'));
+console.log(whatDoYouDo('retired', 'Mark'));
 
+// Differences between statements and expressions:
+// JavaScript Expressions are pieces of code that always produce a single value
+// JavaScript statements just perform actions. They do things but do not produce immediate results
+//(if / else statements, while loop, function declaration) don't produce an immediate value
+
+// if(true) { console.log(23);} // 23   //undefined because it's not really returning anything. It is
+// just console.log(23); in the console.
 
 
 
