@@ -149,11 +149,11 @@ if (age < 13) {
  * The Ternary Operator and Switch Statements (Conditional Operator)
  */
 
-age >= 18 ? console.log(firstName + ' drinks beer.') : console.log(firstName + ' drinks juice.'); // ternary operator (has three operands)
+var isLegalDrinkingAge = age >= 18 ? console.log(firstName + ' drinks beer.') : console.log(firstName + ' drinks juice.'); // ternary operator (has three operands) // must be assigned to a variable for ternary to work
 // age >= 18 is the condition (1)
 // ? is the if block or statement  (what we want to happen if this condition is true) (2)
 // : is the else block or statement (3)
-
+console.log(isLegalDrinkingAge); //Bill drinks beer.
 var drink = age >= 18 ? 'beer' : 'juice'; // if age is greater than 18 then beer if not then juice
 console.log(drink);
 // same as
@@ -303,6 +303,46 @@ console.log(whatDoYouDo('retired', 'Mark'));
 
 // if(true) { console.log(23);} // 23   //undefined because it's not really returning anything. It is
 // just console.log(23); in the console.
+
+/*********************
+ * ARRAYS
+ */
+// Arrays are like collections or bundles of variables that can include different data types
+
+//Initialize New Array
+var names = ['John', 'Mark', 'Jane'];
+var years = new Array(1990, 1969, 1948); // alternate way of using an array as a function
+
+console.log(names[0]); // John
+console.log(names.length); // 3
+
+// Mutate array data
+names[1] = 'Ben';
+names[names.length] = 'Mary'; // automatically adds to the end of the array // here names.length === 4 items i array so 'Mary' is at [3]
+console.log(names);
+
+// Different data types
+var john = ['John', 'Smith', 1990, 'teacher, false'];
+
+// Array methods */ PUSH, UNSHIFT, POP, SHIFT, IndexOf ....
+
+john.push('blue'); // will add element at the end of an array
+john.unshift('Mr.'); // adds element to beginning of array
+john.pop(); // removes element from the end of the array
+john.shift(); // removes first element in array
+console.log(john.indexOf(1990)); // 2   // will return the position of the arguments that we pass in inside of this array
+console.log(john.indexOf(23)); // -1    // if it's not in the array, the method will return a -1 value in the console.log // great way of testing if an element is in the array or not
+console.log(john);
+
+// ternary operator
+var isDesigner = john.indexOf('designer') === -1 ? 'John is NOT a designer' : 'John IS a designer'; // must be assigned to a variable for ternary to work
+console.log(isDesigner); // John is NOT a designer // Since element is not in the array it will return -1 // Since -1 === -1 the first condition is met and the isDesigner variable is assigned to the string 'John is NOT a designer'
+// If we add 'designer' to the array, the second condition is met and the string 'John IS a designer' is assigned to the variable isDesigner
+
+
+
+
+
 
 
 
