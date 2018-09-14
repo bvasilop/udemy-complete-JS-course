@@ -208,6 +208,7 @@ switch(true) { //use true to implement if else statements with ranges like fizzb
 
 /***********************
  * Truth and Falsy values and equality operators
+ *
  * falsy value is false when evaluated in if / else statement conditions
  */
 // falsy values: undefined, null, 0, '', NaN // when evaluated in a if / else  condition
@@ -227,6 +228,9 @@ if (height == '23') { // type coercion so data types of both variables do NOT ha
     console.log ('The == operator does type coercion!');
 }
 
+// strict equality operators === is best practice in order to avoid unexpected situations and bugs
+// 23 == '23' // true because string '23' is converted to number 23 on the left // yes type coercion
+// 23 === '23' // false because string '23' is not same data type as left 23 // no type coercion
 
 
 
