@@ -160,3 +160,59 @@ console.log(drink);
 } else {
     var drink = 'juice';
 }*/
+
+/*************************
+ * Switch Statements
+ */
+var job = 'instructor';
+switch(job)  { //  in parentheses we put what we want to evaluate //switch and comapares a variable
+    case 'teacher': // if job is  === to teacher then execute code below  // if ...do this...
+    case 'instructor': // can use multiple cases
+        console.log(firstName + ' teaches kids how to code.'); // here we say what we want to happen
+        break;
+    case 'driver':
+        console.log(firstName + ' drives an uber in Seattle.'); // else if...do this...
+        break;
+    case 'designer':
+        console.log(firstName + ' designs beautiful websites'); // else if ...do this...
+        break;
+    default:
+    console.log(firstName + ' does something else.'); // else ...do this...
+}
+
+/**********  replace with switch statement
+ *
+if (age < 13) {
+    console.log(firstName + ' is a boy.');
+} else if (age >= 13 && age < 20) { // Between 13 and 20 // && and || operator have lower precedence than >= and < so they can be executed first
+    console.log(firstName + ' is a teenager.');
+} else if (age >= 20 && age < 30) {
+    console.log(firstName + ' is a young man.');
+} else {
+    console.log(firstName + ' is a man.');
+}*/
+age = 10
+switch(true) { //use true to implement if else statements with ranges like fizzbuzz // the case that will be true will be the one that is executed
+    case age < 13:
+        console.log(firstName + ' is a boy.');
+        break;
+    case age >= 13 && age < 20:
+        console.log(firstName + ' is a teenager.');
+        break;
+    case age >= 20 && age < 30:
+        console.log(firstName + ' is a young man.');
+        break;
+    default:
+        console.log(firstName + ' is a man.');
+}
+
+
+
+
+
+
+
+
+
+
+
