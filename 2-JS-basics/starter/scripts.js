@@ -1,3 +1,5 @@
+'use strict';
+
 var firstName = 'Bill';
 var lastName = 'Vasilopoulos';
 var age = 43;
@@ -191,7 +193,7 @@ if (age < 13) {
 } else {
     console.log(firstName + ' is a man.');
 }*/
-age = 10 // practice with changing values
+age = 10; // practice with changing values
 switch(true) { //use true to implement if else statements with ranges like fizzbuzz // the case that will be true will be the one that is executed
     case age < 13:
         console.log(firstName + ' is a boy.');
@@ -231,6 +233,42 @@ if (height == '23') { // type coercion so data types of both variables do NOT ha
 // strict equality operators === is best practice in order to avoid unexpected situations and bugs
 // 23 == '23' // true because string '23' is converted to number 23 on the left // yes type coercion
 // 23 === '23' // false because string '23' is not same data type as left 23 // no type coercion
+
+/********************
+ * Functions
+ * ---Functions are like containers that can hold some lines of code. We can pass arguments into them and return us results
+ *
+ */
+
+function calculateAge(birthYear) {
+    return 2018 - birthYear;
+}
+var ageJohn = calculateAge(1975); // can save results from functions into variables so we can reuse
+var ageMike= calculateAge(1985);
+var ageJane = calculateAge(1995);
+
+console.log(ageJohn, ageMike, ageJane);
+
+/*****************
+ *
+ */
+
+function yearsUntilRetirement (year, firstName) {
+    var age = calculateAge(year); // functions can call other functions that don't need to return anything
+    var retirement = 65 - age;
+
+    if (retirement > 0) {
+        console.log(firstName + ' retires in ' + retirement + ' years.');
+    } else {
+        console.log(`${firstName} is already retired.`); // using template literal
+    }
+}
+
+yearsUntilRetirement(1920 , 'John');
+yearsUntilRetirement(1975, 'Bill');
+yearsUntilRetirement(1974, 'Laura');
+
+
 
 
 
