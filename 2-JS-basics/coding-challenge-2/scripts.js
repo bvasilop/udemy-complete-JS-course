@@ -25,19 +25,25 @@ var avgTeamMike = (116 + 94 + 123) / 3;
 console.log(avgTeamJohn); // 104
 console.log(avgTeamMike); // 111
 
+// avgTeamJohn = avgTeamMike = 0; // test for draw
+
 if (avgTeamJohn > avgTeamMike) {
     console.log('John\'s team with the final score of ' + avgTeamJohn + ' is the winner!');
-
-} else {
+} else if (avgTeamMike > avgTeamJohn) {
     console.log('Mike\'s team with the final score of ' + avgTeamMike + ' is the winner!');
+} else {
+    console.log('score is a draw!');
 }
 
 switch(true) {
     case avgTeamJohn > avgTeamMike:
     console.log('John\'s team with the final score of ' + avgTeamJohn + ' is the winner!');
     break;
-    default:
+    case avgTeamMike > avgTeamJohn:
     console.log('Mike\'s team with the final score of ' + avgTeamMike + ' is the winner!');
+    break;
+    default:
+    console.log('score is a draw!');
 }
 
 /*******
