@@ -22,8 +22,8 @@ GOOD LUCK 😀
 // IF ELSE
 var avgTeamJohn = (89 + 120 + 103) / 3;
 var avgTeamMike = (116 + 94 + 123) / 3;
-console.log(avgTeamJohn); // 104
-console.log(avgTeamMike); // 111
+console.log(avgTeamJohn, avgTeamMike); // 104, 111
+
 
 // avgTeamJohn = avgTeamMike = 0; // test for draw
 
@@ -53,6 +53,7 @@ switch(true) {
 var avgTeamJohn = (89 + 120 + 103) / 3;
 var avgTeamMike = (116 + 94 + 123) / 3;
 var avgTeamMary = (97 + 134 + 105) / 3;
+console.log(avgTeamJohn, avgTeamMike, avgTeamMary); // 104, 111, 112
 
 
 /**********
@@ -62,9 +63,7 @@ avgTeamJohn = avgTeamMike = avgTeamMary = 100;
 
  * */
 
-console.log(avgTeamJohn);
-console.log(avgTeamMike);
-console.log(avgTeamMary);
+
 
 // IF ELSE
 if (avgTeamJohn > avgTeamMike && avgTeamJohn > avgTeamMary) {
