@@ -340,9 +340,46 @@ console.log(isDesigner); // John is NOT a designer // Since element is not in th
 // If we add 'designer' to the array, the second condition is met and the string 'John IS a designer' is assigned to the variable isDesigner
 
 
+/*********************
+ * Objects and Properties
+ */
+// If we want to access an element of the array not by its index but instead by its name. By naming each of the values, objects become useful because naming can't be done in arrays
+// In objects we define key value pairs which means that each value has a name which is called the key.
+// we can use objects to group together different variables that belong together and that have no particular order
+// One fundamental difference between arrays and objects is that in arrays, order matters a lot while in objects order does not matter at all
 
+// easiest way to create an object is with the object literal
+// a container that we can fill with variables which are called properties
+// in arrays we have [] in objects we have {}
+// we can start defining key value pairs
 
+// Object Literal Syntax
+var john = {
+    firstName : 'John',  // name is the key and 'John' is the value // firstName is the property on the John object
+    lastName : 'Smith',
+    birthYear: 1990,
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job : 'teacher',
+    isMarried: false
+};
+console.log(john);
+console.log(john.firstName); // John // we use . notation to access properties within objects
+console.log(john['lastName']); // Smith // we can also use [] to access properties within objects // must be accessed as a string ''
 
+var x = 'birthYear'; // must be accessed as a string ''
+console.log(john[x]); // 1990 // substitute an assigned variable in []
+
+john.job = 'designer'; // mutate data in object just like array // using . dot notation
+john['isMarried'] = true; // using []
+console.log(john); // new mutated values
+
+// Initializing Objects with New Object Syntax
+
+var jane = new Object(); // in order to create new object
+jane.name = 'Jane';
+jane.birthYear = 1969;
+jane['lastName'] = 'Smith';
+console.log(jane);
 
 
 

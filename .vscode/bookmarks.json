@@ -51,6 +51,36 @@
 				"line": 312,
 				"column": 0,
 				"label": ""
+			},
+			{
+				"line": 328,
+				"column": 0,
+				"label": ""
+			}
+		]
+	},
+	{
+		"path": "$ROOTPATH$/2-JS-basics/coding-challenge-3/scripts.js",
+		"bookmarks": [
+			{
+				"line": 24,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 40,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 42,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 46,
+				"column": 0,
+				"label": ""
 			}
 		]
 	}
