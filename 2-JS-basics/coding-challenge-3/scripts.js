@@ -33,6 +33,10 @@ function tipCalculator(bill) {
     }
     return percentage * bill;
 }
+console.log(tipCalculator(100)); // 15  // test to see if function is working at 15% since bill >= 50 and < 200
+console.log(tipCalculator(200)); // 10  // working at 10% since bill >= 200
+console.log(tipCalculator(40)); // 8 // working ar 20% since bill < 50
+
 
 const bills = [124, 48, 268];
 
@@ -45,3 +49,23 @@ const finalValues = [bills[0] + tips[0], // 142.6
                     bills[2] + tips[2]]; // 294.8
 
 console.log(tips, finalValues);
+
+/************
+ * switch and case ************Not Complete!!!
+ */
+
+/*function tipCalculator(bill) {
+    let percentage;
+    switch(bill) {
+        case bill < 50:
+        percentage = 0.2;
+        break;
+        case (bill >= 50 && bill < 200):
+        percentage = 0.15;
+        break;
+        default:
+        return percentage * bill;
+    }
+}
+*/
+
