@@ -98,5 +98,40 @@
 				"label": ""
 			}
 		]
+	},
+	{
+		"path": "$ROOTPATH$/2-JS-basics/coding-challenge-5/scripts.js",
+		"bookmarks": [
+			{
+				"line": 36,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 69,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 95,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 108,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 112,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 117,
+				"column": 0,
+				"label": ""
+			}
+		]
 	}
 ]
