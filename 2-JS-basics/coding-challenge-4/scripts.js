@@ -38,11 +38,13 @@ var john = {
     }
 };
 
-john.calcBMI(); // calling john bmi method
-mark.calcBMI(); // calling mark bmi method
-console.log(john, mark);
+// john.calcBMI(); // calling john bmi method
+// mark.calcBMI(); // calling mark bmi method
+// console.log(john, mark);
 
-if (john.bmi > mark.bmi) {
+if (john.calcBMI() > mark.calcBMI()) { // you can replace with method call if you want to instead of
+    // john.bmi > mark.bmi because it returns this.bmi as well. It runs the calcBMI function and immediately returns the value,
+    // then you can compare the two methods. We return this.bmi so we can return and calculate john.calcBMI() all in one place.
     console.log(john.fullName + ' has a higher BMI of ' + john.bmi);
 } else if (mark.bmi > john.bmi) {
         console.log(mark.fullName + ' has a higher bmi of ' + mark.bmi);
