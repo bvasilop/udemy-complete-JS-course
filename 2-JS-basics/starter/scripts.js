@@ -322,7 +322,7 @@ names[names.length] = 'Mary'; // automatically adds to the end of the array // h
 console.log(names);
 
 // Different data types
-var john = ['John', 'Smith', 1990, 'teacher, false'];
+var john = ['John', 'Smith', 1990, 'teacher', false];
 
 // Array methods */ PUSH, UNSHIFT, POP, SHIFT, IndexOf ....
 
@@ -401,7 +401,7 @@ var john = {
     family: ['Jane', 'Mark', 'Bob', 'Emily'],
     job: 'teacher',
     isMarried: false,
-    calcAge: function() { // remove the birthyear from argument and add this.birthyear below to access property from method
+    calcAge: function() { // remove the birthYear from argument and add this.birthYear below to access property from method
         /*return 2018 - this.birthYear;*/ // this means THIS object. the current or present object
         this.age = 2018 - this.birthYear;                          // instead of having to pass birthYear in argument which is already defined in the object, we can just say this.birthYear
     }
@@ -412,6 +412,99 @@ john.age = age;*/
 // john.age = john.calcAge(); // condensed from above // if we want to store this result right into the john object // we call john.calcAge() then we set it to age
 john.calcAge(); // this.age is defined in method all we have to do is call it as a function within the object.method
 console.log(john);
+
+/********************
+ * Loops and iteration
+ */
+
+// Control structures for handling or automating repetitive tasks
+
+// For loops
+/*console.log(1);
+console.log(1);
+console.log(1);
+console.log(1);
+console.log(1);
+// ..... // */
+
+// FOR LOOPS
+
+for (var i = 0; i < 10; i++) {  // initialize value of the counter. The variable that will be updated from every loop. 2nd, the condition that will be evaluated before each
+                               // loop iteration in order to see if the next loop should still be executed. 3rd, the counter update for each iteration.
+console.log(i);
+}
+// i = 0, then condition is evaluated 0 < 10 which is true, then log (i) to the console, then finally the counter is updated so i++
+// then next iteration i = 1, i < 10, log (i) to console, then i++
+// i = 2, i < 10 true, log (i) to console, then i++
+// i = 3, i < 10 true, log (i) to console, then i++
+// i = 4, i < 10 true, log (i) to console, then i++
+// ...
+// i = 9, i < 10 true, log (i) to console, then i++
+// i = 10, i < 10 FALSE, exit the loop, stop iteration
+
+// if you want to iterate by 2 then i += 2
+// if you want to include 10 then i <=10
+
+var john = ['John', 'Smith', 1990, 'teacher', false]; // say we need to log these 5 values to the console
+/*console.log(john[0]);
+console.log(john[1]);
+console.log(john[2]);
+console.log(john[3]);
+console.log(john[4]);*/
+// instead of above use a loop
+
+for (var i = 0; i < john.length ; i ++) { // we start at 0 because our array is index based // we run it for the length of the array
+    console.log(john[i]); // we let the loop handle the position of i. run it until the length of the array is completed
+}
+// looping through arrays is one of the biggest cases of using loops
+
+// WHILE LOOPS
+// while loops only require that you pass in the condition (i < john.length)
+var i = 0;
+while (i < john.length) { // while this condition is met,
+    console.log(john[i]); // then keep executing this code
+    i++;
+} // same outcome as for loop from above
+
+// Continue and Break statements
+// We use Break statements to break out of a loop and we use a continue statement to quit the current iteration of the loop and
+// continue with the next one
+
+var john = ['John', 'Smith', 1990, 'teacher', false];
+for (var i = 0; i < john.length ; i ++) {
+     if(typeof john[i] !== 'string') {  // ! == means different // say we only want to implement elements that are strings
+        continue;
+      }
+      // if(typeof john[i] != 'string') continue;   // can be done without {} if it is one line // will break out of loop and continue to the next one
+
+    console.log(john[i]);
+}
+
+// using break instead of continue
+
+for (var i = 0; i < john.length ; i ++) {
+    if (typeof john[i] !== 'string') break; // breaks out of the loop when it encounters something that doesn't meet the 'string' condition
+    console.log(john[i]);
+}
+
+
+// ************ how can we loop through the array Backwards instead of forwards?
+for (var i = john.length -1; i >= 0; i--) { //starting at 5th position in array is length of the array -1
+                                            // we want to run loop until i = 0 . The last item from the array we want to print
+                                            // is the 0 so i >= 0;
+                                            // Whenever  i >= 0; condition is true, then the next loop will be executed, so we want
+                                            // it to be executed whenever i >= 0
+                                            // then we decrease the counter -- instead of increase ++
+                                            // once -1 is met, the condition for the loop is no longer met so it stops working
+    console.log(john[i]);
+}
+
+
+
+
+
+
+
 
 
 
