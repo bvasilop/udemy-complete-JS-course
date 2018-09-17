@@ -1,4 +1,7 @@
 ///////////////////////////////////////
+
+// A javascript engine is a program that executes javascript code (GoogleV8, SpiderMonkey)
+
 // Lecture: Hoisting
 
 
@@ -40,7 +43,7 @@ function first() {
 
 
 
-// Example to show the differece between execution stack and scope chain
+// Example to show the difference between execution stack and scope chain
 
 /*
 var a = 'Hello!';
