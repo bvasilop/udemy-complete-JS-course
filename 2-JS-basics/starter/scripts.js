@@ -343,6 +343,7 @@ console.log(isDesigner); // John is NOT a designer // Since element is not in th
 /*********************
  * Objects and Properties
  */
+// Objects can hold different data types including arrays and even other objects
 // If we want to access an element of the array not by its index but instead by its name. By naming each of the values, objects become useful because naming can't be done in arrays
 // In objects we define key value pairs which means that each value has a name which is called the key.
 // we can use objects to group together different variables that belong together and that have no particular order
@@ -353,15 +354,18 @@ console.log(isDesigner); // John is NOT a designer // Since element is not in th
 // in arrays we have [] in objects we have {}
 // we can start defining key value pairs
 
-// Object Literal Syntax
+// Way of Defining Objects with Literal Syntax
+// Initializing Objects
+
 var john = {
-    firstName : 'John',  // name is the key and 'John' is the value // firstName is the property on the John object
-    lastName : 'Smith',
+    firstName: 'John',
+    lastName: 'Smith',
     birthYear: 1990,
     family: ['Jane', 'Mark', 'Bob', 'Emily'],
-    job : 'teacher',
+    job: 'teacher',
     isMarried: false
 };
+
 console.log(john);
 console.log(john.firstName); // John // we use . notation to access properties within objects
 console.log(john['lastName']); // Smith // we can also use [] to access properties within objects // must be accessed as a string ''
@@ -373,13 +377,44 @@ john.job = 'designer'; // mutate data in object just like array // using . dot n
 john['isMarried'] = true; // using []
 console.log(john); // new mutated values
 
-// Initializing Objects with New Object Syntax
+// Way of defining and initializing Objects with New Object Syntax
 
 var jane = new Object(); // in order to create new object
 jane.name = 'Jane';
 jane.birthYear = 1969;
 jane['lastName'] = 'Smith';
 console.log(jane);
+
+/*************
+ * Objects and Methods
+ */
+
+// Attaching functions to objects create functions called Methods
+// Only objects have methods
+/* arrays are actually also objects so that is why they can have
+methods as well ( functions like push and pop are methods for arrays which are also objects) */
+
+var john = {
+    firstName: 'John',
+    lastName: 'Smith',
+    birthYear: 1990,
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job: 'teacher',
+    isMarried: false,
+    calcAge: function() { // remove the birthyear from argument and add this.birthyear below to access property from method
+        /*return 2018 - this.birthYear;*/ // this means THIS object. the current or present object
+        this.age = 2018 - this.birthYear;                          // instead of having to pass birthYear in argument which is already defined in the object, we can just say this.birthYear
+    }
+};
+//console.log(john.calcAge()); // 28
+/*var age = john.calcAge();
+john.age = age;*/
+// john.age = john.calcAge(); // condensed from above // if we want to store this result right into the john object // we call john.calcAge() then we set it to age
+john.calcAge(); // this.age is defined in method all we have to do is call the function
+console.log(john);
+
+
+
 
 
 
