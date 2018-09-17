@@ -410,7 +410,7 @@ var john = {
 /*var age = john.calcAge();
 john.age = age;*/
 // john.age = john.calcAge(); // condensed from above // if we want to store this result right into the john object // we call john.calcAge() then we set it to age
-john.calcAge(); // this.age is defined in method all we have to do is call the function
+john.calcAge(); // this.age is defined in method all we have to do is call it as a function within the object.method
 console.log(john);
 
 
