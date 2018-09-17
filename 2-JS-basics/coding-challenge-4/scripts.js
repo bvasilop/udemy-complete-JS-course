@@ -18,13 +18,13 @@ GOOD LUCK 😀
 
 'use strict';
 
-var mark = {
+var mark = { // object literal syntax
     fullName: 'Mark Miller',
     mass: 78,
     height: 1.69,
     calcBMI: function () {
-        this.bmi = this.mass / (this.height * this.height);
-        return this.bmi;
+        this.bmi = this.mass / (this.height * this.height); // store result of function to this.bmi variable
+        return this.bmi; // return it from the method
     }
 };
 
@@ -38,7 +38,11 @@ var john = {
     }
 };
 
-if (john.calcBMI() > mark.calcBMI()) {
+john.calcBMI(); // calling john bmi method
+mark.calcBMI(); // calling mark bmi method
+console.log(john, mark);
+
+if (john.bmi > mark.bmi) {
     console.log(john.fullName + ' has a higher BMI of ' + john.bmi);
 } else if (mark.bmi > john.bmi) {
         console.log(mark.fullName + ' has a higher bmi of ' + mark.bmi);
