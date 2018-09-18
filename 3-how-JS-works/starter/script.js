@@ -167,7 +167,7 @@ function first() {
         // global variable a because the function is written in the global scope.
         //the third function sits in the global scope that is why the second function has access to it
     var d = 'John';
-    console.log(a + b + c + d); // b and c are not defined because they cannot be accessed. Execution stack is different
+    // console.log(a + b + c + d); // b and c are not defined because they cannot be accessed. Execution stack is different
     // than the scope chain
 }
 // Execution stack is different than the scope chain.
@@ -191,9 +191,61 @@ function first() {
 ///////////////////////////////////////
 // Lecture: The this keyword
 
+// creation phase of an execution context has 2 steps. Creation phase and Execution phase
+// We talked about Object variable creation as well as scope chain creation. Both part of the creation
+// phase
 
+// The last stage of the creation phase is determining and setting the value of the "this" variable or keyword
+// The "this" variable is a variable that each and every execution context gets and is stored in an execution context object
+// So where does the "this" variable or keyword point ?
 
+// Regular Function Call: the "this" keyword points at the
+// global object(the window object, in the browser).(default)
 
+// Method Call: the "this" variable points to the object that is calling the method
+
+// ** The "this" keyword is not assigned a value until a function where it is defined is actually called
+
+// Even though it appears that the "this" variable refers to the object where it is defined, the "this"
+// variable is technically only assigned a value as soon as an object calls a method.
+
+// The "this" keyword is tied to an execution context which is only created as soon as a function is called or invoked
+
+// console.log(this); // global execution context // window object (default object)
+
+calculateAge(1985);
+
+function calculateAge(year) {
+    console.log(2016 - year); // 31
+    console.log(this); // attached to window (global object) it's not a method so attached to window object
+}
+
+var john = { // the 'this' variable is the john object // 'this' keyword refers to the object that called the method (john object)
+    name: 'John',
+    yearOfBirth: 1990,
+    calculateAge: function() { // function expression and not function declaration
+        console.log(this);
+        console.log(2016 - this.yearOfBirth);
+
+           /* function innerFunction() {
+                console.log(this); // Window object
+                    // rule: (even though it is written inside of a method) when a regular function is called ( not a method),
+                    // the default function is the window object. The 'this' keyword no longer points to the john object, but instead the window object
+            }
+            innerFunction(); */
+    }
+};
+john.calculateAge();
+
+var mike = {
+    name : 'Mike',
+    yearOfBirth: 1984
+};
+
+mike.calculateAge = john.calculateAge; // method borrowing // borrowing the method and function from above
+                    // the 'this' variable becomes the mike object. ** The 'this' keyword only becomes something
+                    // as soon as the method gets called **
+mike.calculateAge(); // {name: "Mike", yearOfBirth: 1984, calculateAge: ƒ}
 
 
 
