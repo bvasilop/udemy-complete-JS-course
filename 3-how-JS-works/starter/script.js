@@ -142,15 +142,49 @@ function first() {
 
     function second() {
         var c = 'Hey!';
-        third()
+        console.log(a + b + c); // Hello!Hi!Hey! // It works because of the scoping chain. The second function
+        // has access to the variables of the first function and of the global scope. This is because the second
+        // function is written inside of the first which in turn is written inside of the global scope (lexical scoping).
     }
 }
 
-function third() {
-    var d = 'John';
-    console.log(a + b + c + d);
-}
 
+var a = 'Hello!';
+first();
+
+function first() {
+    var b = 'Hi!';
+    second();
+
+    function second() { // the second function has the ability to call the third function because of the
+        //scope chain (global scope)
+        var c = 'Hey!';
+        third();
+    }
+}
+    function third() { // since the third function is not in the scope of the second function then it can
+        // not access variables b and c defined in the second and first functions. It can only access the
+        // global variable a because the function is written in the global scope.
+        //the third function sits in the global scope that is why the second function has access to it
+    var d = 'John';
+    console.log(a + b + c + d); // b and c are not defined because they cannot be accessed. Execution stack is different
+    // than the scope chain
+}
+// Execution stack is different than the scope chain.
+// Execution stack is the order that functions are called in the stack
+
+// Scope chain is the order in which functions are written in the code.
+// Where they are lexically in the code. So the order in which functions are
+// called does not determine the scope of the variables within these functions
+// what determines the scope of variables is where the functions are written
+
+// its execution context that stores the scope chain of each function in the variable object
+// but they do not have an effect on the scope chain itself
+
+// In this example, the order of the functions do not matter. What does matter is the that the
+// third function is in a different scope than the second function as so it cannot access variable c
+// the only variables that function three can access is var a and var d. Because of global and local scope
+// scope chain of the function
 
 
 
