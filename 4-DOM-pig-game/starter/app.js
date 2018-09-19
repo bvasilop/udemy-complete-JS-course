@@ -62,6 +62,11 @@ activePlayer = 1;
 
 document.querySelector('.dice').style.display = 'none'; // set css with style which is a value and display which is a property
 
+document.getElementById('score-0').textContent = '0'; // using getElementByID as an alternative to using querySelector
+document.getElementById('score-1').textContent = '0'; // resets score to 0 upon initial startup
+document.getElementById('current-0').textContent = '0';
+document.getElementById('current-1').textContent = '0';
+
 // Event Processing
 // -- An event can only be processed or handled as soon as the execution stack is empty (All the functions have returned)
 
@@ -105,8 +110,14 @@ document.querySelector('.btn-roll').addEventListener('click', function () { // a
 
 
     // 3. Update the round score IF the rolled number was NOT a 1 ( if we roll 1, we lose and it's next player's turn)
-
+    if (dice !== 1) { // !== means different than 1 in this case
+        // add score
+    } else {
+        // next player
+    }
 });
+
+
 
 
 
