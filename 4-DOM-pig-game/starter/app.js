@@ -68,6 +68,10 @@ document.querySelector('.dice').style.display = 'none'; // set css with style wh
 // Message Queue
 // -- This is where all the events in the browser are put and sit waiting to be processed which only happens once the execution stack is empty
 
+// Event listener
+// -- Is a function that reacts to an event. Since it's a function, it gets its own execution context which is then put on top of the stack and
+// becomes the active execution context. This is how events are processed and how event listeners work.
+
 
 
 
