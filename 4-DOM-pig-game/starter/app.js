@@ -38,17 +38,17 @@ GAME RULES:
 // How to read the DOM
 // How to change CSS styles
 
-
-var scores, roundScore, activePlayer, dice ;
+'use strict';
+var scores, roundScore, activePlayer ; // removed dice because we want to use dice in the scope of the function below and not globally
 
 scores = [0,0]; // initial scores
 roundScore = 0;
-activePlayer = 0;
+activePlayer = 1;
 
-dice = Math.floor(Math.random() * 6) + 1; // floor removes decimal // random between 1 and 6
+// dice = Math.floor(Math.random() * 6) + 1; // floor removes decimal // random between 1 and 6
                                           // (Math.random() * 6) random number between 0 and 5
 
-document.querySelector('#current-' + activePlayer).textContent = dice;
+// document.querySelector('#current-' + activePlayer).textContent = dice;
                                     // .textContent only sets text and not HTML
                                     // .querySelector allows us to select items just like css (first element that it finds)
                                     // id current
@@ -60,7 +60,7 @@ document.querySelector('#current-' + activePlayer).textContent = dice;
 // var x = document.querySelector('#score-0').textContent; // example that works for setting and reading (setter and getter)
 // console.log(x);
 
-document.querySelector('.dice').style.display = 'none'; // set css with style which is value and display which is property
+document.querySelector('.dice').style.display = 'none'; // set css with style which is a value and display which is a property
 
 // Event Processing
 // -- An event can only be processed or handled as soon as the execution stack is empty (All the functions have returned)
@@ -71,6 +71,42 @@ document.querySelector('.dice').style.display = 'none'; // set css with style wh
 // Event listener
 // -- Is a function that reacts to an event. Since it's a function, it gets its own execution context which is then put on top of the stack and
 // becomes the active execution context. This is how events are processed and how event listeners work.
+
+/******************
+ * Setting up our event handler
+ */
+
+// roll dice button (btn-roll)
+
+/*function btn() {
+   // do something here
+}
+btn();
+
+document.querySelector('.btn-roll').addEventListener('click', btn); // first argument is event type ('click')
+                            // second argument is the function that will be called as soon as the event happens
+                            // btn is setup as a callback function because btn is setup without the () because we
+                            // don't want to call it right here. We want the event listener to call it for us and the btn
+                            // function (callback function) is a function that is not called by us but by another function
+                            // (callback function) a function that we pass into another function as an argument and this function
+                            // (addEventListener) will then call that function for us
+                            // You could also pass the actual function in as an argument if you wanted to (anonymous function)
+                            // (anonymous function) is a function that doesn't have a name so it cannot be reused */
+
+document.querySelector('.btn-roll').addEventListener('click', function () { // anonymous function // cannot be reused
+    // do something here
+    // 1. Random number*/
+    var dice = Math.floor(Math.random() * 6) + 1; // declared var dice here because we want to use it within this scope here(inside) and not globally (outside)
+
+    // 2. Display the result
+    var diceDOM = document.querySelector('.dice'); // setting variable allows us to reuse without having to retype over and over
+    diceDOM.style.display = 'block'; // we can reuse the variable we just created above
+    diceDOM.src = 'dice-' + dice + '.png'; // changing our image (src attribute)
+
+
+    // 3. Update the round score IF the rolled number was NOT a 1 ( if we roll 1, we lose and it's next player's turn)
+
+});
 
 
 
