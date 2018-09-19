@@ -43,7 +43,7 @@ var scores, roundScore, activePlayer ; // removed dice because we want to use di
 
 scores = [0,0]; // initial scores
 roundScore = 0;
-activePlayer = 1;
+activePlayer = 0;
 
 // dice = Math.floor(Math.random() * 6) + 1; // floor removes decimal // random between 1 and 6
                                           // (Math.random() * 6) random number between 0 and 5
@@ -110,10 +110,23 @@ document.querySelector('.btn-roll').addEventListener('click', function () { // a
 
 
     // 3. Update the round score IF the rolled number was NOT a 1 ( if we roll 1, we lose and it's next player's turn)
-    if (dice !== 1) { // !== means different than 1 in this case
+    if (dice !== 1) { // !== performs type coercion and means different than 1 in this case
         // add score
+        roundScore += dice; // same as: roundScore = roundSCore + dice
+        document.querySelector('#current-' + activePlayer).textContent = roundScore // each time player rolls dice, we want to first update
+                                                                // roundScore then display roundScore in our UI
     } else {
         // next player
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0 // using ternary operator // when we score a 1 the player switches to the other
+        /* if (activePlayer === 0) { // same as above but using if / else
+            activePlayer = 1;
+            } else {
+                activePlayer = 0;
+            } */
+            roundScore = 0; // reset to 0 when 1 is scored
+
+            document.getElementById('current-0').textContent = '0'; // update ui to reset score to 0
+            document.getElementById('current-1').textContent = '0';
     }
 });
 

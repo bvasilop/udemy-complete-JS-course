@@ -273,5 +273,25 @@
 				"label": ""
 			}
 		]
+	},
+	{
+		"path": "$ROOTPATH$/4-DOM-pig-game/starter/app.js",
+		"bookmarks": [
+			{
+				"line": 41,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 62,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 100,
+				"column": 0,
+				"label": ""
+			}
+		]
 	}
 ]
