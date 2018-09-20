@@ -39,8 +39,9 @@ GAME RULES:
 // How to change CSS styles
 
 'use strict';
-var scores, roundScore, activePlayer ; // removed dice because we want to use dice in the scope of the function below and not globally
-init();
+var scores, roundScore, activePlayer, gamePlaying ; // removed dice because we want to use dice in the scope of the function below and not globally
+init();                               // we don't need to define variables, we just need to declare them so they
+                                    // can be used in other scopes and functions
 /*scores = [0,0]; // initial scores
 roundScore = 0;
 activePlayer = 0;*/ // added to init()
@@ -99,8 +100,8 @@ document.querySelector('.btn-roll').addEventListener('click', btn); // first arg
                             // (anonymous function) is a function that doesn't have a name so it cannot be reused */
 
 document.querySelector('.btn-roll').addEventListener('click', function () { // anonymous function // cannot be reused
-    // do something here
-    // 1. Random number*/
+    if (gamePlaying) { // condition is true or false value so we don't need anything else
+    // 1. Random number
     var dice = Math.floor(Math.random() * 6) + 1; // declared var dice here because we want to use it within this scope here(inside) and not globally (outside)
 
     // 2. Display the result
@@ -148,10 +149,14 @@ document.querySelector('.btn-roll').addEventListener('click', function () { // a
 
  */
 
+        }
     }
 });
 
 document.querySelector('.btn-hold').addEventListener('click', function() { // implement the hold button
+
+    if (gamePlaying) { // gamePlaying condition
+
     // add current score to global score
     scores[activePlayer] += roundScore; // passing total score into scores array
     // scores[activePLayer] = scores[activePlayer] + roundScore; // same as above
@@ -170,11 +175,17 @@ document.querySelector('.btn-hold').addEventListener('click', function() { // im
         document.querySelector('.dice').style.display = 'none'; // remove dice once game is over
         document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner'); // for adding winner class and panel
         document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active'); // removing active class and panel so came can't continue unless resetting
+
+        gamePlaying = false; // resetting our state variable to false
+
     } else {
 
     nextPlayer();
 
     }
+
+}
+
 
 /*
     // added same code / functionality from above to switch players
@@ -211,16 +222,19 @@ function nextPlayer () {
 
 }
 
-document.querySelector('.btn-new').addEventListener('click', function() {
-        scores = [0, 0]; // resetting for add new game implementation
+        document.querySelector('.btn-new').addEventListener('click', init); // init callback passed as argument refactored to init()
+        /*scores = [0, 0]; // resetting for add new game implementation
         activePlayer = 0;
-        roundScore = 0;
-});
+        roundScore = 0;*/
+        // refactored to init()
+
+
 
 function init() {
     scores = [0,0]; // initial scores
     roundScore = 0;
     activePlayer = 0;
+    gamePlaying = true;
 
     document.querySelector('.dice').style.display = 'none'; // set css with style which is a value and display which is a property
 
@@ -228,12 +242,27 @@ function init() {
     document.getElementById('score-1').textContent = '0'; // resets score to 0 upon initial startup
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0'; // added to init()
+
+    document.getElementById('name-0').textContent = 'Player 1'; // removing "Winner" and resetting player names
+    document.getElementById('name-1').textContent = 'Player 2';
+
+    document.querySelector('.player-0-panel').classList.remove('winner'); // remove winner upon reset
+    document.querySelector('.player-1-panel').classList.remove('winner');
+
+    document.querySelector('.player-1-panel').classList.remove('active'); // remove player upon reset so we don't duplicate or have an active classes
+    document.querySelector('.player-0-panel').classList.add('active'); // then re-add active class
+
+
+
+
 }
 
-
-
-
-
+/******************
+ * state variables
+ * // tells us the condition of a system
+ * // used when we need to remember something or the state of something (is our game playing or is it not playing)
+ * //
+ */
 
 
 
