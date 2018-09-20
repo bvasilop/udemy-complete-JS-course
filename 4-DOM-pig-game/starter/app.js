@@ -165,8 +165,15 @@ document.querySelector('.btn-hold').addEventListener('click', function() { // im
 
     // Check if player won the game */
 
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= 10) {
         document.querySelector('#name-' + activePlayer).textContent = 'Winner!'; // added functionality for winner
+        document.querySelector('.dice').style.display = 'none'; // remove dice once game is over
+        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner'); // for adding winner class and panel
+        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active'); // removing active class and panel so came can't continue unless resetting
+    } else {
+
+    nextPlayer();
+
     }
 
 /*
@@ -185,7 +192,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() { // im
         document.querySelector('.dice').style.display = 'none';  // hiding dice on startup
 
         */
-nextPlayer();
+
 
 });
 
@@ -197,7 +204,7 @@ function nextPlayer () {
         document.getElementById('current-0').textContent = '0'; // update ui to reset score to 0
         document.getElementById('current-1').textContent = '0';
 
-        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-0-panel').classList.toggle('active'); // better to add or remove classes with js than changing css in js
         document.querySelector('.player-1-panel').classList.toggle('active'); // for toggling active class on and off
 
         document.querySelector('.dice').style.display = 'none';  // hiding dice on startup
