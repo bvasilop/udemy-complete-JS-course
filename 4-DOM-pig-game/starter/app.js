@@ -163,7 +163,13 @@ document.querySelector('.btn-hold').addEventListener('click', function() { // im
      *
      * Substitute nextPLayer() to replace code to keep it DRY
 
-    // Check if player won the game
+    // Check if player won the game */
+
+    if (scores[activePlayer] >= 100) {
+        document.querySelector('#name-' + activePlayer).textContent = 'Winner!'; // added functionality for winner
+    }
+
+/*
     // added same code / functionality from above to switch players
 
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; // using ternary operator // when we score a 1 the player switches to the other
