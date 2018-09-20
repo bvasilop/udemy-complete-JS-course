@@ -261,7 +261,7 @@ function init() {
  * state variables
  * // tells us the condition of a system
  * // used when we need to remember something or the state of something (is our game playing or is it not playing)
- * //
+ * // the init() is called when we start new game and it resets our state variable gamePlaying = true
  */
 
 
