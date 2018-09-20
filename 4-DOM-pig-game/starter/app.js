@@ -40,10 +40,10 @@ GAME RULES:
 
 'use strict';
 var scores, roundScore, activePlayer ; // removed dice because we want to use dice in the scope of the function below and not globally
-
-scores = [0,0]; // initial scores
+init();
+/*scores = [0,0]; // initial scores
 roundScore = 0;
-activePlayer = 0;
+activePlayer = 0;*/ // added to init()
 
 // dice = Math.floor(Math.random() * 6) + 1; // floor removes decimal // random between 1 and 6
                                           // (Math.random() * 6) random number between 0 and 5
@@ -60,12 +60,12 @@ activePlayer = 0;
 // var x = document.querySelector('#score-0').textContent; // example that works for setting and reading (setter and getter)
 // console.log(x);
 
-document.querySelector('.dice').style.display = 'none'; // set css with style which is a value and display which is a property
+/*document.querySelector('.dice').style.display = 'none'; // set css with style which is a value and display which is a property
 
 document.getElementById('score-0').textContent = '0'; // using getElementByID as an alternative to using querySelector
 document.getElementById('score-1').textContent = '0'; // resets score to 0 upon initial startup
 document.getElementById('current-0').textContent = '0';
-document.getElementById('current-1').textContent = '0';
+document.getElementById('current-1').textContent = '0';*/ // added to init()
 
 // Event Processing
 // -- An event can only be processed or handled as soon as the execution stack is empty (All the functions have returned)
@@ -165,7 +165,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() { // im
 
     // Check if player won the game */
 
-    if (scores[activePlayer] >= 10) {
+    if (scores[activePlayer] >= 100) {
         document.querySelector('#name-' + activePlayer).textContent = 'Winner!'; // added functionality for winner
         document.querySelector('.dice').style.display = 'none'; // remove dice once game is over
         document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner'); // for adding winner class and panel
@@ -211,6 +211,24 @@ function nextPlayer () {
 
 }
 
+document.querySelector('.btn-new').addEventListener('click', function() {
+        scores = [0, 0]; // resetting for add new game implementation
+        activePlayer = 0;
+        roundScore = 0;
+});
+
+function init() {
+    scores = [0,0]; // initial scores
+    roundScore = 0;
+    activePlayer = 0;
+
+    document.querySelector('.dice').style.display = 'none'; // set css with style which is a value and display which is a property
+
+    document.getElementById('score-0').textContent = '0'; // using getElementByID as an alternative to using querySelector
+    document.getElementById('score-1').textContent = '0'; // resets score to 0 upon initial startup
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0'; // added to init()
+}
 
 
 
