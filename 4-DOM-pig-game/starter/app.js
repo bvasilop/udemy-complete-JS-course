@@ -127,6 +127,18 @@ document.querySelector('.btn-roll').addEventListener('click', function () { // a
 
             document.getElementById('current-0').textContent = '0'; // update ui to reset score to 0
             document.getElementById('current-1').textContent = '0';
+
+
+
+    // update ui for who is active player (red dot and gray background) removing and adding classes (.player-0-panel active)
+    // document.querySelector('.player-0-panel').classList.remove('active'); // for removing active class
+    // document.querySelector('.player-1-panel').classList.add('active'); // for adding active class
+
+    document.querySelector('.player-1-panel').classList.toggle('active'); // for toggling active class on and off
+
+
+    document.querySelector('.dice').style.display = 'none';  // hiding dice on startup
+
     }
 });
 
