@@ -116,13 +116,19 @@ document.querySelector('.btn-roll').addEventListener('click', function () { // a
         document.querySelector('#current-' + activePlayer).textContent = roundScore // each time player rolls dice, we want to first update
                                                                 // roundScore then display roundScore in our UI
     } else {
+
+        nextPlayer();
         // next player
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0 // using ternary operator // when we score a 1 the player switches to the other
+        /*************** substitute nextPlayer() to keep it DRY
+         *
+         *
+
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; // using ternary operator // when we score a 1 the player switches to the other
         /* if (activePlayer === 0) { // same as above but using if / else
             activePlayer = 1;
             } else {
                 activePlayer = 0;
-            } */
+            }
             roundScore = 0; // reset to 0 when 1 is scored
 
             document.getElementById('current-0').textContent = '0'; // update ui to reset score to 0
@@ -134,15 +140,63 @@ document.querySelector('.btn-roll').addEventListener('click', function () { // a
     // document.querySelector('.player-0-panel').classList.remove('active'); // for removing active class
     // document.querySelector('.player-1-panel').classList.add('active'); // for adding active class
 
+    document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active'); // for toggling active class on and off
 
 
     document.querySelector('.dice').style.display = 'none';  // hiding dice on startup
 
+ */
+
     }
 });
 
+document.querySelector('.btn-hold').addEventListener('click', function() { // implement the hold button
+    // add current score to global score
+    scores[activePlayer] += roundScore; // passing total score into scores array
+    // scores[activePLayer] = scores[activePlayer] + roundScore; // same as above
 
+    // Update the UI
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer]; // if it's the first player hen it's the first element of the array
+                                    // if it's the second player, then it's the second element in the array
+    /******************************
+     *
+     * Substitute nextPLayer() to replace code to keep it DRY
+
+    // Check if player won the game
+    // added same code / functionality from above to switch players
+
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; // using ternary operator // when we score a 1 the player switches to the other
+
+        roundScore = 0; // reset to 0 when 1 is scored
+
+        document.getElementById('current-0').textContent = '0'; // update ui to reset score to 0
+        document.getElementById('current-1').textContent = '0';
+
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active'); // for toggling active class on and off
+
+        document.querySelector('.dice').style.display = 'none';  // hiding dice on startup
+
+        */
+nextPlayer();
+
+});
+
+function nextPlayer () {
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; // using ternary operator // when we score a 1 the player switches to the other
+
+        roundScore = 0; // reset to 0 when 1 is scored
+
+        document.getElementById('current-0').textContent = '0'; // update ui to reset score to 0
+        document.getElementById('current-1').textContent = '0';
+
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active'); // for toggling active class on and off
+
+        document.querySelector('.dice').style.display = 'none';  // hiding dice on startup
+
+}
 
 
 
