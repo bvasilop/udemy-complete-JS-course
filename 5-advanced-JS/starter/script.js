@@ -42,7 +42,7 @@
 /********************
  * Creating Objects using the Function Constructor
  */
-
+/*
 var john = { // Using Object Literal
     name: 'John',
     yearOfBirth: 1990,
@@ -55,8 +55,8 @@ this.yearOfBirth = yearOfBirth; // the 'this' variable is an object as well
 this.job = job;
 /*this.calculateAge = function() {
     console.log(2018 - this.yearOfBirth);
-}*/ // added using the prototype property below on line 77
-};
+}// added using the prototype property below on line 77
+};*/
 
 // when we use the 'new' operator, a brand new empty object is created. After that, the constructor function
     // (Person) is called with the arguments we specify. Object is created then function is called. When we call a
@@ -70,7 +70,7 @@ this.job = job;
 
 // We have to add all the methods and properties that we want to be inherited into the Constructor's prototype
     // property
-
+/*
 Person.prototype.calculateAge = function() { // grab the prototype property from the function constructor and add the calculateAge method
     console.log(2018 - this.yearOfBirth);
 };
@@ -120,4 +120,54 @@ console.log(john); /* Person {name: "John", yearOfBirth: 1990, job: "teacher"} /
                                                                     __proto__: Array(0) */ // we see array function constructor properties available for array prototype
     // x.length = 3 because the length property is stored in the               // we have access to all of the array methods because they are stored in the prototype chain (inheritance)
     // array property
+
+
+/**********************
+ * Object.create methods
+ */
+
+// another way to create objects that inherit from a prototype
+
+// 1. define an object that will act as the prototype
+// 2. create a new object based on that very prototype
+
+// using the object.create way instead of function constructor
+var personProto = { // no capital because it's not a function constructor
+    calculateAge: function(){
+        console.log(2016 - this.yearOfBirth);
+    }
+};
+
+var john = Object.create(personProto); // pass the object that we define to be the object prototype as args
+john.name = 'John'; // the old way without using 'this'
+john.yearOfBirth = 1990;
+john.job = 'teacher'; // not ideal way of using object.create because of manually entering data for this object
+
+
+// object.create accepts a second parameter
+var jane = Object.create(personProto, {
+    name: { value: 'Jane' },
+    yearOfBirth: { value: 1969 },
+    job: { value: 'designer' }
+});
+
+// The difference between object.create and Constructor pattern is that the object.create builds an object that inherits
+    // directly from the one that we passed into the first argument while in the Function Constructor the newly created
+        // object inherits from the Constructor's prototype property
+
+// One of the biggest benefits of object.create is that it allows us to implement a really complex inheritance structure
+    // in an easier way than function constructors because it allows us to directly specify which object should be a prototype.
+
+// Most popular method is using the Function Constructor
+
+
+
+
+
+
+
+
+
+
+
 
