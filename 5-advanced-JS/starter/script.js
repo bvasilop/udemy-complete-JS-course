@@ -39,3 +39,57 @@
 // The Constructor's prototype property is NOT the prototype of the Constructor itself, it's the prototype of ALL
     // instances that are created through it.
 
+/********************
+ * Creating Objects using the Function Constructor
+ */
+
+var john = { // Using Object Literal
+    name: 'John',
+    yearOfBirth: 1990,
+    job : 'teacher'
+};
+
+var Person = function(name, yearOfBirth, job) { // Function Constructor (pattern for writing a blueprint)
+this.name = name; // attach "this" to function of this particular execution context
+this.yearOfBirth = yearOfBirth; // the 'this' variable is an object as well
+this.job = job;
+/*this.calculateAge = function() {
+    console.log(2018 - this.yearOfBirth);
+}*/ // added using the prototype property below on line 77
+};
+
+// when we use the 'new' operator, a brand new empty object is created. After that, the constructor function
+    // (Person) is called with the arguments we specify. Object is created then function is called. When we call a
+        // a new function, we create a new execution context that also has a this variable
+    // In a regular function call, the 'this' variable is applied to the global execution context. In this example
+        // of our function Constructor, having the 'this' variable pointing to the Global constructor would not be
+            // very useful. That's why we use the 'new' operator. It makes it so the the 'this' variable of the function
+                // points to the empty object that was created in the beginning by the 'new' operator.
+// The 'new' variable points to the new Person variable (empty object), not to the Person variable
+
+
+// We have to add all the methods and properties that we want to be inherited into the Constructor's prototype
+    // property
+
+Person.prototype.calculateAge = function() { // grab the prototype property from the function constructor and add the calculateAge method
+    console.log(2018 - this.yearOfBirth);
+};
+
+Person.prototype.lastName = 'Smith'; // adds last name to all instances of constructor even though it wasn't added to constructor object
+                        // but instead in the prototype property of the function constructor. So John, Jane, Mark inherit this property
+// Adding methods to our objects
+
+
+var john = new Person('John', 1990, 'teacher'); // how we create new objects using the constructor function
+                                                    // Instantiation ( instance of the Person object )
+var jane = new Person('Jane', 1969, 'designer');
+var mark = new Person('Mark', 1948, 'retired');
+
+john.calculateAge(); // 28
+jane.calculateAge(); // 49
+mark.calculateAge(); // 70
+
+
+console.log(john.lastName); // Smith
+console.log(jane.lastName); // Smith
+console.log(mark.lastName); // Smith
