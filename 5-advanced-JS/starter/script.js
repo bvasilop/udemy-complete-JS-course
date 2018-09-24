@@ -93,3 +93,31 @@ mark.calculateAge(); // 70
 console.log(john.lastName); // Smith
 console.log(jane.lastName); // Smith
 console.log(mark.lastName); // Smith
+
+// Using the console to examine Objects created with the constructor function
+console.log(john); /* Person {name: "John", yearOfBirth: 1990, job: "teacher"} // properties created in our new instance
+                        job: "teacher"
+                        name: "John"
+                        yearOfBirth: 1990
+                        __proto__: Object */ // the prototype of the 'john' object // Prototype property of the Person Constructor
+/*
+// comparison in console // john.__proto__ === Person.prototype // True
+    // The prototype of john is the prototype property of the Person function Constructor
+    // If you open the second level proto in the console, you get the __proto__ of the Object function Constructor (object Object)
+
+// console-- john.hasOwnProperty('job'); // true for instance of its own property
+// console-- john.hasOwnProperty('lastName'); // false because it is not john's own property but instead inherited from the prototype
+
+
+// console-- john instanceof Person // true because it was created through Person function Constructor
+
+// Proving almost anything is an Object
+    // try in console --  var x = [2, 4, 6] /* console.info(x) (3) [2, 4, 6]
+                                                                    0: 2
+                                                                    1: 4
+                                                                    2: 6
+                                                                    length: 3 // length property we've used before stored here in this array instance
+                                                                    __proto__: Array(0) */ // we see array function constructor properties available for array prototype
+    // x.length = 3 because the length property is stored in the               // we have access to all of the array methods because they are stored in the prototype chain (inheritance)
+    // array property
+
