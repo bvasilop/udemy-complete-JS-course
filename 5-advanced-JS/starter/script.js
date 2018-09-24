@@ -132,6 +132,7 @@ console.log(john); /* Person {name: "John", yearOfBirth: 1990, job: "teacher"} /
 // 2. create a new object based on that very prototype
 
 // using the object.create way instead of function constructor
+/*
 var personProto = { // no capital because it's not a function constructor
     calculateAge: function(){
         console.log(2016 - this.yearOfBirth);
@@ -159,6 +160,73 @@ var jane = Object.create(personProto, {
     // in an easier way than function constructors because it allows us to directly specify which object should be a prototype.
 
 // Most popular method is using the Function Constructor
+*/
+/*********************
+ * Primitives vs Objects
+ */
+
+// Primitives: Numbers, Strings, Booleans, Undefined, Null
+// Everything else (is an object): Arrays, Functions, Objects, Dates, Wrappers for Numbers,
+
+// Big difference between Primitives and Objects is that variables containing Primitives actually hold that data inside of the
+    // variable itself.
+
+// In Objects, variables associated with objects do not actually contain the object but instead they contain a reference to the place
+    // in memory where the object sits or where the object is stored. A variable declared as an object does have a real copy
+        // of the object, it just points to that object.
+
+// Primitives
+
+var a = 23; // 46 // was reassigned to 46
+var b = a; // 23 // here we simply copied the value of a to b. when we changed a = 46 it did not affect the value of b
+a = 46; // mutate var a to 46
+console.log(a); // 46
+console.log(b); // 23
+
+// each of the variables hold their own copy of the data. They do not reference anything.
+
+// Objects
+
+var obj1 = {
+    name: 'John',
+    age: 26
+};
+
+var obj2 = obj1; // we don't actually create a new object here, no copy was created here. All we did was create a new reference
+                        // which points to the new object. So the obj1 and obj2 variables both hold the reference that point
+                            // to the exact same object in the memory
+obj1.age = 30;
+
+console.log(obj1.age); // 30
+console.log(obj2.age); // 30
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
