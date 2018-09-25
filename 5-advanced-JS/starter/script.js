@@ -183,6 +183,11 @@ a = 46; // mutate var a to 46
 console.log(a); // 46
 console.log(b); // 23
 
+
+
+
+
+
 // each of the variables hold their own copy of the data. They do not reference anything.
 
 // Objects
@@ -200,8 +205,32 @@ obj1.age = 30;
 console.log(obj1.age); // 30
 console.log(obj2.age); // 30
 
+// when we pass a primitive and an object into a function
 
+/**********************
+ * Functions
+ */
+var age = 27;
+var obj = {
+    name: 'Jonas',
+    city: 'Lisbon'
+};
 
+function change(a, b) { // created a function that
+    a = 30;
+    b.city = 'San Francisco'; // the city in the object has changed from Lisbon to San Francisco
+}
+change(age, obj); // we pass the age variable holding a primitive and object variable holding a reference to an object into our function
+    // This function as it was invoked attempted to change the arguments that we passed into it.
+console.log(age); // 27 // the primitive has remained unchanged
+console.log(obj.city); // San Francisco // the city in the object has changed from Lisbon to San Francisco
+
+// this shows us that when we pass a primitive into a function, a simple copy is created
+// we can change a as much as we want and we can never affect the variable on the outside because it is a primitive
+    // but when we pass an object, it's not really the object that we passed but instead the reference of the object
+
+// We do not pass an object into a function but instead only the reference that points to the object
+    // when we change the object inside of the function it is still reflected outside of the function
 
 
 
