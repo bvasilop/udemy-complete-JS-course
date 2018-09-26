@@ -232,6 +232,38 @@ console.log(obj.city); // San Francisco // the city in the object has changed fr
 // We do not pass an object into a function but instead only the reference that points to the object
     // when we change the object inside of the function it is still reflected outside of the function
 
+/*****************
+ * First Class Functions: Passing Functions as arguments
+ */
+
+// A function is an instance of the Object type because of that, a function behaves like any other object
+// We can store functions in a variable
+// we can pass a function as an argument to another function
+// we can return a function from a function
+
+var years = [1990, 1965, 1937, 2005, 1998];
+
+function arrayCalc(arr, fn) {  // we pass the array and then we pass the function that calculates the array
+    var arrRes = [];
+    for (var i = 0; i < years.length; i ++) {
+        arrRes.push(fn((arr[i]));    // push inserts an element at the end of an array // we pass the result of calling our fn function
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
