@@ -257,9 +257,14 @@ function calculateAge(el) { // receives el element and returns back age
 	return 2016 - el;
 }
 
-var ages = arrayCalc(years, calculateAge); // store function as variable ages so we can use it later
-console.log(ages);
+function isFullAge(el) {
+    return el >= 18; // comparison operator // returns true or false
+}
 
+var ages = arrayCalc(years, calculateAge); // store function as variable ages so we can use it later
+var fullAges = arrayCalc(ages, isFullAge);
+console.log(ages); // (5) [26, 51, 79, 11, 18] // was called 5 times and the calculateAge function pushed new values into array that we returned
+console.log(fullAges); // (5) [true, true, true, false, true]
 
 
 
