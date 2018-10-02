@@ -245,7 +245,7 @@ var years = [1990, 1965, 1937, 2005, 1998];
 
 function arrayCalc(arr, fn) {  // we pass the array and then we pass the function that calculates the array
 	var arrRes = []; // create new empty array that we will fill and use later
-	for (var i = 0; i < arr.length; i++) {
+	for (var i = 0; i < arr.length; i++) { // created function that loops over array
 		arrRes.push(fn(arr[i])); // use push method to insert element at end of array // the result of calling our fn function
 		// we pass the current element of our input array into the function // fn is callback function
 	}
@@ -261,11 +261,21 @@ function isFullAge(el) {
     return el >= 18; // comparison operator // returns true or false
 }
 
+function maxHeartRate(el) { // pass generic el (element) as input
+    if (el >= 18 && el <= 81) {
+        return Math.round(206.9 - (0.67 * el)); // age is el // Math.round method rounds to nearest integer
+    } else {
+        return -1;
+    }
+}
+// using ternary return (el >= 18 && el <= 81 ? Math.round(206.9 - (0.67 * el)) : -1);
+
 var ages = arrayCalc(years, calculateAge); // store function as variable ages so we can use it later
 var fullAges = arrayCalc(ages, isFullAge);
+var rates = arrayCalc(ages, maxHeartRate);
 console.log(ages); // (5) [26, 51, 79, 11, 18] // was called 5 times and the calculateAge function pushed new values into array that we returned
 console.log(fullAges); // (5) [true, true, true, false, true]
-
+console.log(rates);
 
 
 
