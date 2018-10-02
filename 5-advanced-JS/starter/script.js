@@ -8,36 +8,36 @@
 // Everything else (is an object): Arrays, Functions, Objects, Dates, Wrappers for Numbers, Strings, Booleans
 
 // OOP : Objects interacting with one another through methods and properties.
-    // Used to store data, structure applications into modules and keeping code clean.
+// Used to store data, structure applications into modules and keeping code clean.
 
 // With help for Constructor functions, we can create as many instances of an object as we want.
-    // Constructor acts like a blueprint for other objects with the same properties
+// Constructor acts like a blueprint for other objects with the same properties
 
 // Inheritance : When one object is based on another object. When one object gets access to another objects
-    // properties and methods. One objects inherits these properties and methods from another object.
+// properties and methods. One objects inherits these properties and methods from another object.
 
 // JS is a prototype based language. Inheritance works by using prototypes and the prototype chain.
-    // Each JS object has a prototype property which makes inheritance possible in JS.
+// Each JS object has a prototype property which makes inheritance possible in JS.
 
 // Prototype property of an object is where we put methods and properties that we want other objects to inherit.
 
 // The Constructor's object prototype is not the prototype of the constructor's object prototype itself, but
-    // of all instances that are created through the blueprint of the original constructor object.
+// of all instances that are created through the blueprint of the original constructor object.
 // The constructor's prototype property is the prototype of the first instance.
 // The original constructor object is an instance of an even part of a bigger constructor with it's own properties.
 // (The Object Object)
 // Each object that we create is an instance of the Object Constructor which inherits a bunch of methods from the
-    // Object Constructor's properties (prototype chain)
+// Object Constructor's properties (prototype chain)
 
 // Prototype chain: Is what makes all of this inheritance possible. When we try to access a certain method or
-    // property on an object, JS will first try to find that method on that exact object. If it cannot be found,
-        // it will look in the Object's prototype, which is the prototype property of its parent (moving up in the chain)
-            // if method is still not there, i keeps going up the chain to find the method until there are no more
-                // prototypes to look into (null). Null is the only one that has no prototype and is therefore the final
-                    // link in the prototype chain. In this case, (Undefined) is returned.
+// property on an object, JS will first try to find that method on that exact object. If it cannot be found,
+// it will look in the Object's prototype, which is the prototype property of its parent (moving up in the chain)
+// if method is still not there, i keeps going up the chain to find the method until there are no more
+// prototypes to look into (null). Null is the only one that has no prototype and is therefore the final
+// link in the prototype chain. In this case, (Undefined) is returned.
 
 // The Constructor's prototype property is NOT the prototype of the Constructor itself, it's the prototype of ALL
-    // instances that are created through it.
+// instances that are created through it.
 
 /********************
  * Creating Objects using the Function Constructor
@@ -59,17 +59,17 @@ this.job = job;
 };*/
 
 // when we use the 'new' operator, a brand new empty object is created. After that, the constructor function
-    // (Person) is called with the arguments we specify. Object is created then function is called. When we call a
-        // a new function, we create a new execution context that also has a this variable
-    // In a regular function call, the 'this' variable is applied to the global execution context. In this example
-        // of our function Constructor, having the 'this' variable pointing to the Global constructor would not be
-            // very useful. That's why we use the 'new' operator. It makes it so the the 'this' variable of the function
-                // points to the empty object that was created in the beginning by the 'new' operator.
+// (Person) is called with the arguments we specify. Object is created then function is called. When we call a
+// a new function, we create a new execution context that also has a this variable
+// In a regular function call, the 'this' variable is applied to the global execution context. In this example
+// of our function Constructor, having the 'this' variable pointing to the Global constructor would not be
+// very useful. That's why we use the 'new' operator. It makes it so the the 'this' variable of the function
+// points to the empty object that was created in the beginning by the 'new' operator.
 // The 'new' variable points to the new Person variable (empty object), not to the Person variable
 
 
 // We have to add all the methods and properties that we want to be inherited into the Constructor's prototype
-    // property
+// property
 /*
 Person.prototype.calculateAge = function() { // grab the prototype property from the function constructor and add the calculateAge method
     console.log(2018 - this.yearOfBirth);
@@ -118,8 +118,8 @@ console.log(john); /* Person {name: "John", yearOfBirth: 1990, job: "teacher"} /
                                                                     2: 6
                                                                     length: 3 // length property we've used before stored here in this array instance
                                                                     __proto__: Array(0) */ // we see array function constructor properties available for array prototype
-    // x.length = 3 because the length property is stored in the               // we have access to all of the array methods because they are stored in the prototype chain (inheritance)
-    // array property
+// x.length = 3 because the length property is stored in the               // we have access to all of the array methods because they are stored in the prototype chain (inheritance)
+// array property
 
 
 /**********************
@@ -169,19 +169,19 @@ var jane = Object.create(personProto, {
 // Everything else (is an object): Arrays, Functions, Objects, Dates, Wrappers for Numbers,
 
 // Big difference between Primitives and Objects is that variables containing Primitives actually hold that data inside of the
-    // variable itself.
+// variable itself.
 
 // In Objects, variables associated with objects do not actually contain the object but instead they contain a reference to the place
-    // in memory where the object sits or where the object is stored. A variable declared as an object does have a real copy
-        // of the object, it just points to that object.
+// in memory where the object sits or where the object is stored. A variable declared as an object does have a real copy
+// of the object, it just points to that object.
 
 // Primitives
 
-var a = 23; // 46 // was reassigned to 46
+/*var a = 23; // 46 // was reassigned to 46
 var b = a; // 23 // here we simply copied the value of a to b. when we changed a = 46 it did not affect the value of b
 a = 46; // mutate var a to 46
 console.log(a); // 46
-console.log(b); // 23
+console.log(b); // 23*/
 
 
 
@@ -192,14 +192,14 @@ console.log(b); // 23
 
 // Objects
 
-var obj1 = {
-    name: 'John',
-    age: 26
+/*var obj1 = {
+	name: 'John',
+	age: 26
 };
 
 var obj2 = obj1; // we don't actually create a new object here, no copy was created here. All we did was create a new reference
-                        // which points to the new object. So the obj1 and obj2 variables both hold the reference that point
-                            // to the exact same object in the memory
+// which points to the new object. So the obj1 and obj2 variables both hold the reference that point
+// to the exact same object in the memory
 obj1.age = 30;
 
 console.log(obj1.age); // 30
@@ -210,27 +210,27 @@ console.log(obj2.age); // 30
 /**********************
  * Functions
  */
-var age = 27;
+/*var age = 27;
 var obj = {
-    name: 'Jonas',
-    city: 'Lisbon'
+	name: 'Jonas',
+	city: 'Lisbon'
 };
 
 function change(a, b) { // created a function that
-    a = 30;
-    b.city = 'San Francisco'; // the city in the object has changed from Lisbon to San Francisco
+	a = 30;
+	b.city = 'San Francisco'; // the city in the object has changed from Lisbon to San Francisco
 }
 change(age, obj); // we pass the age variable holding a primitive and object variable holding a reference to an object into our function
-    // This function as it was invoked attempted to change the arguments that we passed into it.
+// This function as it was invoked attempted to change the arguments that we passed into it.
 console.log(age); // 27 // the primitive has remained unchanged
 console.log(obj.city); // San Francisco // the city in the object has changed from Lisbon to San Francisco
 
 // this shows us that when we pass a primitive into a function, a simple copy is created
 // we can change a as much as we want and we can never affect the variable on the outside because it is a primitive
-    // but when we pass an object, it's not really the object that we passed but instead the reference of the object
+// but when we pass an object, it's not really the object that we passed but instead the reference of the object
 
 // We do not pass an object into a function but instead only the reference that points to the object
-    // when we change the object inside of the function it is still reflected outside of the function
+// when we change the object inside of the function it is still reflected outside of the function
 
 /*****************
  * First Class Functions: Passing Functions as arguments
@@ -240,22 +240,25 @@ console.log(obj.city); // San Francisco // the city in the object has changed fr
 // We can store functions in a variable
 // we can pass a function as an argument to another function
 // we can return a function from a function
-
+'use strict';
 var years = [1990, 1965, 1937, 2005, 1998];
 
 function arrayCalc(arr, fn) {  // we pass the array and then we pass the function that calculates the array
-    var arrRes = [];
-    for (var i = 0; i < years.length; i ++) {
-        arrRes.push(fn((arr[i]));    // push inserts an element at the end of an array // we pass the result of calling our fn function
-    }
+	var arrRes = []; // create new empty array that we will fill and use later
+	for (var i = 0; i < arr.length; i++) {
+		arrRes.push(fn(arr[i])); // use push method to insert element at end of array // the result of calling our fn function
+		// we pass the current element of our input array into the function // fn is callback function
+	}
+	return arrRes;
+}
+// callback functions are functions that we pass into functions that will then be called later. In this case fn
 
+function calculateAge(el) { // receives el element and returns back age
+	return 2016 - el;
 }
 
-
-
-
-
-
+var ages = arrayCalc(years, calculateAge); // store function as variable ages so we can use it later
+console.log(ages);
 
 
 
