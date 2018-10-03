@@ -236,6 +236,15 @@ console.log(obj.city); // San Francisco // the city in the object has changed fr
  * First Class Functions: Passing Functions as arguments
  */
 
+// A first class function is a function that was built with the intention of being passed around to other functions.
+// It does one specific thing, does not have side effects, and is not intended to be called directly, but rather, to be used by ‘other functions.’
+
+// Those ‘other functions’ which accept one of those ‘first class functions’ as an argument are called higher order functions. Higher order functions also might be functions that return a function.
+
+// In a higher order function, when one of the parameters passed in is a function, that function is a callback function because it will be called back and used within the higher order function.
+
+// A higher order function is named as such because when using a callback to perform an operation within itself, the function has a ‘higher’ purpose than a regular function. When it returns a function, it also has a ‘higher’ purpose.
+
 // A function is an instance of the Object type because of that, a function behaves like any other object
 // We can store functions in a variable
 // we can pass a function as an argument to another function
@@ -244,7 +253,7 @@ console.log(obj.city); // San Francisco // the city in the object has changed fr
 var years = [1990, 1965, 1937, 2005, 1998];
 
 function arrayCalc(arr, fn) {  // we pass the array and then we pass the function that calculates the array
-	var arrRes = []; // create new empty array that we will fill and use later
+	var arrRes = []; // create new empty array that we will fill and return or use later
 	for (var i = 0; i < arr.length; i++) { // created function that loops over array
 		arrRes.push(fn(arr[i])); // use push method to insert element at end of array // the result of calling our fn function
 		// we pass the current element of our input array into the function // fn is callback function
@@ -257,7 +266,7 @@ function calculateAge(el) { // receives el element and returns back age
 	return 2016 - el;
 }
 
-function isFullAge(el) {
+function isFullAge(el) { // The 'el' parameter will take a value of arr[i]
     return el >= 18; // comparison operator // returns true or false
 }
 

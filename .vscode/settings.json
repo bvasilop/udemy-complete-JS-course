@@ -7,4 +7,5 @@
     "javascript"
 ],
 "git.ignoreLimitWarning": true,
+"codemetrics.basics.CodeLensEnabled": false
 }
