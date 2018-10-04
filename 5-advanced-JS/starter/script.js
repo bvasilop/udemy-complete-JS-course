@@ -249,7 +249,8 @@ console.log(obj.city); // San Francisco // the city in the object has changed fr
 // We can store functions in a variable
 // we can pass a function as an argument to another function
 // we can return a function from a function
-'use strict';
+/*********
+ * 'use strict';
 var years = [1990, 1965, 1937, 2005, 1998];
 
 function arrayCalc(arr, fn) {  // we pass the array and then we pass the function that calculates the array
@@ -285,26 +286,88 @@ var rates = arrayCalc(ages, maxHeartRate);
 console.log(ages); // (5) [26, 51, 79, 11, 18] // was called 5 times and the calculateAge function pushed new values into array that we returned
 console.log(fullAges); // (5) [true, true, true, false, true]
 console.log(rates);
+**********/
+
+/******************
+ * Functions returning Functions
+ */
+
+/****function interviewQuestion(job) {
+    if (job === 'designer') {
+        return function(name) { // anonymous function
+            console.log(`${name}, can you please explain what UX design is?`);
+        }
+    } else if (job === 'teacher') { // variable teacher will now be teacher function
+        // just like storing a function expression as a variable
+
+        return function(name) {
+            console.log(`${name}, what subject do you teach?`);
+            }
+    } else {
+        return function(name) { // here we return an object that happens to be a function
+            console.log(`Hello ${name}, what do you do ?`);
+            }
+        }
+    }
+
+var teacherQuestion = interviewQuestion('teacher'); // variable teacher will now be teacher function
+            // just like storing a function expression as a variable
+            // function that creates questions for teachers
+
+teacherQuestion('John'); // John what subject do you teach?
+// calling variable which is a function and put 'John' in it because this function accepts a (name) in it as an input
+
+// With this method we can write one generic function and then create many more specific functions based on that generic function
+
+var designerQuestion = interviewQuestion('designer');
+
+designerQuestion('Jane'); // Jane can you please explain what UX design is?
+designerQuestion('John');
+designerQuestion('Mark');
+
+interviewQuestion('teacher')('Mark'); // different way of calling function
+// will return a function and can call it right away
+// works because it is evaluated from left to right
+    // interviewQuestion('teacher') returns a function
+    // then we call the function that was returned before with ('Mark)
+
+***/
+
+/*****
+ * Immediately Invoked Function Expression (IIFE)
+ */
+
+// a function cannot be accessed from the outside scope because of the scoping chain
+
+function game() {
+    var score = Math.random() * 10;
+    console.log(score >= 5);
+}
+game();
 
 
+(function() { // first use () parentheses, then write an anonymous function
+    var score = Math.random() * 10; // because of IIFE, you cannot access the score variable from the outside
+    console.log(score >= 5);
+})(); // Then we invoke the function ()     // here we created data privacy
 
+/*function () { // If you use it this way as an anonymous function,  the JavaScript parser will throw an error because
+    // it will think this a function declaration (without a name). We basically have to trick the parser into thinking
+    // we have a javascript expression and not a declaration. The solution is to wrap the whole thing into () parentheses
 
+}*/
 
+/*(function() { // in javascript, what is inside parentheses () cannot be a statement. Also if it was not parentheses, it
+    // would never be called and never do anything and since it's not attached to a variable, nothing would ever happen
 
+}); // ; is used because the parser thinks it's a function expression not a declaration */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+(function(goodLuck) { // first use () // using a parameter in an IIFE
+    var score = Math.random() * 10;
+    console.log(score >= 5 - goodLuck);
+})(5); // passing 5 as the argument for the goodLuck parameter // can only call IIFE once because it's not assigned to a variable
+        // used to create a new scope that is hidden from the outside scope. Where we can safely use variables that are not used outside
+        // and don't interfere with variables that are available in our global execution context
 
 
 
