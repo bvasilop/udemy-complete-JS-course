@@ -479,16 +479,48 @@ john.presentation('formal', 'morning');
 john.presentation.call(emily, 'friendly', 'afternoon'); // this is called method borrowing because we borrowed the presentation method from 'john' and
                 // applied it to the emily object // the call method allows us to set the 'this' variable here in the first argument (emily) --- call method
 
+// john.presentation.apply (emily, ['friendly', 'afternoon']);  // the only difference with the 'apply' method is that it accepts the arguments as an array
+                                            // this won't work here because our method doesn't expect to see an array here
 
+// the 'bind' method is very similar to the call method // it allows us to set the 'this variable explicitly
+    // the difference is that 'bind' doesn't immediately call the function but instead generates a copy of the function so that we can store it somewhere
+    // this is useful for setting functions with preset arguments
 
+var johnFriendly = john.presentation.bind(john, 'friendly'); // this method will return a function a store it in the johnFriendly variable
 
+johnFriendly('morning'); // we have a function that is always for the friendly version of the presentation method
+johnFriendly('night'); // here we are using currying // Currying is a technique where we create a function based on another function but with some preset parameters
 
+var emilyFormal = john.presentation.bind(emily, 'formal');
+emilyFormal('afternoon'); // Good afternoon, ladies and gentlemen! I'm Emily, I'm a designer and I'm 35 years old.
 
+/****** */
 
+var years = [1990, 1965, 1937, 2005, 1998];
 
+function arrayCalc(arr, fn) {
+	var arrRes = [];
+	for (var i = 0; i < arr.length; i++) {
+		arrRes.push(fn(arr[i]));
+	}
+	return arrRes;
+}
 
+function calculateAge(el) {
+	return 2016 - el;
+}
 
+function isFullAge(limit, el) { // pass in second argument for age limit
+    return el >= limit; // has to be >= limit we defined
+}
 
+var ages = arrayCalc(years, calculateAge);
+
+var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20)); // we use the bind method to create a copy of a function (isFullAge) with a preset argument
+                                // use bind method and pass 'this' as argument
+                                // what is passed is a copy of the isFullAge function
+console.log(ages); // 5) [26, 51, 79, 11, 18]
+console.log(fullJapan); // (5) [true, true, true, false, false] // false for Japan because 18 is not old enough
 
 
 
