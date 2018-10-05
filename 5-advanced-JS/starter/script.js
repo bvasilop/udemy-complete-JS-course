@@ -382,21 +382,73 @@ game();
         // that's why it's called a closure
 // any function that uses a variable from outside the scope is a closure
 
+// the scope chain is like a pointer to all of the variable objects that the function has access to
+
+// we can access the variables that were created in the retirement function long after the function has completed its execution
+    // and after its execution context is gone. The current execution context has 'closed' in on the outer variable object
+        // so that it can use it. That's why it's called a closure. So the scope chain always stays in tact
+            // the function returns and the execution context gets popped off the stack
+/***'use strict';
 function retirement(retirementAge) {
     var a = ' years left until retirement';
     return function(yearOfBirth) { // anonymous function
         var age = 2018 - yearOfBirth;
             console.log(`${retirementAge - age} ${a}`);
+
     }
 }
 
 var retirementUS = retirement(66); // we store the returned function into a variable
 retirementUS(1990); // pass yearOfBirth as argument and call // 38  years left until retirement
-retirement(66)(1990); // immediately returns and calls a new function (date of birth) // 38  years left until retirement
+// retirement(66)(1990); // immediately returns and calls a new function (date of birth) // 38  years left until retirement
 //var retirement
-console.dir();
+console.dir(retirementUS); // to look at closure
+
+var retirementGermany = retirement(65);
+var retirementIceland = retirement(67);
+
+retirementGermany(1990); // 37 years
+retirementIceland(1990); // 39 years
+
+function interviewQuestion(job) {
+    if (job === 'designer') {
+        return function(name) { // anonymous function
+            console.log(`${name}, can you please explain what UX design is?`);
+        }
+    } else if (job === 'teacher') { // variable teacher will now be teacher function
+        // just like storing a function expression as a variable
+
+        return function(name) {
+            console.log(`${name}, what subject do you teach?`);
+            }
+    } else {
+        return function(name) { // here we return an object that happens to be a function
+            console.log(`Hello ${name}, what do you do ?`);
+            }
+        }
+    }
 
 
+function interviewQuestion(job) { // we can use the (job) argument even after the InterviewQuestion function has returned
+    return function(name) {
+        if (job === 'designer') {
+            console.log(`${name}, can you please explain what UX design is?`);
+        } else if (job === 'teacher') {
+            console.log(`${name}, what subject do you teach?`);
+        } else {
+            console.log(`Hello ${name}, what do you do ?`);
+        }
+    }
+}
+
+interviewQuestion('designer')('Jane'); // Jane, can you please explain what UX design is?
+interviewQuestion('teacher')('John'); // John, what subject do you teach?
+interviewQuestion()('Joe'); // Hello joe, what do you do ?
+*/
+
+/*****************
+ * Bind, Call and Apply Methods
+ */
 
 
 
