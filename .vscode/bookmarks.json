@@ -293,5 +293,95 @@
 				"label": ""
 			}
 		]
+	},
+	{
+		"path": "$ROOTPATH$/5-advanced-JS/starter/script.js",
+		"bookmarks": [
+			{
+				"line": 46,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 59,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 72,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 102,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 126,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 162,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 179,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 183,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 194,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 211,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 251,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 288,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 294,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 333,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 341,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 357,
+				"column": 0,
+				"label": ""
+			},
+			{
+				"line": 369,
+				"column": 0,
+				"label": ""
+			}
+		]
 	}
 ]

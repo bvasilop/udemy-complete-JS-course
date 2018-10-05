@@ -339,7 +339,7 @@ interviewQuestion('teacher')('Mark'); // different way of calling function
 
 // a function cannot be accessed from the outside scope because of the scoping chain
 
-function game() {
+/*function game() {
     var score = Math.random() * 10;
     console.log(score >= 5);
 }
@@ -360,7 +360,7 @@ game();
 /*(function() { // in javascript, what is inside parentheses () cannot be a statement. Also if it was not parentheses, it
     // would never be called and never do anything and since it's not attached to a variable, nothing would ever happen
 
-}); // ; is used because the parser thinks it's a function expression not a declaration */
+}); // ; is used because the parser thinks it's a function expression not a declaration
 
 (function(goodLuck) { // first use () // using a parameter in an IIFE
     var score = Math.random() * 10;
@@ -368,12 +368,33 @@ game();
 })(5); // passing 5 as the argument for the goodLuck parameter // can only call IIFE once because it's not assigned to a variable
         // used to create a new scope that is hidden from the outside scope. Where we can safely use variables that are not used outside
         // and don't interfere with variables that are available in our global execution context
+*/
 
+/************
+ * Closures
+ */
 
+// An inner function always has access to the variables and parameters of its outer function,
+    // even after the outer function has returned
+// What makes closures interesting is even after a function returns and the execution context is gone,
+    // the variable object is still there stored in memory and can be accessed
+    // the current execution context has closed in on the outer variable object so that it can use it
+        // that's why it's called a closure
+// any function that uses a variable from outside the scope is a closure
 
+function retirement(retirementAge) {
+    var a = ' years left until retirement';
+    return function(yearOfBirth) { // anonymous function
+        var age = 2018 - yearOfBirth;
+            console.log(`${retirementAge - age} ${a}`);
+    }
+}
 
-
-
+var retirementUS = retirement(66); // we store the returned function into a variable
+retirementUS(1990); // pass yearOfBirth as argument and call // 38  years left until retirement
+retirement(66)(1990); // immediately returns and calls a new function (date of birth) // 38  years left until retirement
+//var retirement
+console.dir();
 
 
 
