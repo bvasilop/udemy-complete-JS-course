@@ -449,6 +449,37 @@ interviewQuestion()('Joe'); // Hello joe, what do you do ?
 /*****************
  * Bind, Call and Apply Methods
  */
+// Functions are a special kind of object . Just like Array objects, Functions get special kinds of methods which they inherit from the
+    // Function Constructor Object
+
+    // Allow us to call a function and set the 'this' variable manually
+'use strict';
+var john = {
+    name: 'John',
+    age: 26,
+    job: 'teacher',
+    presentation: function(style, timeOfDay) {
+        if (style === 'formal') {
+            console.log(`Good ${timeOfDay}, ladies and gentlemen! I'm ${this.name}, I'm a ${this.job} and I'm ${this.age} years old.`);
+        } else if (style === 'friendly') {
+            console.log(`Hey! What's up? I'm ${this.name}, I'm a ${this.job} and I'm ${this.age} years old. Have a nice ${timeOfDay}.`);
+        }
+    }
+}
+
+var emily = {
+    name: 'Emily',
+    age: 35,
+    job: 'designer'
+    // if we want to use the presentation method from above we can use the 'call' method
+    // the first argument of the call method is setting the 'this' variable
+};
+
+john.presentation('formal', 'morning');
+john.presentation.call(emily, 'friendly', 'afternoon'); // this is called method borrowing because we borrowed the presentation method from 'john' and
+                // applied it to the emily object // the call method allows us to set the 'this' variable here in the first argument (emily) --- call method
+
+
 
 
 
