@@ -29,7 +29,7 @@ function Question(question, answers, correct) {
         this.correct = correct;
     }
 
-    Question.prototype.displayQuestion = function() {
+    Question.prototype.displayQuestion = function() { // add displayQuestion method
         console.log(this.question); // this keyword points to (q1, q2, q3)
     // write a method into the questions prototype property which is the prototype of all of the instances of all of the
         // objects created through it (q1, q2, q3)
@@ -40,16 +40,27 @@ function Question(question, answers, correct) {
         }
     }
 
-    var q1 = new Question('Is Javascript the coolest programming language in the world?', ['Yes', 'No'], 0);
-    var q2 = new Question('What\'s the name of this course\'s teacher?',  ['John', 'Michael', 'Jonas'], 2);
-    var q3 = new Question('What best describes coding?', ['Boring', 'Hard', 'Fun', 'Tedious'], 2);
+    Question.prototype.checkAnswer = function(ans) { // add method to prototype to determine if it is correct
+        if(ans === this.correct) {
+            console.log('Correct answer!');
+        } else {
+            console.log('Wrong answer! Try again :)');
+        }
+    };
 
-    var questions = [q1, q2, q3]; // store questions in an array
+var q1 = new Question('Is Javascript the coolest programming language in the world?', ['Yes', 'No'], 0);
+var q2 = new Question('What\'s the name of this course\'s teacher?',  ['John', 'Michael', 'Jonas'], 2);
+var q3 = new Question('What best describes coding?', ['Boring', 'Hard', 'Fun', 'Tedious'], 2);
 
-    var n = Math.floor(Math.random() * questions.length); // provides random questions from questions array // Math.floor removes decimals
+var questions = [q1, q2, q3]; // store questions in an array
 
-    questions[n].displayQuestion();
+var n = Math.floor(Math.random() * questions.length); // provides random questions from questions array // Math.floor removes decimals
 
+questions[n].displayQuestion();
+
+var answer = parseInt(prompt('Please select the correct answer.')); // use parseInt because we want a number and not a string -- converts a string to an integer number
+
+questions[n].checkAnswer(answer);
 
 
 
