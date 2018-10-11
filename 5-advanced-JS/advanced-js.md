@@ -7,12 +7,11 @@
 
 * *Everything else (is an object):* Arrays, Functions, Objects, Dates, Wrappers for Numbers, Strings and  Booleans.
 
-* *OOP :* Objects interacting with one another through methods and properties.
-* Used to store data, structure applications into modules and keeping code clean.
+* *OOP :* Objects that are interacting with one another through methods and properties and are used to store data while structuring applications into modules and keeping code clean.
 
-* With help for *Constructor functions*, we can create as many instances of an object as we want.
+* With help of *Constructor functions*, we can create as many instances of an object as we want.
 
-* *Constructor* acts like a blueprint for other objects with the same properties
+* *Constructors* acts as blueprints for other objects with the same properties.
 
 * *Inheritance :* When one object is based on another object. Also, when one object gets access to another object.
 * *Properties and methods:* One objects inherits these properties and methods from another object
