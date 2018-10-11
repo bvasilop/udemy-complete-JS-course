@@ -1,33 +1,33 @@
 # Everything is an Object: Inheritance and the Prototype Chain
 ## Object-Oriented-Programming
 
-* Two types of Values : Primitives and Objects
+* *Two types of Values :* Primitives and Objects.
 
-* Primitives: Numbers, Strings, Booleans, Undefined and Null.
+* *Primitives:* Numbers, Strings, Booleans, Undefined and Null.
 
-* Everything else (is an object): Arrays, Functions, Objects, Dates, Wrappers for Numbers, Strings and  Booleans.
+* *Everything else (is an object):* Arrays, Functions, Objects, Dates, Wrappers for Numbers, Strings and  Booleans.
 
-* OOP : Objects interacting with one another through methods and properties.
+* *OOP :* Objects interacting with one another through methods and properties.
 * Used to store data, structure applications into modules and keeping code clean.
 
-* With help for Constructor functions, we can create as many instances of an object as we want.
+* With help for *Constructor functions*, we can create as many instances of an object as we want.
 
-* Constructor acts like a blueprint for other objects with the same properties
+* *Constructor* acts like a blueprint for other objects with the same properties
 
 * *Inheritance :* When one object is based on another object. Also, when one object gets access to another object.
 * *Properties and methods:* One objects inherits these properties and methods from another object
 
-* JS is a prototype based language. Inheritance works by using prototypes and the prototype chain.
+* JavaScript is a prototype based language. *Inheritance* works by using prototypes and the prototype chain.
 
-* Each JS object has a prototype property which makes inheritance possible in JS.
+* Each JavaScript object has a *prototype property* which makes *inheritance* possible in JS.
 
-* Prototype property of an object is where we put methods and properties that we want other objects to inherit.
+* *Prototype property* of an object is where we put *methods* and *properties* that we want other *objects* to inherit.
 
-* The Constructor's object prototype is not the prototype of the constructor's object prototype itself, but of all instances that are created through the blueprint of the original constructor object.
+* The *Constructor's object prototype* is not the prototype of the constructor's object prototype itself, but of all instances that are created through the blueprint of the original constructor object.
 
-* The constructor's prototype property is the prototype of the first instance.
+* The *constructor's prototype property* is the *prototype* of the first instance.
 
-* The original constructor object is an instance of an even part of a bigger constructor with it's own properties.
+* The *original constructor object* is an instance of an even part of a bigger constructor with it's own properties.
 
 ### (The Object Object)
 * Each object that we create is an instance of the Object Constructor which inherits a bunch of methods from the Object Constructor's properties (prototype chain)
