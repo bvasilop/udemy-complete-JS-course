@@ -531,8 +531,3 @@ var personProto = { // no capital because it's not a function constructor
 
         console.log(ages); // 5) [26, 51, 79, 11, 18]
         console.log(fullJapan); // (5) [true, true, true, false, false] // false for Japan because 18 is not old enough
-
-
-
-
-
