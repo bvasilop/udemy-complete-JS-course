@@ -365,7 +365,7 @@
 
 	const car1 = {
 	  brand: 'Porsche',//property named brand
-    getCarDescription: function(cost, year, color) { //method named getCarDescription
+      getCarDescription: function(cost, year, color) { //method named getCarDescription
       console.log(`This car is a ${this.brand}. The price is $${cost}. The year is ${year}. The color is ${color}.\n`);
       }
     };
@@ -378,12 +378,54 @@
  	// gives us the ability to change the "this" context
 
 	//calling carDescription in traditional way with calling arguments(cost, year, color)
-	car1.getCarDescription(80000, 2010, 'blue');
+	car1.getCarDescription(80000, 2010, 'blue'); // This car is a Porsche. The price is $80000. The year is 2010. The color is blue.
 
-	//using call method
-	car1.getCarDescription.call(car2, 200000, 2013, 'yellow');// "this" is implied by argument passed.
+    //using call method
+	car1.getCarDescription.call(car2, 200000, 2013, 'yellow'); This car is a Lamborghini. The price is $200000. The year is 2013. The color is yellow.
+
+    // "this" is implied by argument passed.
 	Then add the remaining argumenents after the "this" context call()
 
 	//the call method is similar to the apply method in that it is a native javascript method on the function prototype object
 
 	// the call method gives you an alternative way of calling functions
+
+## *Apply* methods
+
+    const car1 = {
+      brand: 'Porsche',//property named brand
+      getCarDescription: function(cost, year, color) { //method named getCarDescription
+        console.log(`This car is a ${this.brand}. The price is $${cost}. The year is ${year}. The color is ${color}.`);
+      }
+    };
+    const car2 = {
+    brand: 'Lamborghini'
+    };
+
+    const car3 = {
+    brand: 'Ford',
+
+    };
+
+    // "apply" method is essentially the same as the "call" method except one major difference, when we use    "apply" method, we pass all the parameters for the function as an array instead of individually like we did    with the "call" method.
+
+    car1.getCarDescription(80000, 2010, 'blue'); // This car is a Porsche. The price is $80000. The year is 2010. The color is blue. // normal way of calling a function
+
+
+    car1.getCarDescription.call(car2, 200000, 2013, 'yellow'); // This car is a Lamborghini. The price is $200000. The year is 2013. The color is yellow.
+    // calling a function with the "call" method
+
+
+    car1.getCarDescription.apply(car3, [35000, 2012, 'black']); // This car is a Ford. The price is $35000. The year is 2012. The color is black.
+    //() means invoked
+    // calling a function using the "apply" method
+    //pass "this" content(car3) in as the first argument.
+    // "apply" has to passed as an array
+
+
+
+
+
+
+
+
