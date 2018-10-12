@@ -85,6 +85,8 @@
 
 ## Closures
 
+### Example 1
+
     const globalVariable = 'global var';
 
     function outerFunc(param1) {
@@ -107,49 +109,60 @@
     }
     outerFunc('param two');
 
+### Example 2
+ https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36
+
+ http://exploringjs.com/es6/ch_variables.html#sec_let-const-loop-heads
+
+      const arr = [10, 12, 15, 21];
+      for (let i = 0; i < arr.length; i++) {
+
+      // using the ES6 let syntax, it creates a new binding every single time the function is called
+      // read more here:
+      setTimeout(function() {
+          console.log('The index of this number is: ' + i);
+      }, 3000);
+      }
+
+      // setTimeout function creates a function (the closure) that has access to its outer scope, which is the loop that contains the index i
+
 ### Counter Function with Closure
 
-* **Write a function that keeps track of how many times it was called and returns that number. All functionality should be inside of the function.**
+ **Write a function that keeps track of how many times it was called and returns that number. All functionality should be inside of the function.**
 
-        function myFunc() {
-            for (let i=1; i<=20; i++) {
-            return function (i) {
-            };
-          }
-        }
+
+    function myFunc() {
+        for (let i=1; i<=20; i++) {
+        return function (i) {
+        };
+      }
+    }
 ---
 
-        function myFunc() {
-            let count = 0;
-            return function() {
-            count++;
-            return count;
-            };
-        }
+    function myFunc() {
+        let count = 0;
+        return function() {
+        count++;
+        return count;
+        };
+    }
 
-        console.log(myFunc()); //returns 1
-        console.log(myFunc()); //returns 2
-        console.log(myFunc()); //returns 3
+    console.log(myFunc()); //returns 1
+    console.log(myFunc()); //returns 2
+    console.log(myFunc()); //returns 3
 
 ---
 
-        const instanceOne = myFunc();
-        const instanceTwo = myFunc();
-        const instanceThree = myFunc();
+    const instanceOne = myFunc();
+    const instanceTwo = myFunc();
+    const instanceThree = myFunc();
 
 
-        console.log('instance one: ', instanceOne()); // instance one:  1
-        console.log('instance one: ', instanceOne()); // instance one:  2
+    console.log('instance one: ', instanceOne()); // instance one:  1
+    console.log('instance one: ', instanceOne()); // instance one:  2
 
-        console.log('instance two: ', instanceTwo()); // instance two:  1
-        console.log('instance two: ', instanceTwo()); // instance two:  2
-
-
-
-
-
-
-
+    console.log('instance two: ', instanceTwo()); // instance two:  1
+    console.log('instance two: ', instanceTwo()); // instance two:  2
 
 ## *This* Keyword
 
@@ -373,20 +386,20 @@
       brand: 'Lamborghini'
     };
 
- 	//call method gives us a different way of passing arguments in our function
+ 	// call method gives us a different way of passing arguments in our function
 
  	// gives us the ability to change the "this" context
 
-	//calling carDescription in traditional way with calling arguments(cost, year, color)
+	// calling carDescription in traditional way with calling arguments(cost, year, color)
 	car1.getCarDescription(80000, 2010, 'blue'); // This car is a Porsche. The price is $80000. The year is 2010. The color is blue.
 
-    //using call method
+    // using call method
 	car1.getCarDescription.call(car2, 200000, 2013, 'yellow'); This car is a Lamborghini. The price is $200000. The year is 2013. The color is yellow.
 
     // "this" is implied by argument passed.
 	Then add the remaining argumenents after the "this" context call()
 
-	//the call method is similar to the apply method in that it is a native javascript method on the function prototype object
+	// the call method is similar to the apply method in that it is a native javascript method on the function prototype object
 
 	// the call method gives you an alternative way of calling functions
 
@@ -419,12 +432,101 @@
     car1.getCarDescription.apply(car3, [35000, 2012, 'black']); // This car is a Ford. The price is $35000. The year is 2012. The color is black.
     //() means invoked
     // calling a function using the "apply" method
-    //pass "this" content(car3) in as the first argument.
-    // "apply" has to passed as an array
+    // pass "this" content(car3) in as the first argument.
+    // "apply" has to be passed as an array
+
+## Determine Lists
+
+    const list1 = [1,2,3,4,5];
+    const list2 = list1;
+    list1.push(6, 7, 8);
+
+    console.log(list2); // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+
+    // passing data by value to a variable.
+    If data passed is a primitive data type or it has no
+    properties such as a string or number,
+    then it is passed as a value. you are
+    setting that variable equal to the value of that data.
+
+---
 
 
+    const myNum = 10; // variable myNum is equal to the value of 10
+    const myString = 'hello world' // variable myString is equal to the value of hello world
+    const myString2 = myString; // variable myString2 is equal to the value of myString
 
 
+    // If data type that is being passed is an object, which includes arrays, then that data is being passed as a reference.
+
+    // list 2 and list 1 are both referencing the same array
+    // passing data by reference
+
+
+    let list1 = [1,2,3,4,5];
+    let list2 = list1 // list2 would still be referencing original array and not the new list1
+    list1 = [10, 20, 30]; // [ 10, 20, 30 ]
+
+### Solution
+
+    const list1 = [1,2,3,4,5];
+    const list2 = list1;
+    const list2 = list1.slice(); // using this method will copy all of the elements in list1 and return them to us in a new array which we store as list 2.
+
+    //const list2 = [];// set to empty array
+
+    // using for loop to push elements for list1 into list 2 but would be a lot more code and not as clean
+
+    const list2 = list1.concat([]);  // array concat method will concat list1 with an empty array and return newly created array to us which we are storing in list2
+    list1.push(6, 7, 8);
+
+    console.log('List 1: ', list1); //Now if we push new elements into list one and console.log new elements, should have (6, 7,8 ) but list2 should not
+
+    console.log('List 2: ', list2); // list2 does not have (6, 7, 8)
+
+    // how can we set list2 equal to the new list1 without referencing the original list 1 array?
+
+    // these examples are two ways to set one array equal to the value of another array without referencing the same underlying data
+
+## Singly or doubly invoked Functions
+
+    // using arguments keyword
+    // if used, you can omit passing argumet in ()
+    // all arguments passed into function are accessible through (arguments) keyword
+    // arguments object is considered an array-like object. It is similar to an array because the properties are numbered like the indexes of an array are, but does not have useful methods that the array has.
+    // Can use the array slice method with no parameters passed into it to copy an array.
+    // works for this special case but not for a regular object. Just an array-like object.
+
+    // returns { '0': 10, '1': 20}
+
+    function getTotal() {
+      var args = Array.prototype.slice.call(arguments);
+      //console.log(arguments);
+
+      if (args.length === 2) {
+        return args[0] + args[1];
+      }
+
+      else if (args.length === 1) {
+        return function(num2) {
+          return args[0] + num2;
+
+        };
+      }
+    }
+
+    // single invocation
+    console.log(getTotal(10, 20)); // 30
+    console.log(getTotal(5, 40)); // 45
+
+    // double invocation
+    console.log(getTotal(30)(40)); // 70
+    console.log(getTotal(50)(60)); // 110
+
+    // condensed way
+    function getTotal(...nums) {
+      return nums.length === 1 ? (num2) => nums[0] + num2 : nums[0] + nums[1];
+    }
 
 
 
