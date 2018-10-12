@@ -1,1064 +1,389 @@
-# Everything is an Object: Inheritance and the Prototype Chain
-## Object-Oriented-Programming
-# Everything is an Object: Inheritance and the Prototype Chain
-## Object-Oriented-Programming
+# JavaScript Interview Prep Questions
 
-* **Two types of Values :** **Primitives** and **Objects**.
+## Curried Function with Single Argument
+    function tripleAdd(num1) { // curried function
+	    return function(num2) { // return a function in a function
+		return function(num3) { // return a function within another function
+			return num1 + num2 + num3;
+		};
+	    };
+    }
 
-* **Primitives:** **Numbers**, **Strings**, **Booleans**, **Undefined** and **Null**.
+    function tripleAdd1(num1, num2, num3) { // regular declared function
+	    return num1 + num2 + num3;
+    }
 
-* **Everything else (is an object):** **Arrays**, **Functions**, **Objects**, **Dates**, **Wrappers for Numbers**, **Strings** and  **Booleans**.
+    console.log(10, 20, 30);*/
 
-* **OOP :** **Objects** that are interacting with one another through **methods** and **properties** and are used to **store data** while **structuring applications into modules** and keeping code clean.
+    tripleAdd(10)(20)(30); // curried function
+    tripleAdd1(10, 20, 30); // regular declared function
 
-* With help of **Constructor functions**, we can create as many **instances of an object** as we want.
+    //curried function with single arguments
+    //curried means sequence of functions
 
-* **Constructors** act as **blueprints** for other **objects** with the same **properties**.
-
-* **Inheritance :** When one **object** is based on another object. Also, when one **object** gets **access to another object**.
-* **Properties and methods:** One **object** **inherits** these **properties and methods** from another **object**.
-
-* **JavaScript** is a **prototype** based language. **Inheritance** works by using **prototypes** and the **prototype chain**.
-
-* Each **JavaScript object** has a **prototype property** which makes **inheritance** possible in JS.
-
-* **Prototype property** of an object is where we put **methods** and **properties** that we want other **objects** to **inherit**.
-
-* The **Constructor's object prototype** is not the **prototype** of the **constructor's object prototype** itself, but of all instances that are created through the blueprint of the **original constructor object**.
-
-* The **constructor's prototype property** is the **prototype** of the first instance.
-
-* The **original constructor object** is an instance of an even part of a bigger **constructor** with it's own properties.
-
-### (The Object Object)
-* Each object that we create is an **instance** of the **Object Constructor** which **inherits** a bunch of **methods** from the **Object Constructor's properties** (prototype chain).
-
-* **Prototype chain:** Is what makes all of this **inheritance** possible. When we try to **access** a certain **method** or **property** on an **object**, JS will first try to find that method on that exact object. If it cannot be found,
-it will look in the **Object's prototype**, which is the **prototype property** of its parent **(moving up in the chain)** if method is still not there, it keeps going up the chain to find the method until there are no more
-prototypes to look into **(null)**. **Null** is the only one that has no prototype and is therefore the final link in the prototype chain. In this case, **(Undefined)** is returned.
-
-* The **Constructor's prototype property** is **NOT** the **prototype** of the **Constructor** itself, it's the prototype of **ALL** instances that are created through it.
-
-
-## Creating Objects using the Function Constructor
-
-
-    var john = { // Using Object Literal
-    name: 'John',
-    yearOfBirth: 1990,
-    job : 'teacher'
-    };
-
-    var Person = function(name, yearOfBirth, job) { // Function Constructor (pattern for writing a blueprint)
-
-        this.name = name; // attach "this" to function of this particular execution context
-        this.yearOfBirth = yearOfBirth; // the 'this' variable is an object as well
-        this.job = job;
-        this.calculateAge = function() {
-            console.log(2018 - this.yearOfBirth);
-        } // added using the prototype property below on line 77
-    };
-
-* When we use the **new** operator, a brand new empty object is created. After that, the constructor function
-(Person) is called with the arguments we specify. Object is created then function is called. When we call a
-a new function, we create a new execution context that also has a this variable
-
-* In a regular function call, the **this** variable is applied to the global execution context. In this example of our function Constructor, having the **this** variable pointing to the Global constructor would not be very useful. That's why we use the **new** operator. It makes it so the the **this** variable of the function points to the empty object that was created in the beginning by the *new* operator.
-The **new** variable points to the new Person variable (empty object), not to the Person variable
-
-* We have to add all the methods and properties that we want to be inherited into the **Constructor's prototype
-property**.
-
-        Person.prototype.calculateAge = function() {
-
-        // grab the prototype property from the function constructor
-        and add the calculateAge method
-
-        console.log(2018 - this.yearOfBirth);
+## Curried Functions with multiple arguments
+    function quadrupleAdd(num1) {
+        return function(num2) { // return a function in a function
+            return function(num3, num4) { // return another function with multiple arguments
+                return num1 + num2 + num3 +num4;
+            };
         };
-
-        Person.prototype.lastName = 'Smith';
-
-        // adds last name to all instances of constructor even though it
-        wasn't added to constructor object but instead in the prototype
-        property of the function constructor. So John, Jane, Mark inherit
-        this property
-
-## Adding methods to our objects
-
-
-    var john = new Person('John', 1990, 'teacher');
-
-    // how we create new objects using the constructor function
-    // Instantiation ( instance of the Person object )
-
-    var jane = new Person('Jane', 1969, 'designer');
-    var mark = new Person('Mark', 1948, 'retired');
-
-    john.calculateAge(); // 28
-    jane.calculateAge(); // 49
-    mark.calculateAge(); // 70
-
-
-    console.log(john.lastName); // Smith
-    console.log(jane.lastName); // Smith
-    console.log(mark.lastName); // Smith
-
-### Using the console to examine Objects created with the constructor function
-
-    console.log(john);
-     // Person {name: "John", yearOfBirth: 1990, job: "teacher"} // properties created in our new instance
-        job: "teacher"
-        name: "John"
-        yearOfBirth: 1990
-         __proto__: Object */ // the prototype of the 'john' object // Prototype property of the Person Constructor
-
-### *Comparison in console*
-
-    // john.__proto__ === Person.prototype // True
-    // The prototype of john is the prototype property of the Person function Constructor
-    // If you open the second level proto in the console, you get the __proto__ of the Object function Constructor (object Object)
-
-    // console-- john.hasOwnProperty('job'); // true for instance of its own property
-    // console-- john.hasOwnProperty('lastName'); // false because it is not john's own property but instead inherited from the prototype
-
-
-    // console-- john instanceof Person // true because it was created through Person function Constructor
-
-### Proving almost anything is an Object
-        // try in console //
-
-        var x = [2, 4, 6]
-        console.info(x) (3) [2, 4, 6]
-        0: 2
-        1: 4
-        2: 6
-        length: 3
-
-        // length property we've used before stored here in this array instance
-        __proto__: Array(0)
-
-        // we see array function constructor properties available for array prototype
-
-        x.length = 3 because the length property is stored in the array property
-        // we have access to all of the array methods because they are stored in the prototype chain (inheritance)
-
-
-## Object.create methods
-
-* Another way to create objects that inherit from a prototype
-1. define an object that will act as the prototype
-2. create a new object based on that very prototype
-
-* Using the **object.create** way instead of **function constructor**
-/*
-var personProto = { // no capital because it's not a function constructor
-    calculateAge: function(){
-        console.log(2016 - this.yearOfBirth);
     }
-};
+    quadrupleAdd(10)(20)(30, 40);
 
-        var john = Object.create(personProto); // pass the object that we define to be the object prototype as args
-        john.name = 'John'; // the old way without using 'this'
-        john.yearOfBirth = 1990;
-        john.job = 'teacher'; // not ideal way of using object.create because of manually entering data for this object
+    //curried function with multiple arguments
+    //curried means sequence of functions
 
-
-
-        var jane = Object.create(personProto, { // object.create accepts a second parameter
-        name: { value: 'Jane' },
-        yearOfBirth: { value: 1969 },
-        job: { value: 'designer' }
-        });
-
-* The difference between **object.create** and **Constructor pattern** is that the **object.create** builds an object that inherits directly from the one that we passed into the first argument while in the **Function Constructor** the newly created object inherits from the **Constructor's prototype property**.
-
-* One of the biggest benefits of **object.create** is that it allows us to implement a really complex **inheritance** structure in an easier way than **function constructors** because it allows us to directly specify which object should be a prototype.
-
-* Most popular method is using the **Function Constructor**
-
-### Primitives vs Objects
-
-* **Primitives:** Numbers, Strings, Booleans, Undefined, Null.
-
-* **Everything else (is an object):** Arrays, Functions, Objects, Dates, Wrappers for Numbers,
-
-* Big difference between **Primitives** and **Objects** is that variables containing **Primitives** actually hold that data inside of the variable itself.
-
-* In **Objects**, variables associated with objects do not actually contain the object but instead they contain a **reference to the place in memory** where the object sits or where the object is stored. A variable declared as an object does have a real copy of the object, it just points to that object.
-
-## Primitives
-
-        var a = 23; // 46 // was reassigned to 46
-        var b = a; // 23 // here we simply copied the value of a to b. when we changed a = 46 it did not affect the value of b
-        a = 46; // mutate var a to 46
-        console.log(a); // 46
-        console.log(b); // 23*/
-
-    // each of the variables hold their own copy of the data. They do not reference anything.
-## Objects
-
-    var obj1 = {
-	    name: 'John',
-	    age: 26
-    };
-
-    var obj2 = obj1; // we don't actually create a new object here, no copy was created here.
-    All we did was create a new reference which points to the new object. So the obj1 and obj2
-    variables both hold the reference that point to the exact same object in the memory
-
-    obj1.age = 30;
-
-    console.log(obj1.age); // 30
-    console.log(obj2.age); // 30 // when we pass a primitive and an object into a function
-
-## Functions
-
-    var age = 27;
-    var obj = {
-	name: 'Jonas',
-	city: 'Lisbon'
-    };
-
-    function change(a, b) { // created a function that
-	    a = 30;
-	    b.city = 'San Francisco'; // the city in the object has changed from Lisbon to San Francisco
-    }
-        change(age, obj); // we pass the age variable holding a primitive and object variable holding a reference to an object into our function
-    // This function as it was invoked attempted to change the arguments that we passed into it.
-        console.log(age); // 27 // the primitive has remained unchanged
-        console.log(obj.city); // San Francisco // the city in the object has changed from Lisbon to San Francisco
-
-    // this shows us that when we pass a primitive into a function, a simple copy is created
-
-    // we can change a as much as we want and we can never affect the variable on the outside
-    because it is a primitive but when we pass an object, it's not really the object that we passed
-    but instead the reference of the object
-
-    // We do not pass an object into a function but instead only the reference that points to the object
-
-    // when we change the object inside of the function it is still reflected outside of the function
-
-
-## First Class Functions: Passing Functions as arguments
-
-
-* A **first class function** is a function that was built with the intention of being passed around to other functions.
-
-* It does one specific thing, does not have side effects, and is not intended to be called directly, but rather, to be **used by other functions**.
-
-* Those **‘other functions’** which accept one of those **‘first class functions’** as an argument are called **higher order functions**. **Higher order functions** also might be functions that return a function.
-
-* In a **higher order function**, when one of the parameters passed in is a function, that function is a **callback function** because it will be called back and used within the higher order function.
-
-* A **higher order function** is named as such because when using a **callback** to perform an operation within itself, the function has a **‘higher’ purpose** than a regular function. When it returns a function, it also has a ‘higher’ purpose.
-
-* A **function** is an instance of the **Object type**. Because of that, a function behaves like any other object.
-
-* We can store **functions** in a **variable**.
-
-* We can pass a **function** as an **argument** to another **function**.
-
-* We can return a **function** from a **function**.
-
-        var years = [1990, 1965, 1937, 2005, 1998];
-
-        function arrayCalc(arr, fn) {  // we pass the array  and then we pass the function that calculates the array
-
-	        var arrRes = []; // create new empty array that we will fill and return or use later
-
-	        for (var i = 0; i < arr.length; i++) { // created function that loops over array
-
-		    arrRes.push(fn(arr[i])); // use push method to insert element at end of array // the result of calling our fn function
-		    // we pass the current element of our input array into the function // fn is callback function
-	        }
-	    return arrRes;
-        }
-* Callback functions are functions that we pass into functions that will then be called later. In this case fn
-
-        function calculateAge(el) { // receives el element and returns back age
-	        return 2016 - el;
-        }
-
-        function isFullAge(el) { // The 'el' parameter will take a value of arr[i]
-            return el >= 18; // comparison operator // returns true or false
-        }
-
-        function maxHeartRate(el) { // pass generic el (element) as input
-            if (el >= 18 && el <= 81) {
-            return Math.round(206.9 - (0.67 * el)); // age is el // Math.round method rounds to nearest integer
-            } else {
-            return -1;
-            }
-        }
- #### *Using Ternary Return:* `(el >= 18 && el <= 81 ? Math.round(206.9 - (0.67 * el)) : -1);`
-
-    var ages = arrayCalc(years, calculateAge); // store function as variable ages so we can use it later
-
-    var fullAges = arrayCalc(ages, isFullAge);
-
-    var rates = arrayCalc(ages, maxHeartRate);
-
-    console.log(ages); // (5) [26, 51, 79, 11, 18] // was called 5 times and the calculateAge function pushed new values into array that we returned
-
-    console.log(fullAges); // (5) [true, true, true, false, true]
-
-    console.log(rates);
-
-## Functions returning Functions
-
-
-    function interviewQuestion(job) {
-
-    if (job === 'designer') {
-        return function(name) { // anonymous function
-            console.log(`${name}, can you please explain what UX design is?`);
-        }
-    } else if (job === 'teacher') { // variable teacher will now be teacher function
-        // just like storing a function expression as a variable
-
-        return function(name) {
-            console.log(`${name}, what subject do you teach?`);
-            }
-    } else {
-        return function(name) { // here we return an object that happens to be a function
-            console.log(`Hello ${name}, what do you do ?`);
-            }
-        }
+### Curried Function Example 3
+    function getTravelTime(distance, speed) {
+        return distance / speed;
     }
 
-    var teacherQuestion = interviewQuestion('teacher'); // variable teacher will now be teacher function
-            // just like storing a function expression as a variable
-            // function that creates questions for teachers
+    getTravelTime(600, 50);
 
-    teacherQuestion('John'); // John what subject do you teach?
-    // calling variable which is a function and put 'John' in it because this function accepts a (name) in it as an input
+    function getTravelTime(distance) {
+        return function(speed) {
+        return distance / speed;
+        };
+    }
+    const getTravelTimeBosNyc = getTravelTime(400);
+    const getTravelTimeMiamiAtlanta = getTravelTime(600);
 
-    // With this method we can write one generic function and then create many more specific functions based on that generic function
+    console.log(getTravelTimeBosNyc(50)); // 8
+    console.log(getTravelTimeMiamiAtlanta(50)); // 12
 
-    var designerQuestion = interviewQuestion('designer');
+## IIFE - Immediately Invoked Functions
 
-    designerQuestion('Jane'); // Jane can you please explain what UX design is?
-    designerQuestion('John');
-    designerQuestion('Mark');
+* Main reason to use **IFFE** is to preserve a **private scope** for your function. You want to make sure you're not overwriting any **global variables**
+*  **IIFE:** immediately invoked function expression
+1. define function
+2. then immediately call function by wrapping in ()
+3. then invoke with another set of ()
 
-    interviewQuestion('teacher')('Mark'); // different way of calling function
-    // will return a function and can call it right away
-    // works because it is evaluated from left to right
-    // interviewQuestion('teacher') returns a function
-    // then we call the function that was returned before with ('Mark)
-
-
- ## Immediately Invoked Function Expression (IIFE)
-
-
-* A **function** cannot be accessed from the outside scope because of the **scoping chain**
-
-        function game() {
-        var score = Math.random() * 10;
-        console.log(score >= 5);
-        }
-        game();
+        (function doubleNumber(num) {
+            return num * 2;
+        })(10);
 
 
-        (function() { // first use () parentheses, then write an anonymous function
-            var score = Math.random() * 10; // because of IIFE, you cannot access the score variable from the outside
-            console.log(score >= 5);
-        })(); // Then we invoke the function ()     // here we created data privacy
+        (function() {
 
-        function () { // If you use it this way as an anonymous function,  the JavaScript parser will throw an error because
-            // it will think this a function declaration (without a name). We basically have to trick the parser into thinking
-            // we have a javascript expression and not a declaration. The solution is to wrap the whole thing into () parentheses
+        function getTotal(a, b) {
+            return a + b;
         }
 
-        (function() { // in javascript, what is inside parentheses () cannot be a statement. Also if it was not parentheses, it
-        // would never be called and never do anything and since it's not attached to a variable, nothing would ever happen
+        var $ = 'currency';
 
-        }); // ; is used because the parser thinks it's a function expression not a declaration
+        if (true) console.log('hello world');
 
-        (function(goodLuck) { // first use () // using a parameter in an IIFE
-            var score = Math.random() * 10;
-            console.log(score >= 5 - goodLuck);
-        })(5); // passing 5 as the argument for the goodLuck parameter // can only call IIFE once because it's not assigned to a variable
-        // used to create a new scope that is hidden from the outside scope. Where we can safely use variables that are not used outside
-        // and don't interfere with variables that are available in our global execution context
+        })();
 
+### IIFE syntax
 
+    (function() {
+
+    })();
 
 ## Closures
 
+    const globalVariable = 'global var';
 
-* An **inner function** always has access to the **variables and parameters** of its **outer function**, even after the outer function has returned.
+    function outerFunc(param1) {
+        const variable1 = 'var one';
 
-* What makes **closures** interesting is even after a function returns and the execution context is gone, the variable object is still there stored in memory and can be accessed. The current execution context has closed in on the outer variable object so that it can use it. That's why it's called a **closure**.
+    function innerFunc(param2) {
+        const variable2 = 'var two';
 
-* Any **function** that uses a **variable** from **outside the scope** is a **closure**.
+        console.log('globalVariable: ', globalVariable); // globalVariable:  global var
 
-* The **scope chain** is like a **pointer** to all of the **variable objects** that the **function** has access to
+        console.log('variable1: ', variable1); // variable1:  var one
 
-* We can access the **variables** that were created in the retirement function long after the function has completed its execution and after its execution context is gone. The current **execution context** has **'closed'** in on the **outer variable object** so that it can use it. That's why it's called a **closure**. So the **scope chain** always stays in tact. The **function** returns and the execution context gets **popped off the stack**.
+        console.log('variable2: ', variable2); // variable2:  var two
 
+        console.log('param1: ', param1); // param1:  param two
 
-        function retirement(retirementAge) {
-            var a = ' years left until retirement';
-            return function(yearOfBirth) { // anonymous function
-            var age = 2018 - yearOfBirth;
-            console.log(`${retirementAge - age} ${a}`);
-            }
-        }
+        console.log('param2: ', param2); // param2:  param one
+    }
+    innerFunc('param one');
+    }
+    outerFunc('param two');
 
-        var retirementUS = retirement(66); // we store the returned function into a variable
+### Counter Function with Closure
 
-        retirementUS(1990); // pass yearOfBirth as argument and call // 38  years left until retirement
-        // retirement(66)(1990); // immediately returns and calls a new function (date of birth) // 38  years left until retirement
-        var retirement
-        console.dir(retirementUS); // to look at closure
+* **Write a function that keeps track of how many times it was called and returns that number. All functionality should be inside of the function.**
 
-        var retirementGermany = retirement(65);
-        var retirementIceland = retirement(67);
-
-        retirementGermany(1990); // 37 years
-        retirementIceland(1990); // 39 years
-
-        function interviewQuestion(job) {
-            if (job === 'designer') {
-                return function(name) { // anonymous function
-                console.log(`${name}, can you please explain what UX design is?`);
-                }
-            } else if (job === 'teacher') { // variable teacher will now be teacher function
-            // just like storing a function expression as a variable
-
-                return function(name) {
-                console.log(`${name}, what subject do you teach?`);
-            }
-            } else {
-                return function(name) { // here we return an object that happens to be a function
-                console.log(`Hello ${name}, what do you do ?`);
-                }
-            }
-        }
-
-
-        function interviewQuestion(job) { // we can use the (job) argument even after the InterviewQuestion function has returned
-            return function(name) {
-            if (job === 'designer') {
-                console.log(`${name}, can you please explain what UX design is?`);
-            } else if (job === 'teacher') {
-                console.log(`${name}, what subject do you teach?`);
-            } else {
-                console.log(`Hello ${name}, what do you do ?`);
-                }
-            }
-        }
-
-        interviewQuestion('designer')('Jane'); // Jane, can you please explain what UX design is?
-        interviewQuestion('teacher')('John'); // John, what subject do you teach?
-        interviewQuestion()('Joe'); // Hello joe, what do you do ?
-
-
-
- ## Bind, Call and Apply Methods
-
-* **Functions** are a special kind of **object**. Just like **Array objects**, **Functions** get special kinds of **methods** which they **inherit** from the **Function Constructor Object**
-
-* Allow us to call a function and set the **'this'** variable manually
-
-
-        var john = {
-        name: 'John',
-        age: 26,
-        job: 'teacher',
-        presentation: function(style, timeOfDay) {
-        if (style === 'formal') {
-            console.log(`Good ${timeOfDay}, ladies and gentlemen! I'm ${this.name}, I'm a ${this.job} and I'm ${this.age} years old.`);
-        } else if (style === 'friendly') {
-            console.log(`Hey! What's up? I'm ${this.name}, I'm a ${this.job} and I'm ${this.age} years old. Have a nice ${timeOfDay}.`);
-            }
+        function myFunc() {
+            for (let i=1; i<=20; i++) {
+            return function (i) {
+            };
           }
         }
+---
 
-        var emily = {
-        name: 'Emily',
-        age: 35,
-        job: 'designer'
-        // if we want to use the presentation method from above we can use the 'call' method
-        // the first argument of the call method is setting the 'this' variable
-        };
-
-        john.presentation('formal', 'morning');
-        john.presentation.call(emily, 'friendly', 'afternoon'); // this is called method borrowing because we borrowed the presentation method from 'john' and applied it to the emily object // the call method allows us to set the 'this' variable here in the first argument (emily) --- call method
-
-        // john.presentation.apply (emily, ['friendly', 'afternoon']);  // the only difference with the 'apply' method is that it accepts the arguments as an array
-        // this won't work here because our method doesn't expect to see an array here
-
-        // the 'bind' method is very similar to the call method // it allows us to set the 'this variable explicitly
-        // the difference is that 'bind' doesn't immediately call the function but instead generates a copy of the function so that we can store it somewhere
-        // this is useful for setting functions with preset arguments
-
-        var johnFriendly = john.presentation.bind(john, 'friendly'); // this method will return a function a store it in the johnFriendly variable
-
-        johnFriendly('morning'); // we have a function that is always for the friendly version of the presentation method
-        johnFriendly('night'); // here we are using currying // Currying is a technique where we create a function based on another function but with some preset parameters
-
-        var emilyFormal = john.presentation.bind(emily, 'formal');
-        emilyFormal('afternoon'); // Good afternoon, ladies and gentlemen! I'm Emily, I'm a designer and I'm 35 years old.
-
-
-
-        var years = [1990, 1965, 1937, 2005, 1998];
-
-        function arrayCalc(arr, fn) {
-	        var arrRes = [];
-	            for (var i = 0; i < arr.length; i++) {
-		        arrRes.push(fn(arr[i]));
-	        }
-	        return arrRes;
+        function myFunc() {
+            let count = 0;
+            return function() {
+            count++;
+            return count;
+            };
         }
 
-        function calculateAge(el) {
-	        return 2016 - el;
-        }
+        console.log(myFunc()); //returns 1
+        console.log(myFunc()); //returns 2
+        console.log(myFunc()); //returns 3
 
-        function isFullAge(limit, el) { // pass in second argument for age limit
+---
 
-            return el >= limit; // has to be >= limit we defined
-        }
-
-        var ages = arrayCalc(years, calculateAge);
-
-        var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20)); // we use the bind method to create a copy of a function (isFullAge) with a preset argument
-        // use bind method and pass 'this' as argument
-        // what is passed is a copy of the isFullAge function
-
-        console.log(ages); // 5) [26, 51, 79, 11, 18]
-        console.log(fullJapan); // (5) [true, true, true, false, false] // false for Japan because 18 is not old enough
-
-* **Two types of Values :** **Primitives** and **Objects**.
-
-* **Primitives:** **Numbers**, **Strings**, **Booleans**, **Undefined** and **Null**.
-
-* **Everything else (is an object):** **Arrays**, **Functions**, **Objects**, **Dates**, **Wrappers for Numbers**, **Strings** and  **Booleans**.
-
-* **OOP :** **Objects** that are interacting with one another through **methods** and **properties** and are used to **store data** while **structuring applications into modules** and keeping code clean.
-
-* With help of **Constructor functions**, we can create as many **instances of an object** as we want.
-
-* **Constructors** act as **blueprints** for other **objects** with the same **properties**.
-
-* **Inheritance :** When one **object** is based on another object. Also, when one **object** gets **access to another object**.
-* **Properties and methods:** One **object** **inherits** these **properties and methods** from another **object**.
-
-* **JavaScript** is a **prototype** based language. **Inheritance** works by using **prototypes** and the **prototype chain**.
-
-* Each **JavaScript object** has a **prototype property** which makes **inheritance** possible in JS.
-
-* **Prototype property** of an object is where we put **methods** and **properties** that we want other **objects** to **inherit**.
-
-* The **Constructor's object prototype** is not the **prototype** of the **constructor's object prototype** itself, but of all instances that are created through the blueprint of the **original constructor object**.
-
-* The **constructor's prototype property** is the **prototype** of the first instance.
-
-* The **original constructor object** is an instance of an even part of a bigger **constructor** with it's own properties.
-
-### (The Object Object)
-* Each object that we create is an **instance** of the **Object Constructor** which **inherits** a bunch of **methods** from the **Object Constructor's properties** (prototype chain).
-
-* **Prototype chain:** Is what makes all of this **inheritance** possible. When we try to **access** a certain **method** or **property** on an **object**, JS will first try to find that method on that exact object. If it cannot be found,
-it will look in the **Object's prototype**, which is the **prototype property** of its parent **(moving up in the chain)** if method is still not there, it keeps going up the chain to find the method until there are no more
-prototypes to look into **(null)**. **Null** is the only one that has no prototype and is therefore the final link in the prototype chain. In this case, **(Undefined)** is returned.
-
-* The **Constructor's prototype property** is **NOT** the **prototype** of the **Constructor** itself, it's the prototype of **ALL** instances that are created through it.
+        const instanceOne = myFunc();
+        const instanceTwo = myFunc();
+        const instanceThree = myFunc();
 
 
-## Creating Objects using the Function Constructor
+        console.log('instance one: ', instanceOne()); // instance one:  1
+        console.log('instance one: ', instanceOne()); // instance one:  2
+
+        console.log('instance two: ', instanceTwo()); // instance two:  1
+        console.log('instance two: ', instanceTwo()); // instance two:  2
 
 
-    var john = { // Using Object Literal
-    name: 'John',
-    yearOfBirth: 1990,
-    job : 'teacher'
-    };
-
-    var Person = function(name, yearOfBirth, job) { // Function Constructor (pattern for writing a blueprint)
-
-        this.name = name; // attach "this" to function of this particular execution context
-        this.yearOfBirth = yearOfBirth; // the 'this' variable is an object as well
-        this.job = job;
-        this.calculateAge = function() {
-            console.log(2018 - this.yearOfBirth);
-        } // added using the prototype property below on line 77
-    };
-
-* When we use the **new** operator, a brand new empty object is created. After that, the constructor function
-(Person) is called with the arguments we specify. Object is created then function is called. When we call a
-a new function, we create a new execution context that also has a this variable
-
-* In a regular function call, the **this** variable is applied to the global execution context. In this example of our function Constructor, having the **this** variable pointing to the Global constructor would not be very useful. That's why we use the **new** operator. It makes it so the the **this** variable of the function points to the empty object that was created in the beginning by the *new* operator.
-The **new** variable points to the new Person variable (empty object), not to the Person variable
-
-* We have to add all the methods and properties that we want to be inherited into the **Constructor's prototype
-property**.
-
-        Person.prototype.calculateAge = function() {
-
-        // grab the prototype property from the function constructor
-        and add the calculateAge method
-
-        console.log(2018 - this.yearOfBirth);
-        };
-
-        Person.prototype.lastName = 'Smith';
-
-        // adds last name to all instances of constructor even though it
-        wasn't added to constructor object but instead in the prototype
-        property of the function constructor. So John, Jane, Mark inherit
-        this property
-
-## Adding methods to our objects
 
 
-    var john = new Person('John', 1990, 'teacher');
-
-    // how we create new objects using the constructor function
-    // Instantiation ( instance of the Person object )
-
-    var jane = new Person('Jane', 1969, 'designer');
-    var mark = new Person('Mark', 1948, 'retired');
-
-    john.calculateAge(); // 28
-    jane.calculateAge(); // 49
-    mark.calculateAge(); // 70
 
 
-    console.log(john.lastName); // Smith
-    console.log(jane.lastName); // Smith
-    console.log(mark.lastName); // Smith
-
-### Using the console to examine Objects created with the constructor function
-
-    console.log(john);
-     // Person {name: "John", yearOfBirth: 1990, job: "teacher"} // properties created in our new instance
-        job: "teacher"
-        name: "John"
-        yearOfBirth: 1990
-         __proto__: Object */ // the prototype of the 'john' object // Prototype property of the Person Constructor
-
-### *Comparison in console*
-
-    // john.__proto__ === Person.prototype // True
-    // The prototype of john is the prototype property of the Person function Constructor
-    // If you open the second level proto in the console, you get the __proto__ of the Object function Constructor (object Object)
-
-    // console-- john.hasOwnProperty('job'); // true for instance of its own property
-    // console-- john.hasOwnProperty('lastName'); // false because it is not john's own property but instead inherited from the prototype
 
 
-    // console-- john instanceof Person // true because it was created through Person function Constructor
+## *This* Keyword
 
-### Proving almost anything is an Object
-        // try in console //
-
-        var x = [2, 4, 6]
-        console.info(x) (3) [2, 4, 6]
-        0: 2
-        1: 4
-        2: 6
-        length: 3
-
-        // length property we've used before stored here in this array instance
-        __proto__: Array(0)
-
-        // we see array function constructor properties available for array prototype
-
-        x.length = 3 because the length property is stored in the array property
-        // we have access to all of the array methods because they are stored in the prototype chain (inheritance)
-
-
-## Object.create methods
-
-* Another way to create objects that inherit from a prototype
-1. define an object that will act as the prototype
-2. create a new object based on that very prototype
-
-* Using the **object.create** way instead of **function constructor**
-/*
-var personProto = { // no capital because it's not a function constructor
-    calculateAge: function(){
-        console.log(2016 - this.yearOfBirth);
+    var house = {
+    price: 100000,
+    squareFeet: 2000,
+    owner: 'Taylor',
+    getPricePerSquareFoot: function() {
+        return this.price / this.squareFeet;
     }
-};
-
-        var john = Object.create(personProto); // pass the object that we define to be the object prototype as args
-        john.name = 'John'; // the old way without using 'this'
-        john.yearOfBirth = 1990;
-        john.job = 'teacher'; // not ideal way of using object.create because of manually entering data for this object
-
-
-
-        var jane = Object.create(personProto, { // object.create accepts a second parameter
-        name: { value: 'Jane' },
-        yearOfBirth: { value: 1969 },
-        job: { value: 'designer' }
-        });
-
-* The difference between **object.create** and **Constructor pattern** is that the **object.create** builds an object that inherits directly from the one that we passed into the first argument while in the **Function Constructor** the newly created object inherits from the **Constructor's prototype property**.
-
-* One of the biggest benefits of **object.create** is that it allows us to implement a really complex **inheritance** structure in an easier way than **function constructors** because it allows us to directly specify which object should be a prototype.
-
-* Most popular method is using the **Function Constructor**
-
-### Primitives vs Objects
-
-* **Primitives:** Numbers, Strings, Booleans, Undefined, Null.
-
-* **Everything else (is an object):** Arrays, Functions, Objects, Dates, Wrappers for Numbers,
-
-* Big difference between **Primitives** and **Objects** is that variables containing **Primitives** actually hold that data inside of the variable itself.
-
-* In **Objects**, variables associated with objects do not actually contain the object but instead they contain a **reference to the place in memory** where the object sits or where the object is stored. A variable declared as an object does have a real copy of the object, it just points to that object.
-
-## Primitives
-
-        var a = 23; // 46 // was reassigned to 46
-        var b = a; // 23 // here we simply copied the value of a to b. when we changed a = 46 it did not affect the value of b
-        a = 46; // mutate var a to 46
-        console.log(a); // 46
-        console.log(b); // 23*/
-
-    // each of the variables hold their own copy of the data. They do not reference anything.
-## Objects
-
-    var obj1 = {
-	    name: 'John',
-	    age: 26
     };
 
-    var obj2 = obj1; // we don't actually create a new object here, no copy was created here.
-    All we did was create a new reference which points to the new object. So the obj1 and obj2
-    variables both hold the reference that point to the exact same object in the memory
+    console.log(house.price);
+    console.log(house.getPricePerSquareFoot());
 
-    obj1.age = 30;
+### original question
 
-    console.log(obj1.age); // 30
-    console.log(obj2.age); // 30 // when we pass a primitive and an object into a function
+    var house = {
+    price: 100000,
+    squareFeet: 2000,
+    owner: 'Taylor',
+    getPricePerSquareFoot: function() {
+        return house.price / house.squareFeet;
+        }
+    };
+    console.log(house.price);
+    console.log(house.getPricePerSquareFoot());
 
-## Functions
+## Hoisting
+### Example 1
 
-    var age = 27;
-    var obj = {
-	name: 'Jonas',
-	city: 'Lisbon'
+    console.log(color); // undefined
+
+    var color = "blue";
+
+    console.log(color); // blue
+
+
+
+### Example 2
+
+    var color;
+
+    console.log(color); // blue
+
+    color = "blue";
+
+    console.log(color); // blue
+
+### Example 3
+
+    console.log(getProduct(2, 3)); // 6
+
+    var getProduct = function(num1, num2) {
+        return num1 * num2;
     };
 
-    function change(a, b) { // created a function that
-	    a = 30;
-	    b.city = 'San Francisco'; // the city in the object has changed from Lisbon to San Francisco
-    }
-        change(age, obj); // we pass the age variable holding a primitive and object variable holding a reference to an object into our function
-    // This function as it was invoked attempted to change the arguments that we passed into it.
-        console.log(age); // 27 // the primitive has remained unchanged
-        console.log(obj.city); // San Francisco // the city in the object has changed from Lisbon to San Francisco
-
-    // this shows us that when we pass a primitive into a function, a simple copy is created
-
-    // we can change a as much as we want and we can never affect the variable on the outside
-    because it is a primitive but when we pass an object, it's not really the object that we passed
-    but instead the reference of the object
-
-    // We do not pass an object into a function but instead only the reference that points to the object
-
-    // when we change the object inside of the function it is still reflected outside of the function
+    console.log(getProduct(2, 3)); // 6
 
 
-## First Class Functions: Passing Functions as arguments
+### Example 4
 
+    console.log(getProduct(2, 3)); // 6
 
-* A **first class function** is a function that was built with the intention of being passed around to other functions.
-
-* It does one specific thing, does not have side effects, and is not intended to be called directly, but rather, to be **used by other functions**.
-
-* Those **‘other functions’** which accept one of those **‘first class functions’** as an argument are called **higher order functions**. **Higher order functions** also might be functions that return a function.
-
-* In a **higher order function**, when one of the parameters passed in is a function, that function is a **callback function** because it will be called back and used within the higher order function.
-
-* A **higher order function** is named as such because when using a **callback** to perform an operation within itself, the function has a **‘higher’ purpose** than a regular function. When it returns a function, it also has a ‘higher’ purpose.
-
-* A **function** is an instance of the **Object type**. Because of that, a function behaves like any other object.
-
-* We can store **functions** in a **variable**.
-
-* We can pass a **function** as an **argument** to another **function**.
-
-* We can return a **function** from a **function**.
-
-        var years = [1990, 1965, 1937, 2005, 1998];
-
-        function arrayCalc(arr, fn) {  // we pass the array  and then we pass the function that calculates the array
-
-	        var arrRes = []; // create new empty array that we will fill and return or use later
-
-	        for (var i = 0; i < arr.length; i++) { // created function that loops over array
-
-		    arrRes.push(fn(arr[i])); // use push method to insert element at end of array // the result of calling our fn function
-		    // we pass the current element of our input array into the function // fn is callback function
-	        }
-	    return arrRes;
-        }
-* Callback functions are functions that we pass into functions that will then be called later. In this case fn
-
-        function calculateAge(el) { // receives el element and returns back age
-	        return 2016 - el;
-        }
-
-        function isFullAge(el) { // The 'el' parameter will take a value of arr[i]
-            return el >= 18; // comparison operator // returns true or false
-        }
-
-        function maxHeartRate(el) { // pass generic el (element) as input
-            if (el >= 18 && el <= 81) {
-            return Math.round(206.9 - (0.67 * el)); // age is el // Math.round method rounds to nearest integer
-            } else {
-            return -1;
-            }
-        }
- #### *Using Ternary Return:* `(el >= 18 && el <= 81 ? Math.round(206.9 - (0.67 * el)) : -1);`
-
-    var ages = arrayCalc(years, calculateAge); // store function as variable ages so we can use it later
-
-    var fullAges = arrayCalc(ages, isFullAge);
-
-    var rates = arrayCalc(ages, maxHeartRate);
-
-    console.log(ages); // (5) [26, 51, 79, 11, 18] // was called 5 times and the calculateAge function pushed new values into array that we returned
-
-    console.log(fullAges); // (5) [true, true, true, false, true]
-
-    console.log(rates);
-
-## Functions returning Functions
-
-
-    function interviewQuestion(job) {
-
-    if (job === 'designer') {
-        return function(name) { // anonymous function
-            console.log(`${name}, can you please explain what UX design is?`);
-        }
-    } else if (job === 'teacher') { // variable teacher will now be teacher function
-        // just like storing a function expression as a variable
-
-        return function(name) {
-            console.log(`${name}, what subject do you teach?`);
-            }
-    } else {
-        return function(name) { // here we return an object that happens to be a function
-            console.log(`Hello ${name}, what do you do ?`);
-            }
-        }
+    function getProduct(num1, num2) {
+        return num1 * num2;
     }
 
-    var teacherQuestion = interviewQuestion('teacher'); // variable teacher will now be teacher function
-            // just like storing a function expression as a variable
-            // function that creates questions for teachers
+### Example 5
 
-    teacherQuestion('John'); // John what subject do you teach?
-    // calling variable which is a function and put 'John' in it because this function accepts a (name) in it as an input
+    var globalVar = 'global';
 
-    // With this method we can write one generic function and then create many more specific functions based on that generic function
+    (function() {
 
-    var designerQuestion = interviewQuestion('designer');
+    var name = 'Jen';
 
-    designerQuestion('Jane'); // Jane can you please explain what UX design is?
-    designerQuestion('John');
-    designerQuestion('Mark');
+    var getAge = function() {
+        return '30';
+    };
 
-    interviewQuestion('teacher')('Mark'); // different way of calling function
-    // will return a function and can call it right away
-    // works because it is evaluated from left to right
-    // interviewQuestion('teacher') returns a function
-    // then we call the function that was returned before with ('Mark)
+    function getState() {
+        return 'Delaware';
+    }
 
+    })();
 
- ## Immediately Invoked Function Expression (IIFE)
+## fizzBuzz
 
+### Using if else Statements
 
-* A **function** cannot be accessed from the outside scope because of the **scoping chain**
+    function fizzBuzz (num) {
+        for (let i = 1; i <= num; i++) {
+	    if (i % 15 === 0) {
+		    console.log('FizzBuzz');
+	    } else if (i % 3 === 0) {
+		  console.log('Fizz');
+	    } else if (i % 5 === 0) {
+		    console.log('Buzz');
+	    } else {
+		    console.log(i);
+	    }
+      }
+    }
 
-        function game() {
-        var score = Math.random() * 10;
-        console.log(score >= 5);
+    fizzBuzz(25);
+
+### Using Switch Statements
+
+    function fizzBuzz2(num) {
+        for (let i = 1; i <= num; i++) {
+        switch(true) {
+        case (i % 15 === 0):
+            console.log("Fizzbuzz");
+            break;
+        case (i % 3 === 0):
+            console.log("Fizz");
+            break;
+        case (i % 5 === 0):
+            console.log ("Buzz");
+            break;
+        default:
+            console.log(i);
+        break;
         }
-        game();
+      }
+    }
+    fizzBuzz2(25);
+
+## *Scope* and *Self*
+
+    var myCar = {
+        color: "Blue",
+        logColor: function() {
+        var self = this;
+            console.log("In logColor - this.color: " + this.color);
+            console.log("In logColor - self.color: " + self.color);
+        (function() {
+            console.log("In IIFE - this.color: " + this.color);
+            console.log("In IIFE - self.color: " + self.color);
+        })();
+      }
+    };
+
+    myCar.logColor();
+
+## *Equals* vs. *"Strict" Equals*
+
+    console.log(7 == '7');  // true
+
+    console.log(7 === '7');  // false
+
+## Log number function
+
+    var num = 50;
+
+    function logNumber() {
+        console.log(num);
+    var num = 100;
+    }
+
+    logNumber(); // undefined
+
+## 'use strict';
+
+    'use strict';
+    //prevents use of global variables
+    // all parameter names for a function must be unique
+
+    function myFunc(a, a, b) {
+        console.log(a, a, b);
+    }
+
+    myFunc(1, 2, 3)
+
+    // error because two paramaters have the same names
 
 
-        (function() { // first use () parentheses, then write an anonymous function
-            var score = Math.random() * 10; // because of IIFE, you cannot access the score variable from the outside
-            console.log(score >= 5);
-        })(); // Then we invoke the function ()     // here we created data privacy
+    //var , const or let
 
-        function () { // If you use it this way as an anonymous function,  the JavaScript parser will throw an error because
-            // it will think this a function declaration (without a name). We basically have to trick the parser into thinking
-            // we have a javascript expression and not a declaration. The solution is to wrap the whole thing into () parentheses
-        }
+    city = "London";
+        console.log(city);// will error because of strict error //handling
 
-        (function() { // in javascript, what is inside parentheses () cannot be a statement. Also if it was not parentheses, it
-        // would never be called and never do anything and since it's not attached to a variable, nothing would ever happen
+    // will work without 'use strict'
 
-        }); // ; is used because the parser thinks it's a function expression not a declaration
+    // city becomes global variable if 'use strict' is not //used or var, const let are not used
 
-        (function(goodLuck) { // first use () // using a parameter in an IIFE
-            var score = Math.random() * 10;
-            console.log(score >= 5 - goodLuck);
-        })(5); // passing 5 as the argument for the goodLuck parameter // can only call IIFE once because it's not assigned to a variable
-        // used to create a new scope that is hidden from the outside scope. Where we can safely use variables that are not used outside
-        // and don't interfere with variables that are available in our global execution context
+    var city = "london";
+    console.log(city);
 
+    // use strict helps us to fail fast and fail LOUDLY
 
+## Logging *X* and *Y*
 
-## Closures
+    (function() {
+    'use strict';
+        var x = y = 200;
+    })();
 
+    console.log('y: ', y);
+    console.log('x: ', x);
+---
 
-* An **inner function** always has access to the **variables and parameters** of its **outer function**, even after the outer function has returned.
+    'use strict';
 
-* What makes **closures** interesting is even after a function returns and the execution context is gone, the variable object is still there stored in memory and can be accessed. The current execution context has closed in on the outer variable object so that it can use it. That's why it's called a **closure**.
+    (function() {
+        var x = y = 200;
+    })();
 
-* Any **function** that uses a **variable** from **outside the scope** is a **closure**.
+    console.log('y: ', y);
+    console.log('x: ', x);
 
-* The **scope chain** is like a **pointer** to all of the **variable objects** that the **function** has access to
+## *Call* and *Apply* methods
 
-* We can access the **variables** that were created in the retirement function long after the function has completed its execution and after its execution context is gone. The current **execution context** has **'closed'** in on the **outer variable object** so that it can use it. That's why it's called a **closure**. So the **scope chain** always stays in tact. The **function** returns and the execution context gets **popped off the stack**.
+	const car1 = {
+	  brand: 'Porsche',//property named brand
+    getCarDescription: function(cost, year, color) { //method named getCarDescription
+      console.log(`This car is a ${this.brand}. The price is $${cost}. The year is ${year}. The color is ${color}.\n`);
+      }
+    };
+	const car2= {
+      brand: 'Lamborghini'
+    };
 
+ 	//call method gives us a different way of passing arguments in our function
 
-        function retirement(retirementAge) {
-            var a = ' years left until retirement';
-            return function(yearOfBirth) { // anonymous function
-            var age = 2018 - yearOfBirth;
-            console.log(`${retirementAge - age} ${a}`);
-            }
-        }
+ 	// gives us the ability to change the "this" context
 
-        var retirementUS = retirement(66); // we store the returned function into a variable
+	//calling carDescription in traditional way with calling arguments(cost, year, color)
+	car1.getCarDescription(80000, 2010, 'blue');
 
-        retirementUS(1990); // pass yearOfBirth as argument and call // 38  years left until retirement
-        // retirement(66)(1990); // immediately returns and calls a new function (date of birth) // 38  years left until retirement
-        var retirement
-        console.dir(retirementUS); // to look at closure
+	//using call method
+	car1.getCarDescription.call(car2, 200000, 2013, 'yellow');// "this" is implied by argument passed.
+	Then add the remaining argumenents after the "this" context call()
 
-        var retirementGermany = retirement(65);
-        var retirementIceland = retirement(67);
+	//the call method is similar to the apply method in that it is a native javascript method on the function prototype object
 
-        retirementGermany(1990); // 37 years
-        retirementIceland(1990); // 39 years
-
-        function interviewQuestion(job) {
-            if (job === 'designer') {
-                return function(name) { // anonymous function
-                console.log(`${name}, can you please explain what UX design is?`);
-                }
-            } else if (job === 'teacher') { // variable teacher will now be teacher function
-            // just like storing a function expression as a variable
-
-                return function(name) {
-                console.log(`${name}, what subject do you teach?`);
-            }
-            } else {
-                return function(name) { // here we return an object that happens to be a function
-                console.log(`Hello ${name}, what do you do ?`);
-                }
-            }
-        }
-
-
-        function interviewQuestion(job) { // we can use the (job) argument even after the InterviewQuestion function has returned
-            return function(name) {
-            if (job === 'designer') {
-                console.log(`${name}, can you please explain what UX design is?`);
-            } else if (job === 'teacher') {
-                console.log(`${name}, what subject do you teach?`);
-            } else {
-                console.log(`Hello ${name}, what do you do ?`);
-                }
-            }
-        }
-
-        interviewQuestion('designer')('Jane'); // Jane, can you please explain what UX design is?
-        interviewQuestion('teacher')('John'); // John, what subject do you teach?
-        interviewQuestion()('Joe'); // Hello joe, what do you do ?
-
-
-
- ## Bind, Call and Apply Methods
-
-* **Functions** are a special kind of **object**. Just like **Array objects**, **Functions** get special kinds of **methods** which they **inherit** from the **Function Constructor Object**
-
-* Allow us to call a function and set the **'this'** variable manually
-
-
-        var john = {
-        name: 'John',
-        age: 26,
-        job: 'teacher',
-        presentation: function(style, timeOfDay) {
-        if (style === 'formal') {
-            console.log(`Good ${timeOfDay}, ladies and gentlemen! I'm ${this.name}, I'm a ${this.job} and I'm ${this.age} years old.`);
-        } else if (style === 'friendly') {
-            console.log(`Hey! What's up? I'm ${this.name}, I'm a ${this.job} and I'm ${this.age} years old. Have a nice ${timeOfDay}.`);
-            }
-          }
-        }
-
-        var emily = {
-        name: 'Emily',
-        age: 35,
-        job: 'designer'
-        // if we want to use the presentation method from above we can use the 'call' method
-        // the first argument of the call method is setting the 'this' variable
-        };
-
-        john.presentation('formal', 'morning');
-        john.presentation.call(emily, 'friendly', 'afternoon'); // this is called method borrowing because we borrowed the presentation method from 'john' and applied it to the emily object // the call method allows us to set the 'this' variable here in the first argument (emily) --- call method
-
-        // john.presentation.apply (emily, ['friendly', 'afternoon']);  // the only difference with the 'apply' method is that it accepts the arguments as an array
-        // this won't work here because our method doesn't expect to see an array here
-
-        // the 'bind' method is very similar to the call method // it allows us to set the 'this variable explicitly
-        // the difference is that 'bind' doesn't immediately call the function but instead generates a copy of the function so that we can store it somewhere
-        // this is useful for setting functions with preset arguments
-
-        var johnFriendly = john.presentation.bind(john, 'friendly'); // this method will return a function a store it in the johnFriendly variable
-
-        johnFriendly('morning'); // we have a function that is always for the friendly version of the presentation method
-        johnFriendly('night'); // here we are using currying // Currying is a technique where we create a function based on another function but with some preset parameters
-
-        var emilyFormal = john.presentation.bind(emily, 'formal');
-        emilyFormal('afternoon'); // Good afternoon, ladies and gentlemen! I'm Emily, I'm a designer and I'm 35 years old.
-
-
-
-        var years = [1990, 1965, 1937, 2005, 1998];
-
-        function arrayCalc(arr, fn) {
-	        var arrRes = [];
-	            for (var i = 0; i < arr.length; i++) {
-		        arrRes.push(fn(arr[i]));
-	        }
-	        return arrRes;
-        }
-
-        function calculateAge(el) {
-	        return 2016 - el;
-        }
-
-        function isFullAge(limit, el) { // pass in second argument for age limit
-
-            return el >= limit; // has to be >= limit we defined
-        }
-
-        var ages = arrayCalc(years, calculateAge);
-
-        var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20)); // we use the bind method to create a copy of a function (isFullAge) with a preset argument
-        // use bind method and pass 'this' as argument
-        // what is passed is a copy of the isFullAge function
-
-        console.log(ages); // 5) [26, 51, 79, 11, 18]
-        console.log(fullJapan); // (5) [true, true, true, false, false] // false for Japan because 18 is not old enough
+	// the call method gives you an alternative way of calling functions
