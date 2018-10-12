@@ -1,41 +1,41 @@
 # Everything is an Object: Inheritance and the Prototype Chain
 ## Object-Oriented-Programming
 
-* *Two types of Values :* Primitives and Objects.
+* **Two types of Values :** Primitives and Objects.
 
-* *Primitives:* Numbers, Strings, Booleans, Undefined and Null.
+* **Primitives:** Numbers, Strings, Booleans, Undefined and Null.
 
-* *Everything else (is an object):* Arrays, Functions, Objects, Dates, Wrappers for Numbers, Strings and  Booleans.
+* **Everything else (is an object):** Arrays, Functions, Objects, Dates, Wrappers for Numbers, Strings and  Booleans.
 
-* *OOP :* Objects that are interacting with one another through methods and properties and are used to store data while structuring applications into modules and keeping code clean.
+* **OOP :** Objects that are interacting with one another through methods and properties and are used to store data while structuring applications into modules and keeping code clean.
 
-* With help of *Constructor functions*, we can create as many instances of an object as we want.
+* With help of **Constructor functions**, we can create as many instances of an object as we want.
 
-* *Constructors* acts as blueprints for other objects with the same properties.
+* **Constructors** act as blueprints for other objects with the same properties.
 
-* *Inheritance :* When one object is based on another object. Also, when one object gets access to another object.
-* *Properties and methods:* One objects inherits these properties and methods from another object
+* **Inheritance :** When one object is based on another object. Also, when one object gets access to another object.
+* **Properties and methods:** One objects inherits these properties and methods from another object
 
-* JavaScript is a prototype based language. *Inheritance* works by using prototypes and the prototype chain.
+* **JavaScript** is a prototype based language. **Inheritance** works by using prototypes and the prototype chain.
 
-* Each JavaScript object has a *prototype property* which makes *inheritance* possible in JS.
+* Each JavaScript object has a **prototype property** which makes **inheritance** possible in JS.
 
-* *Prototype property* of an object is where we put *methods* and *properties* that we want other *objects* to inherit.
+* **Prototype property** of an object is where we put *methods* and *properties* that we want other *objects* to inherit.
 
-* The *Constructor's object prototype* is not the prototype of the constructor's object prototype itself, but of all instances that are created through the blueprint of the original constructor object.
+* The **Constructor's object prototype** is not the prototype of the constructor's object prototype itself, but of all instances that are created through the blueprint of the original constructor object.
 
-* The *constructor's prototype property* is the *prototype* of the first instance.
+* The **constructor's prototype property** is the *prototype* of the first instance.
 
-* The *original constructor object* is an instance of an even part of a bigger constructor with it's own properties.
+* The **original constructor object** is an instance of an even part of a bigger constructor with it's own properties.
 
 ### (The Object Object)
-* Each object that we create is an instance of the Object Constructor which inherits a bunch of methods from the Object Constructor's properties (prototype chain)
+* Each object that we create is an instance of the **Object Constructor** which inherits a bunch of methods from the **Object Constructor's properties** (prototype chain).
 
-* *Prototype chain:* Is what makes all of this inheritance possible. When we try to access a certain method or property on an object, JS will first try to find that method on that exact object. If it cannot be found,
-it will look in the Object's prototype, which is the prototype property of its parent (moving up in the chain) if method is still not there, it keeps going up the chain to find the method until there are no more
-prototypes to look into (null). Null is the only one that has no prototype and is therefore the final link in the prototype chain. In this case, (Undefined) is returned.
+* **Prototype chain:** Is what makes all of this **inheritance** possible. When we try to access a certain method or property on an object, JS will first try to find that method on that exact object. If it cannot be found,
+it will look in the **Object's prototype**, which is the **prototype property** of its parent (moving up in the chain) if method is still not there, it keeps going up the chain to find the method until there are no more
+prototypes to look into (null). **Null** is the only one that has no prototype and is therefore the final link in the prototype chain. In this case, (Undefined) is returned.
 
-* The Constructor's prototype property is NOT the prototype of the Constructor itself, it's the prototype of *ALL* instances that are created through it.
+* The **Constructor's prototype property** is **NOT** the prototype of the Constructor itself, it's the prototype of **ALL** instances that are created through it.
 
 
 ## Creating Objects using the Function Constructor
@@ -57,15 +57,15 @@ prototypes to look into (null). Null is the only one that has no prototype and i
         } // added using the prototype property below on line 77
     };
 
-* When we use the *new* operator, a brand new empty object is created. After that, the constructor function
+* When we use the **new** operator, a brand new empty object is created. After that, the constructor function
 (Person) is called with the arguments we specify. Object is created then function is called. When we call a
 a new function, we create a new execution context that also has a this variable
 
-* In a regular function call, the *this* variable is applied to the global execution context. In this example of our function Constructor, having the *this* variable pointing to the Global constructor would not be very useful. That's why we use the *new* operator. It makes it so the the *this* variable of the function points to the empty object that was created in the beginning by the *new* operator.
-The *new* variable points to the new Person variable (empty object), not to the Person variable
+* In a regular function call, the **this** variable is applied to the global execution context. In this example of our function Constructor, having the **this** variable pointing to the Global constructor would not be very useful. That's why we use the **new** operator. It makes it so the the **this** variable of the function points to the empty object that was created in the beginning by the *new* operator.
+The **new** variable points to the new Person variable (empty object), not to the Person variable
 
-* We have to add all the methods and properties that we want to be inherited into the Constructor's prototype
-property.
+* We have to add all the methods and properties that we want to be inherited into the **Constructor's prototype
+property**.
 
         Person.prototype.calculateAge = function() {
 
@@ -148,7 +148,7 @@ property.
 1. define an object that will act as the prototype
 2. create a new object based on that very prototype
 
-* Using the object.create way instead of function constructor
+* Using the **object.create** way instead of **function constructor**
 /*
 var personProto = { // no capital because it's not a function constructor
     calculateAge: function(){
@@ -169,21 +169,21 @@ var personProto = { // no capital because it's not a function constructor
         job: { value: 'designer' }
         });
 
-* The difference between *object.create* and Constructor pattern is that the *object.create* builds an object that inherits directly from the one that we passed into the first argument while in the Function Constructor the newly created object inherits from the Constructor's prototype property.
+* The difference between **object.create** and **Constructor pattern** is that the **object.create** builds an object that inherits directly from the one that we passed into the first argument while in the **Function Constructor** the newly created object inherits from the **Constructor's prototype property**.
 
-* One of the biggest benefits of *object.create* is that it allows us to implement a really complex inheritance structure in an easier way than function constructors because it allows us to directly specify which object should be a prototype.
+* One of the biggest benefits of **object.create** is that it allows us to implement a really complex **inheritance** structure in an easier way than **function constructors** because it allows us to directly specify which object should be a prototype.
 
-* Most popular method is using the Function Constructor
+* Most popular method is using the **Function Constructor**
 
 ### Primitives vs Objects
 
-* Primitives:* Numbers, Strings, Booleans, Undefined, Null.
+* **Primitives:** Numbers, Strings, Booleans, Undefined, Null.
 
-* *Everything else (is an object):* Arrays, Functions, Objects, Dates, Wrappers for Numbers,
+* **Everything else (is an object):** Arrays, Functions, Objects, Dates, Wrappers for Numbers,
 
-* Big difference between Primitives and Objects is that variables containing Primitives actually hold that data inside of the variable itself.
+* Big difference between **Primitives** and **Objects** is that variables containing **Primitives** actually hold that data inside of the variable itself.
 
-* In Objects, variables associated with objects do not actually contain the object but instead they contain a reference to the place in memory where the object sits or where the object is stored. A variable declared as an object does have a real copy of the object, it just points to that object.
+* In **Objects**, variables associated with objects do not actually contain the object but instead they contain a **reference to the place in memory** where the object sits or where the object is stored. A variable declared as an object does have a real copy of the object, it just points to that object.
 
 ## Primitives
 
@@ -241,23 +241,23 @@ var personProto = { // no capital because it's not a function constructor
 ## First Class Functions: Passing Functions as arguments
 
 
-* A first class function is a function that was built with the intention of being passed around to other functions.
+* A **first class function** is a function that was built with the intention of being passed around to other functions.
 
-* It does one specific thing, does not have side effects, and is not intended to be called directly, but rather, to be used by ‘other functions.’
+* It does one specific thing, does not have side effects, and is not intended to be called directly, but rather, to be **used by other functions**.
 
-* Those ‘other functions’ which accept one of those ‘first class functions’ as an argument are called higher order functions. Higher order functions also might be functions that return a function.
+* Those **‘other functions’** which accept one of those **‘first class functions’** as an argument are called **higher order functions**. **Higher order functions** also might be functions that return a function.
 
-* In a higher order function, when one of the parameters passed in is a function, that function is a callback function because it will be called back and used within the higher order function.
+* In a **higher order function**, when one of the parameters passed in is a function, that function is a **callback function** because it will be called back and used within the higher order function.
 
-* A higher order function is named as such because when using a callback to perform an operation within itself, the function has a ‘higher’ purpose than a regular function. When it returns a function, it also has a ‘higher’ purpose.
+* A **higher order function** is named as such because when using a **callback** to perform an operation within itself, the function has a **‘higher’ purpose** than a regular function. When it returns a function, it also has a ‘higher’ purpose.
 
-* A function is an instance of the Object type. Because of that, a function behaves like any other object
+* A **function** is an instance of the **Object type**. Because of that, a function behaves like any other object.
 
-* We can store functions in a variable
+* We can store **functions** in a **variable**.
 
-* We can pass a function as an argument to another function
+* We can pass a **function** as an **argument** to another **function**.
 
-* We can return a function from a function
+* We can return a **function** from a **function**.
 
         var years = [1990, 1965, 1937, 2005, 1998];
 
@@ -350,7 +350,7 @@ var personProto = { // no capital because it's not a function constructor
  ## Immediately Invoked Function Expression (IIFE)
 
 
-* A function cannot be accessed from the outside scope because of the scoping chain
+* A **function** cannot be accessed from the outside scope because of the **scoping chain**
 
         function game() {
         var score = Math.random() * 10;
@@ -386,15 +386,15 @@ var personProto = { // no capital because it's not a function constructor
 ## Closures
 
 
-* An inner function always has access to the variables and parameters of its outer function, even after the outer function has returned.
+* An **inner function** always has access to the **variables and parameters** of its **outer function**, even after the outer function has returned.
 
-* What makes closures interesting is even after a function returns and the execution context is gone, the variable object is still there stored in memory and can be accessed. The current execution context has closed in on the outer variable object so that it can use it. That's why it's called a closure.
+* What makes **closures** interesting is even after a function returns and the execution context is gone, the variable object is still there stored in memory and can be accessed. The current execution context has closed in on the outer variable object so that it can use it. That's why it's called a **closure**.
 
-* Any function that uses a variable from outside the scope is a closure
+* Any **function** that uses a **variable** from **outside the scope** is a **closure**.
 
-* The scope chain is like a pointer to all of the variable objects that the function has access to
+* The **scope chain** is like a **pointer** to all of the **variable objects** that the **function** has access to
 
-* We can access the variables that were created in the retirement function long after the function has completed its execution and after its execution context is gone. The current execution context has 'closed' in on the outer variable object so that it can use it. That's why it's called a closure. So the scope chain always stays in tact. The function returns and the execution context gets popped off the stack
+* We can access the **variables** that were created in the retirement function long after the function has completed its execution and after its execution context is gone. The current **execution context** has **'closed'** in on the **outer variable object** so that it can use it. That's why it's called a **closure**. So the **scope chain** always stays in tact. The **function** returns and the execution context gets **popped off the stack**.
 
 
         function retirement(retirementAge) {
@@ -457,9 +457,9 @@ var personProto = { // no capital because it's not a function constructor
 
  ## Bind, Call and Apply Methods
 
-* Functions are a special kind of object . Just like Array objects, Functions get special kinds of methods which they inherit from the Function Constructor Object
+* **Functions** are a special kind of **object**. Just like **Array objects**, **Functions** get special kinds of **methods** which they **inherit** from the **Function Constructor Object**
 
-* Allow us to call a function and set the 'this' variable manually
+* Allow us to call a function and set the **'this'** variable manually
 
 
         var john = {
