@@ -732,6 +732,35 @@ They allow you to create many objects very quickly and these objects will have t
     user1; // User { firstName: 'John', lastName: 'Smith', age: 26, gender: 'male' }
     user200; // User {  firstName: 'Jill', lastName: 'Robinson', age: 25, gender: 'female' }
 
+## Array Constructor
+
+
+- If you pass a single argument (number) then it will return an empty array of that length.
+- If you pass a single argument (non-number) could be an object, another array or a string then it will return a new array with just that argument passed as an element.
+- If you pass multiple arguments it will return a new array with all arguments passed in as elements in it.
+---
+
+    var arr1 = []; // empty array
+
+    var arr2 = new Array(50);
+    // created array by using Array Constructor function and passing in one parameter, the number 50.
+    This means we have an array of length 50, but every element in the array is empty (arr2.length).
+    So the only way to define a new empty array of a certain length with the Array Constructor Function is by
+    only passing in one parameter that is a number.
+
+    var arr3 = new Array(1, 2, "three", 4, "five");
+    // Created array by passing 5 different arguments into it.
+    Some numbers and some strings. We get array logged out that has all of the arguments we passed into it as elements.
+    This is because if you pass multiple arguments into the Array Constructor function,
+    it will create an array that will comprise of all of those arguments.
+
+    var arr4 = new Array ([1, 2, 3, 4, 5]); // Created by using Array Constructor Function and passing an array with 5 elements into it. What it ends up being is an array with just one element in it. The only element in it is the array that we passed into the constructor function. You might expect to get one array with five elements in it instead of a nested array that contains the elements, but this is just how the Array Constructor function works in javascript.
+
+    console.log('arr1: ', arr1); // arr1:  []
+    console.log('arr2: ', arr2); // arr2:  [ <50 empty items> ]
+    console.log('arr3: ', arr3); // arr3:  [ 1, 2, 'three', 4, 'five' ]
+    console.log('arr4: ', arr4); // arr4:  [ [ 1, 2, 3, 4, 5 ] ]
+
 ## Data Types
 
 ### Question: What is logged out for each console.log statement ?
@@ -772,7 +801,7 @@ They allow you to create many objects very quickly and these objects will have t
     distance: 3000, // distance property
     getDistance: function(unit, caption) { // getDistance method --also passing unit and caption as paramaters
         return this.distance + unit + caption; // return this.distance
-    }
+        }
     };
 
     const roadTrip2 = {
