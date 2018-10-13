@@ -685,3 +685,75 @@ They allow you to create many objects very quickly and these objects will have t
     user1; // User { firstName: 'John', lastName: 'Smith', age: 26, gender: 'male' }
     user200; // User {  firstName: 'Jill', lastName: 'Robinson', age: 25, gender: 'female' }
 
+## Data Types
+
+### Question: What is logged out for each console.log statement ?
+
+    console.log(typeof null); // object
+    console.log(typeof undefined); // undefined
+    console.log(typeof {}); // object (function as an object)
+    console.log(typeof []); // object (because in JS arrays are of the type object)
+
+### How can we tell if a piece of data is actually an array if our type of operator does not tell us this ?
+* We can use isArray method from the Array prototype. Simply call this method and pass in some data that will return true if the data is an array or false if it is not.
+---
+
+    console.log(Array.isArray([])); // true
+
+    console.log(Array.isArray({})); // if we change it to an object, we return false beause it is not an array
+
+    console.log([] instanceof Array); //another way to determine if a piece of data is an array is by using the Instance of keyword. This will return to us either true or false as well. true is returned
+
+    console.log({} instanceof Array); // if we change it into an object then false is returned.
+
+    console.log({} instanceof Object); // true
+
+    // knowing that arrays are actually objects in javascript is important
+    // knowing that the typeof operator will not be able to determine if a piece of data is an array or not is also important to remember
+
+## Bind Method
+
+### Describe the bind() function method:
+### What does the bind method do ?
+* The **bind method** allows you to to bind the **'this'** context of a function to a particular object similar to the way that the **'call'** and **'apply'** methods work, with a few differences.
+
+### Describe how it works
+
+    this.distance = 10000; // defined on global scope
+
+    const roadTrip1 = { //roadTrip1 object
+    distance: 3000, // distance property
+    getDistance: function(unit, caption) { // getDistance method --also passing unit and caption as paramaters
+        return this.distance + unit + caption; // return this.distance
+    }
+    };
+
+    const roadTrip2 = {
+    distance: 5000
+
+    };
+
+    // const getTripDistance = roadTrip1.getDistance;
+
+    // we get 10000 returned instead of 3000 because when we call our getTripDistance(), the 'this' context of the function is no longer roadTrip1. but instead the context is the global object. We can fix this by using the 'bind' method.
+
+    const getTripDistance = roadTrip1.getDistance.bind(roadTrip1, 'km');
+
+    // getTripDistance(' left to go');
+
+
+    const getTripDistance2 = roadTrip1.getDistance.bind(roadTrip2, 'km'); // since we passed our units parameter into our bind method here, it should not change if we change the caption message in the console.log or when function is called
+
+    //getTripDistance2();
+
+    console.log(getTripDistance(' left to go')); // 3000km left to go
+
+    console.log(getTripDistance2(' in total')); // 5000km in total
+
+### Explain the parameters that it takes
+* Passing **unit** in as a parameter for **getDistance** method and passing **km** for the **bind** method paramater.
+* For practice, code out an example of how **bind()** is used.
+
+* The **bind** method allows you to bind a function to a certain **"this"** context. It also allows you to define parameters that you want to hold constant (units,etc..)as well.
+
+
