@@ -591,6 +591,97 @@
 
       console.log(4);
     }
+
     logNumbers();
 
 **Answer:** (1, 4, 3, 2)
+
+
+## Making an Object
+
+### List and describe 3 different ways of creating an object in javascript.
+
+1. **Object literal syntax:**
+we have defined object myBoat and we defined all of its properties and methods right inside of it. Most common way to create an object in javascript
+
+        const myBoat = {
+          length: 24,
+          maxSpeed: 45,
+          passengers: 14,
+          getLength: function() {
+            return this.length;
+          }
+        };
+
+2. **Using new keyword & Object constructor:** (Object literal notation is still preferred over this method)
+
+        const student = newObject();
+
+        student.grade = 12; // properties
+        student.gradePointAverage = 4.0; // properties
+        student.classes = ["English", "Algebra", "Chemistry"]; // properties
+
+        student.getClasses = function() {
+          return this.classes;
+        };
+
+3. **How to make an object with the Constructor function:** (most complex , but interesting way to create an object) If you want to make objects of the same class,this is the way to go.
+
+        function Car(color, brand, year) { // Constructor function takes in 3 parameters
+          this.color = color; // set color = to the color passed into the function
+          this.brand = brand; // set brand = to the brand passed into the function
+          this.year = year; // set year = to the year passed into the function
+        }
+
+        Car.prototype.getColor = function() { // set method getColor on Car.prototype object.
+        This method will be set for all of our Car objects to use.
+        Since we have th getColor method is on the Car prototype both carlys car and jims car can use this method
+
+          return this.color;
+        };
+
+        const carlysCar = new Car('blue', 'Ferrari', 2015); // create new Car object
+
+        const jimsCar = new Car('red', 'Tesla', 2014);
+          return this.color;
+
+
+        const carlysCar = new Car('blue', 'Ferrari', 2015);
+        const jimsCar = new Car('red', 'Tesla', 2014);
+
+        console.log(carlysCar); // create new Car object // Car { color: 'blue', brand: 'Ferrari', year: 2015 }
+        console.log(jimsCar); // Car { color: 'red', brand: 'Tesla', year: 2014 }
+
+        console.log(carlysCar.getColor()); // using getColor method // blue
+        console.log(jimsCar.getColor()); // using getColor method // red
+
+## Constructor Function
+
+**A constructor function** is a function that creates an object class and allows you to create multiple instances of that class.
+
+They allow you to create many objects very quickly and these objects will have the same properties and functionality because they are all part of the same class
+
+
+
+    function User(firstName, lastName, age, gender) {
+
+    // we capitalize a constructor function because it is best practice and to distinguish from a regular function.
+
+    // in the parentheses pass all the properties that you are going to use in the function.
+
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.gender = gender;
+    // then assign properties to our object User with the "this" keyword.
+    }
+
+    var user1 = new User('John', 'Smith', 26, 'male');
+    // we use the new keyword to invoke our constructor function
+    and make a user object. That's how we get our constructor function to work
+    var user200 = new User('Jill', 'Robinson', 25, 'female');
+
+
+    user1; // User { firstName: 'John', lastName: 'Smith', age: 26, gender: 'male' }
+    user200; // User {  firstName: 'Jill', lastName: 'Robinson', age: 25, gender: 'female' }
+
