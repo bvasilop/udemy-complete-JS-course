@@ -440,6 +440,35 @@ If the **break statement** is omitted from a **switch statement's** case, the fo
 
     fizzBuzz(25);
 
+### fizzBuzz 2
+    function fizzBuzz(num) {
+    for (var i = 1; i <= num; i++) {
+        if (i % 15 === 0) console.log("FizzBuzz");
+        else if (i % 3 === 0) console.log("Fizz");
+        else if (i % 5 ===0) console.log ("FizzBuzz");
+        else console.log(i);
+    }
+    }
+    fizzBuzz(50);
+
+---
+### fizzBuzz 3
+
+    let fizzBuzz = function(num) { // using function expression
+    for (let i = 1; i <= num; i++ ) {
+        if (i % 15 === 0) {
+        console.log('Fizzbuzz');
+        } else if (i % 3 === 0) {
+        console.log('Fizz');
+        } else if (i % 5 === 0) {
+        console.log('Buzz');
+        } else {
+        console.log(i);
+        }
+    }
+    }
+    fizzBuzz(100);
+
 ### Using Switch Statements
 
     function fizzBuzz2(num) {
@@ -1246,3 +1275,91 @@ https://en.wikipedia.org/wiki/IEEE_754
     // This line deducts another 200 from account 2
 
     // Amount in account: 7300
+
+## Callback Functions
+
+### Callback function Ex 1
+    let calc = function(num1, num2, calcType) {
+
+    if (calcType === 'add') {
+    return a + b;
+    } else if (calcType === 'multiply') {
+    return a * b;
+    };
+
+    // in order to use callbacks, we bring the add, multiply functionality outside of the function above
+
+    // now we can build each function outside and reuse or callback in anyway we see fit.
+
+    let add = function(a, b) { // function that takes two arguments (a,b)
+    return a + b;
+    }
+
+    let subtract = function(a, b) {
+    return a - b;
+    }
+
+    let multiply = function(a, b) {
+    return a * b;
+    }
+
+    let divide = function(a, b) {
+    return a / b;
+    }
+
+    let doWhatever = function(a, b){
+    console.log(`Here are your two numbers ${a} and ${b}`);
+    }
+---
+### Callback EX 2
+    let calc = function(num1, num2, callback) { // pass callback function as  --parameter // we can replace calcType function with callback function
+    if (typeOf callback === 'function') {  // need to do a check before we execute the callback function
+    // if type of is true then execute return below
+    return callback(num1, num2); // execute callback function and pass num1 and num2 as arguments
+    }
+
+    console.log(calc(2, 3, add)); // 5 // passing add function expression as the callback // instead of 'add' from above ex.
+
+    console.log(calc(12, 3, subtract)); // 9 passing subtract function expression as the callback
+
+    console.log(calc(2, 3, multiply)); // 6 passing multiply function expression as the callback
+
+    console.log(calc(12, 3, divide)); // 4 passing divide function expression as the callback
+
+    console.log(calc(12, 3, doWhatever)); // Here are your two numbers 12 and 3
+
+    console.log(calc(4, 3, function(a, b) {
+    return a - b;
+    })); // 1
+
+    // You can write a function (anonymous function in this example
+    --if you only need to use it once without need of defining
+    --useful if you only need to do something once) directly as an argument.
+    You don't need to define it outside
+
+### Callback Ex 3
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+
+    let myArr = [{
+    num: 5,
+    str: 'apple'
+    }, {
+    num: 7,
+    str: 'cabbage'
+    }, {
+    num: 1,
+    str: 'banana'
+    }];
+
+    myArr.sort(function(val1, val2) { // using callback function to control how sorting method is going to work
+    if (val1.str > val2.str) { // sorting by .str or .num
+        return -1; // sorts in reverse order
+    } else {
+    return 1;
+    }
+    });
+
+    console.log(myArr); // [ { num: 5, str: 'cabbage' }, // reverse order value of --highest c(cabbage), b(banana), a(apple)
+                            { num: 7, str: 'banana' },
+                            { num: 1, str: 'apple' } ]
