@@ -786,7 +786,35 @@ we have defined object myBoat and we defined all of its properties and methods r
 
         console.log(carlysCar.getColor()); // using getColor method // blue
         console.log(jimsCar.getColor()); // using getColor method // red
+## Objects and Strings
 
+    var string1 = 'Tampa'; // here we're setting string1 to 'Tampa'
+    var string2 = string1; // here we're setting string2 equal to string1 so at this point string2 should equal 'Tampa' as well.
+
+    string1= 'Venice'; // then we are reassigning string 1 to 'Venice'. Since strings are passed by value and not by reference in javascript, this line does not affect our string2 at all.
+
+    console.log(string2); // then we are logging out string 2 . Since we assigned string2 to string1 at the top , we get 'Tampa'.
+
+---
+    var person1 = {
+        name: 'Alex',
+        age: 30
+    };
+
+    var person2 = person1; // here person2 and person1 are referencing the same underlying object.
+
+    person2.name = 'Kyle'; // here we set the name of person2 to = 'Kyle'.
+     Since person2 and person1 are both referencing the same underling object,
+     the name of our person1 variable should be updated to 'Kyle' as well.
+
+    console.log(person1); // so when we log out our person1 variable,
+      we get the name 'Kyle' logged out.
+      Even though we didn't change the name property on person1 at all,
+      it was still updated to the name 'Kyle' because
+      our person2 variable and our person1 variable both reference the same underlying object.
+      This is because objects are passed by reference and not by value.
+      When we set person 2 = person1 we were passing
+      the object { name: 'Alex', age: 30 } by reference to the variable person2
 ## Comparing two Objects
 
     const user1 = {
