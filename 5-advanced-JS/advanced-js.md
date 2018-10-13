@@ -1191,3 +1191,58 @@ https://en.wikipedia.org/wiki/IEEE_754
     return;
 
     // looks more like this because of hoisting and it is being written as a function declaration
+
+## Withdraw from account question
+
+    const account1 = {
+    name: 'Jen',
+    totalAmount: 5000,
+    deductAmount: function(amount) {
+        this.totalAmount -= amount;
+        return 'Amount in account: ' + this.totalAmount;
+        },
+    };
+
+    // first we define our account1 object. We have a name property with a string.
+    A totalAmount property with a value of a number also a deductAmount method.
+    The deductAmount method takes in an amount as a parameter,
+    it subtracts that amount from the accounts this.totalAmount
+    and returns what the total amount is left in the account.
+
+    const account2 = {
+    name: 'James',
+    totalAmount: 8000,
+    };
+
+    // Here we define a second object with a name and totalAmount property
+    but does not have a deductAmount method on it.
+
+    const withdrawFromAccount = function(amount) {
+    return account1.deductAmount.bind(account2, amount);
+
+    // Here we are taking the deductAmount method from the account1 object
+    and binding its this context to our account2 object.
+    Then since our deductAmount method takes in a single argument (amount),
+    we pass our (amount) argument into the bind method as our second parameter.
+    The bind method can take in paramaters for the function that it is attached to as well.
+
+    // revisit bind section of course
+
+    //Our withdrawFromAccount function returns to us a function that deducts an amount from our account 2 object
+    };
+
+    // first we define a function called withdrawFromAccount that takes in parameter (amount). Next we
+
+    console.log(withdrawFromAccount(500)());
+
+    // Here we call our withdrawFromAccount function by passing in the value 500 as an argument or as the amount . Since we are getting a function returned above, we have to invoke our expression again. This invocation does not take in any parameters because our deduct account method at the top only takes in an amount as one argument which we have passed into our deductAmount method through the bind method.
+
+    // This whole line simply deducts 500 from account 2.
+
+    // Amount in account: 7500
+
+    console.log(withdrawFromAccount(200)());
+
+    // This line deducts another 200 from account 2
+
+    // Amount in account: 7300
