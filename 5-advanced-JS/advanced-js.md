@@ -1,5 +1,44 @@
 # JavaScript Interview Prep Questions
 
+## Strings and Arrays
+
+    const data1 = 'Jordan Smith';
+
+    const data2 = [].filter.call(data1, function(elem, index) {
+    //[].filter is a shortcut for Array.prototype.filter
+
+    // we use the .call method to filter a string instead of an array for this example
+
+    // we use the .call method to set the this context that our .filter method will be called on.
+
+    // To set the this context we simply pass data1 as the first argument.
+
+    // so now we are using the [].filter method on our data1 string
+
+    // The filter method takes in a function as an argument.
+    In this example we passing in the "this" function which takes in the current element
+    and the current index as parameters like all filter functions do.
+
+    return index > 6;
+
+    // returning Boolean if current index is greater than 6 or not
+    inside of the function that we pass to our filter method,
+    we simply need to return a true or false value for each element.
+
+    // if true than data is placed in new array (data2)
+    if false, then current data is now placed in our new array.
+
+    // be aware that you cannot use all array methods on strings.
+    You can only use the read only methods on strings.
+    You cannot use the methods that actually manipulate the string.
+
+    // You can use methods: filter, forEach, Map, some, every, etc.
+
+    // You cannot use methods: push, pop, splice, shift, reverse, etc.
+    You cannot use these methods because they would actually change or manipulate the string.
+    });
+    console.log(data2); //[ 'S', 'm', 'i', 't', 'h' ]
+
 ## Curried Function with Single Argument
     function tripleAdd(num1) { // curried function
 	    return function(num2) { // return a function in a function
