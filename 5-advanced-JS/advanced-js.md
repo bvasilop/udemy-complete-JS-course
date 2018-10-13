@@ -528,6 +528,69 @@
       return nums.length === 1 ? (num2) => nums[0] + num2 : nums[0] + nums[1];
     }
 
+## JSON Data
+
+**Describe what JSON format is:** Javascript object notation. It is a lightweight format for transferring data.
+
+**JSON is used because:**
+
+  1. It is easy for humans to understand.
+  2. It is easy for computers to parse and generate.
+  3. Delete the data types not permitted in JSON.
+  4. Replace placeholder-text with corresponding data type, properly formatted as JSON.
+
+  **Functions** are not allowed in JSON because JSON is only a data description language. Its only purpose is to pass data. It is not a programming language, Therefore it is not used for computing logic.
 
 
+    const myJsonObj = {
+      myString: [some string],
+      myNumber: [some number],
+      myNull: [null],
+      myBoolean: [false],
+      myUndefined: [undefined],
+      myArray: [some array],
+      myFunction: [some function],
+      myObject: [some object]
+    };
 
+    const myJsonObj = {
+      "myString": "some string", // strings must be wrapped in //double quotes "" in JSON format
+      "myNumber": 12345.6789,
+      "myNull": null,
+      "myBoolean": true,
+      "myArray": [20, 30, "orange"],
+      "myObject": {
+        "name": "Sam",
+        "age": 30
+      }
+    }; // every property on an object as well as a nested object is a string in JSON data so we must wrap them in quotes "myString", "myNumber"...
+
+
+    console.log(myJsonObj);// { myString: 'some string',
+                                myNumber: 12345.6789,
+                                myNull: null,
+                                myBoolean: true,
+                                myArray: [ 20, 30, 'orange' ],
+                                myObject: { name: 'Sam', age: 30 } }
+
+## Order logged out question
+
+**Question:** What order are the numbers (1, 2, 3, 4) logged out in?
+
+    function logNumbers() {
+
+      console.log(1); // regular statement not wrapped in a setTimeout so it is logged first
+
+      setTimeout(function(){console.log(2)}, 1000); // wrapped in 1s timeout so it is logged last
+
+      setTimeout(function(){console.log(3)}, 0); // logged out third because the setTimeout still
+       affects how long it takes for the console.log statement to run. This is because of * event loop * in the browser.
+       The event loop is a Queue where all the events in the browser take place. These events can include click events,
+       AJAX calls, callback functions, callbacks placed in asetTimeout, SetInterval ... All of the events are pushed into the * event loop *
+       queue and then processed one at a time in the order that they were placed in the queue.
+
+      console.log(4);
+    }
+    logNumbers();
+
+**Answer:** (1, 4, 3, 2)
