@@ -52,7 +52,7 @@
 	    return num1 + num2 + num3;
     }
 
-    console.log(10, 20, 30);*/
+    console.log(10, 20, 30);
 
     tripleAdd(10)(20)(30); // curried function
     tripleAdd1(10, 20, 30); // regular declared function
@@ -64,7 +64,7 @@
     function quadrupleAdd(num1) {
         return function(num2) { // return a function in a function
             return function(num3, num4) { // return another function with multiple arguments
-                return num1 + num2 + num3 +num4;
+                return num1 + num2 + num3 + num4;
             };
         };
     }
@@ -93,11 +93,11 @@
 
 ## IIFE - Immediately Invoked Functions
 
-* Main reason to use **IFFE** is to preserve a **private scope** for your function. You want to make sure you're not overwriting any **global variables**
-*  **IIFE:** immediately invoked function expression
-1. define function
-2. then immediately call function by wrapping in ()
-3. then invoke with another set of ()
+* Main reason to use **IFFE** is to preserve a **private scope** for your function. You want to make sure you're not overriding any **global variables**
+*  **IIFE:** Immediately Invoked Function Expression
+1. Define function
+2. Then immediately call function by wrapping in ( )
+3. Then invoke with another set of ()
 
         (function doubleNumber(num) {
             return num * 2;
@@ -157,7 +157,7 @@
       for (let i = 0; i < arr.length; i++) {
 
       // using the ES6 let syntax, it creates a new binding every single time the function is called
-      // read more here:
+
       setTimeout(function() {
           console.log('The index of this number is: ' + i);
       }, 3000);
@@ -195,8 +195,8 @@
 
 
     function myFunc() {
-        for (let i=1; i<=20; i++) {
-        return function (i) {
+        for (let i = 1; i <= 20; i++) {
+        return function(i) {
         };
       }
     }
@@ -406,7 +406,7 @@ If the **break statement** is omitted from a **switch statement's** case, the fo
     }
     Cases for 1, 2, and 3 will all produce the same result.
 
-
+---
     Write a switch statement to set answer for the following ranges:
     1-3 - "Low"
     4-6 - "Mid"
@@ -414,7 +414,7 @@ If the **break statement** is omitted from a **switch statement's** case, the fo
 
     Note
     You will need to have a case statement for each number in the range.
-    */
+
 
     function sequentialSizes(val) {
     var answer = "";
@@ -449,7 +449,7 @@ If the **break statement** is omitted from a **switch statement's** case, the fo
 ### Using if else Statements
 
     function fizzBuzz (num) {
-        for (let i = 1; i <= num; i++) {
+        for (let i = 0; i <= num; i++) {
 	    if (i % 15 === 0) {
 		    console.log('FizzBuzz');
 	    } else if (i % 3 === 0) {
@@ -466,7 +466,7 @@ If the **break statement** is omitted from a **switch statement's** case, the fo
 
 ### fizzBuzz 2
     function fizzBuzz(num) {
-    for (var i = 1; i <= num; i++) {
+    for (var i = 0; i <= num; i++) {
         if (i % 15 === 0) console.log("FizzBuzz");
         else if (i % 3 === 0) console.log("Fizz");
         else if (i % 5 ===0) console.log ("FizzBuzz");
@@ -479,7 +479,7 @@ If the **break statement** is omitted from a **switch statement's** case, the fo
 ### fizzBuzz 3
 
     let fizzBuzz = function(num) { // using function expression
-    for (let i = 1; i <= num; i++ ) {
+    for (let i = 0; i <= num; i++ ) {
         if (i % 15 === 0) {
         console.log('Fizzbuzz');
         } else if (i % 3 === 0) {
@@ -496,7 +496,7 @@ If the **break statement** is omitted from a **switch statement's** case, the fo
 ### Using Switch Statements
 
     function fizzBuzz2(num) {
-        for (let i = 1; i <= num; i++) {
+        for (let i = 0; i <= num; i++) {
         switch(true) {
         case (i % 15 === 0):
             console.log("Fizzbuzz");
@@ -534,7 +534,7 @@ If the **break statement** is omitted from a **switch statement's** case, the fo
 
 ## *Equals* vs. *"Strict" Equals*
 
-    console.log(7 == '7');  // true
+    console.log(7 == '7');  // true because of type coercion
 
     console.log(7 === '7');  // false
 
@@ -552,7 +552,7 @@ If the **break statement** is omitted from a **switch statement's** case, the fo
 ## 'use strict';
 
     'use strict';
-    //prevents use of global variables
+    // prevents use of global variables
     // all parameter names for a function must be unique
 
     function myFunc(a, a, b) {
@@ -564,10 +564,10 @@ If the **break statement** is omitted from a **switch statement's** case, the fo
     // error because two paramaters have the same names
 
 
-    //var , const or let
+    // var , const or let
 
     city = "London";
-        console.log(city);// will error because of strict error //handling
+        console.log(city);// will error because of strict error // handling
 
     // will work without 'use strict'
 
@@ -601,8 +601,8 @@ If the **break statement** is omitted from a **switch statement's** case, the fo
 ## *Call* and *Apply* methods
 
 	const car1 = {
-	  brand: 'Porsche',//property named brand
-      getCarDescription: function(cost, year, color) { //method named getCarDescription
+	  brand: 'Porsche',// property named brand
+      getCarDescription: function(cost, year, color) { // method named getCarDescription
       console.log(`This car is a ${this.brand}. The price is $${cost}. The year is ${year}. The color is ${color}.\n`);
       }
     };
@@ -621,7 +621,7 @@ If the **break statement** is omitted from a **switch statement's** case, the fo
 	car1.getCarDescription.call(car2, 200000, 2013, 'yellow'); This car is a Lamborghini. The price is $200000. The year is 2013. The color is yellow.
 
     // "this" is implied by argument passed.
-	Then add the remaining argumenents after the "this" context call()
+	Then add the remaining arguments after the "this" context call()
 
 	// the call method is similar to the apply method in that it is a native javascript method on the function prototype object
 
@@ -644,7 +644,9 @@ If the **break statement** is omitted from a **switch statement's** case, the fo
 
     };
 
-    // "apply" method is essentially the same as the "call" method except one major difference, when we use    "apply" method, we pass all the parameters for the function as an array instead of individually like we did    with the "call" method.
+    // "apply" method is essentially the same as the "call" method except one major difference,
+    when we use **apply** method, we pass all the parameters for the function
+    as an array instead of individually like we did with the "call" method.
 
     car1.getCarDescription(80000, 2010, 'blue'); // This car is a Porsche. The price is $80000. The year is 2010. The color is blue. // normal way of calling a function
 
@@ -826,7 +828,7 @@ If the **break statement** is omitted from a **switch statement's** case, the fo
 ### List and describe 3 different ways of creating an object in javascript.
 
 1. **Object literal syntax:**
-we have defined object myBoat and we defined all of its properties and methods right inside of it. Most common way to create an object in javascript
+We have defined object myBoat and we defined all of its properties and methods right inside of it. Most common way to create an object in JavaScript
 
         const myBoat = {
           length: 24,
@@ -849,7 +851,7 @@ we have defined object myBoat and we defined all of its properties and methods r
           return this.classes;
         };
 
-3. **How to make an object with the Constructor function:** (most complex , but interesting way to create an object) If you want to make objects of the same class,this is the way to go.
+3. **How to make an object with the Constructor function:** (most complex , but interesting way to create an object) If you want to make objects of the same class, this is the way to go.
 
         function Car(color, brand, year) { // Constructor function takes in 3 parameters
           this.color = color; // set color = to the color passed into the function
@@ -885,7 +887,7 @@ we have defined object myBoat and we defined all of its properties and methods r
 
     const b = { name: 'b'}; // variable b is an object with a name property that is set equal to the string b.
 
-    const c = { name: 'c'}; // varaible c is an object with a name property set equal to the string c.
+    const c = { name: 'c'}; // variable c is an object with a name property set equal to the string c.
 
     a[b] = 200;
 
@@ -894,7 +896,7 @@ we have defined object myBoat and we defined all of its properties and methods r
     // here we set the property b on object a to the number 200.
     We are also trying to place a property on our object
     that is not a string or a number but is instead an object itself [b].
-    In javascript keys or properties on objects can only be strings.
+    In JavaScript keys or properties on objects can only be strings.
     They cannot be any other data type and they definitely cannot be objects.
 
     a[c] = 400;
@@ -1054,7 +1056,11 @@ They allow you to create many objects very quickly and these objects will have t
     This is because if you pass multiple arguments into the Array Constructor function,
     it will create an array that will comprise of all of those arguments.
 
-    var arr4 = new Array ([1, 2, 3, 4, 5]); // Created by using Array Constructor Function and passing an array with 5 elements into it. What it ends up being is an array with just one element in it. The only element in it is the array that we passed into the constructor function. You might expect to get one array with five elements in it instead of a nested array that contains the elements, but this is just how the Array Constructor function works in javascript.
+    var arr4 = new Array ([1, 2, 3, 4, 5]); // Created by using Array Constructor Function and passing an array with 5 elements into it.
+    What it ends up being is an array with just one element in it.
+    The only element in it is the array that we passed into the constructor function.
+    You might expect to get one array with five elements in it instead of a nested array that contains the elements,
+    but this is just how the Array Constructor function works in javascript.
 
     console.log('arr1: ', arr1); // arr1:  []
     console.log('arr2: ', arr2); // arr2:  [ <50 empty items> ]
@@ -1065,7 +1071,7 @@ They allow you to create many objects very quickly and these objects will have t
 
     console.log([10, 20, 30, 40, 50].indexOf(30));  // 2
 ---
-    console.log([{ name: 'Pam'}, { name: 'Kent'}].indexOf({ name: 'Kent'})); //-1
+    console.log([{ name: 'Pam'}, { name: 'Kent'}].indexOf({ name: 'Kent'})); // -1
 
     // means the 'Kent' object is not found in our array at all.
     This is because 2 objects are never the same in javascript.
@@ -1085,7 +1091,13 @@ They allow you to create many objects very quickly and these objects will have t
 ---
     console.log([[1], [2], [3], [4]].indexOf([2])); // -1
 
-    // In this example, we have an array of nested arrays. Each array has a single number in it. We are looking for inindex of an array that only has the number 2 in it. We get the index of -1 because 2 different arrays are never the same in javascript. Arrays, like objects are passed by reference too. So, in this example the two arrays being compared will never be equal. Therefore, the indexOf method will not find the element it is looking for and returns -1 to signify that the element is not present in the array.
+    // In this example, we have an array of nested arrays.
+    Each array has a single number in it.
+    We are looking for an index of an array that only has the number 2 in it.
+    We get the index of -1 because 2 different arrays are never the same in javascript.
+    Arrays, like objects are passed by reference too. So, in this example the
+    two arrays being compared will never be equal. Therefore, the indexOf method will not find the element
+    it is looking for and returns -1 to signify that the element is not present in the array.
 
     // ** two different arrays and two different objects are never equivelant. but if we set a variable to
     const myArray = [5];
@@ -1121,7 +1133,7 @@ They allow you to create many objects very quickly and these objects will have t
     console.log(typeof []); // object (because in JS arrays are of the type object)
 
 ### How can we tell if a piece of data is actually an array if our type of operator does not tell us this ?
-* We can use isArray method from the Array prototype. Simply call this method and pass in some data that will return true if the data is an array or false if it is not.
+* We can use the isArray method from the Array prototype. Simply call this method and pass in some data that will return true if the data is an array or false if it is not.
 ---
 
     console.log(Array.isArray([])); // true
