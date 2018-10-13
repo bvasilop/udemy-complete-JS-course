@@ -1014,4 +1014,29 @@ They allow you to create many objects very quickly and these objects will have t
 
 * The **bind** method allows you to bind a function to a certain **"this"** context. It also allows you to define parameters that you want to hold constant (units,etc..)as well.
 
+## Equivelent Numbers
 
+### The JavaScript decimal problem
+
+    console.log(900.9 === 3 * 300.3); // false
+    // the reason it's false is javascript doesn't always act the way it should when dealing with decimals.
+
+    // In javascript, all numbers are IEEE754 floating point numbers. Because of the way they are binary and coded, some decimal numbers cannot be expressed perfectly accurately. This is similar to the way the fraction 2/3 => 0.66666666 cannot be represented perfectly as a decimal and at the end of the decimal when the memory limit is hit, the last digit must be either rounded up or down. https://en.wikipedia.org/wiki/IEEE_754
+
+    // 3 * 300.3 = 900.9000000000001
+    // this is because, there is no way to map the decimal 1/10 to a finite binary floating point number. So that is why our original expression returned false to us Because the two numbers we are comparing are actually not equal when they are evaluated.
+    // ** You really just want to remember to be aware that you can run into these kinds of problems when you're working with decimals in javascript. How can we deal with this kind of problem ?
+
+    (300.3 * 3).toFixed(2); // '900.90'
+    // the toFixed method is a number method that can return the given number fixed to a certain number of decimal places, but the toFixed method returns our number as a string. In order to turn our string back into a number, we have to wrap our expression in the built in Number() function.
+
+    Number((300.3 * 3).toFixed(2)); // 900.9
+
+    // Another way to fix this problem is to use the toPrecision method.
+    (300.3 * 3).toPrecision(12); // '900.900000000'
+    // This will return to us a number in which the total number of digits will not exceed the number passed in the argument which in this example is 12. The toPrecision method also returns our number as string. So to turn it back into a number, we must pass it in the Number() function.
+    Number((300.3 * 3).toPrecision(12)); // 900.9
+
+    // The final way to deal with decimal math operations in javascript is by not using them at all. So instead of using 300.3 * 3 we can multiply our decimal number by 10 since we only have one decimal after the . in this case to make it an integer. Then divide the whole thing by 10 to ffset when we multiplied by 10 to get it back to the correct value.
+
+    ((300.3 * 10) * 3) / 10; // 900
