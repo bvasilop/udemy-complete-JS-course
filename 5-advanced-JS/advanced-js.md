@@ -1420,3 +1420,33 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
     let mult1 = (a, b) => { return a * b };
     console.log(mult1(2,3));
+
+## toUpperCase() methods
+
+ https://gist.github.com/SonyaMoisset/aa79f51d78b39639430661c03d9b1058#file-title-case-a-sentence-for-loop-wc-js
+
+    var toTitleCase = function (str) {
+        str = str.toLowerCase().split(' ');
+        for (var i = 0; i < str.length; i++) {
+            str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+        }
+        return str.join(' ');
+    };
+
+    var str = 'HeRe is a MIXED capitalization StRiNg.';
+
+    // returns: "Here Is A Mixed Capitalization String."
+    var str = toTitleCase(str);
+
+    toTitleCase(str);
+
+    // Capitalize first word of string
+
+    function capitalizeFirstLetter(string)
+    {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+
+    var myString = "hello world";
+    console.log(capitalizeFirstLetter(myString)); // "Hello World"
