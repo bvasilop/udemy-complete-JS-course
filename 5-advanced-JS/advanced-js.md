@@ -124,7 +124,7 @@
 
 ## Closures
 
-### Example 1
+### Closures Ex 1
 
     const globalVariable = 'global var';
 
@@ -148,7 +148,7 @@
     }
     outerFunc('param two');
 
-### Example 2
+### Closures Ex 2
  https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36
 
  http://exploringjs.com/es6/ch_variables.html#sec_let-const-loop-heads
@@ -164,6 +164,30 @@
       }
 
       // setTimeout function creates a function (the closure) that has access to its outer scope, which is the loop that contains the index i
+
+### Closures Ex 3
+
+    var addTo = function(passed) { // outer function
+                                // addTo functions returns add function
+    var add = function(inner) { // inner function
+        return passed + inner;
+    };
+        return add;
+    };
+
+    var addThree = new addTo(3); // you can created unlimited amount of functions using closures
+    // preserves the value of the variable (3) as a property for the closure
+    var addFour = new addTo(4);
+
+    // console.dir(addTo(3));
+
+    // console.dir(addThree); // closure value of : 3
+    // console.dir(addFour); // closure value of : 4
+
+    console.log(addThree(1)); // 4 // uses add inner function
+    console.log(addFour(1)); // 5
+
+    // Closures are functions that preserve data
 
 ### Counter Function with Closure
 
