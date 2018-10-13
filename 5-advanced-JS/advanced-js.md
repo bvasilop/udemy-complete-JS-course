@@ -893,6 +893,56 @@ They allow you to create many objects very quickly and these objects will have t
     console.log('arr3: ', arr3); // arr3:  [ 1, 2, 'three', 4, 'five' ]
     console.log('arr4: ', arr4); // arr4:  [ [ 1, 2, 3, 4, 5 ] ]
 
+## Array indexOf methods
+
+    console.log([10, 20, 30, 40, 50].indexOf(30));  // 2
+---
+    console.log([{ name: 'Pam'}, { name: 'Kent'}].indexOf({ name: 'Kent'})); //-1
+
+    // means the 'Kent' object is not found in our array at all.
+    This is because 2 objects are never the same in javascript.
+    Also in javascript, objects are passed by reference and not by their value.
+    Although the 'Kent' objects look identical (same properties and key values),
+    they are actually not because they are two separate and different
+     objects and have no connection with each other. Therefore, this one the indexOf
+     method in this example returns -1.
+---
+    console.log('hello world'.indexOf('o')); // 4
+
+    // This indexOf method is actually not an index array method,
+    but instead an indexOf string method.
+    Both arrays and strings have an indexOf method
+    that will tell you where the element you are
+    searching for is located. In this example the first 'o' in our string is at index 4.
+---
+    console.log([[1], [2], [3], [4]].indexOf([2])); // -1
+
+    // In this example, we have an array of nested arrays. Each array has a single number in it. We are looking for inindex of an array that only has the number 2 in it. We get the index of -1 because 2 different arrays are never the same in javascript. Arrays, like objects are passed by reference too. So, in this example the two arrays being compared will never be equal. Therefore, the indexOf method will not find the element it is looking for and returns -1 to signify that the element is not present in the array.
+
+    // ** two different arrays and two different objects are never equivelant. but if we set a variable to
+    const myArray = [5];
+
+    // then we add myArray to the end of the array in the previous example. This should return to us the correct index 4 because now we are referencing the same array in both locations.
+    console.log([[1], [2], [3], [4], myArray].indexOf(myArray)); // 4
+
+    //const anotherArray = [myArray];
+
+
+    //console.log([[1], [2], [3], [4], myArray].indexOf(anotherArray)); // 4
+    // 4
+    // because anotherArray and myArray are referencing the same exact piece of data.
+
+    // ** two different objects will never be equal, but if two different variables are referencing the same undelying objects, then they are equal.
+
+    const myArray = [5];
+    const anotherArray = myArray;
+
+    console.log([10, 20, 30, 40, 50].indexOf(30));
+    console.log([{ name: 'Pam' }, { name: 'Kent' }].indexOf({ name: 'Kent' }));
+    console.log('hello world'.indexOf('o'));
+    console.log([[1], [2], [3], [4], myArray].indexOf(anotherArray));
+
+
 ## Data Types
 
 ### Question: What is logged out for each console.log statement ?
