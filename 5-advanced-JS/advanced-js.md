@@ -825,6 +825,54 @@ we have defined object myBoat and we defined all of its properties and methods r
 
         console.log(carlysCar.getColor()); // using getColor method // blue
         console.log(jimsCar.getColor()); // using getColor method // red
+
+## Objects and Properties
+
+    const a = {}; // variable a is an empty object
+
+    const b = { name: 'b'}; // variable b is an object with a name property that is set equal to the string b.
+
+    const c = { name: 'c'}; // varaible c is an object with a name property set equal to the string c.
+
+    a[b] = 200;
+
+    // a['[object Object]'] = 200
+
+    // here we set the property b on object a to the number 200.
+    We are also trying to place a property on our object
+    that is not a string or a number but is instead an object itself [b].
+    In javascript keys or properties on objects can only be strings.
+    They cannot be any other data type and they definitely cannot be objects.
+
+    a[c] = 400;
+
+    // a['[object Object]'] = 400
+
+    // here we set the property c on object a to the number 400.
+
+    console.log(a[b]); // 400
+
+    // console.log(a['[object Object]']);
+
+    // logging out a property b on an object a
+
+    // we are logging out the '[object Object]' property on our a object
+
+    console.log(a); // if we logout the entire a object we get { '[object Object]': 400 }
+
+    // when we try to set our b object as a property on our a object,
+    the javascript coerces our object into a string. '[object Object]'.
+    On the next line we do the same thing with our c object.
+    We are trying to place our c object as a property on our a object which we cannot do.
+    Here, the c object is also converted to the same string '[object Object]'
+    and we are now setting this property equal to the value 400.
+
+    // The reason we are getting 400 is the b object is getting converted to the string '[object Object]'
+    on our a object which was most recently set to the value of 400.
+
+    // Only strings can be properties on objects . This is what happens when you try to place an
+    object as a property on another object.
+
 ## Objects and Strings
 
     var string1 = 'Tampa'; // here we're setting string1 to 'Tampa'
@@ -1088,7 +1136,13 @@ They allow you to create many objects very quickly and these objects will have t
     console.log(900.9 === 3 * 300.3); // false
     // the reason it's false is javascript doesn't always act the way it should when dealing with decimals.
 
-    // In javascript, all numbers are IEEE754 floating point numbers. Because of the way they are binary and coded, some decimal numbers cannot be expressed perfectly accurately. This is similar to the way the fraction 2/3 => 0.66666666 cannot be represented perfectly as a decimal and at the end of the decimal when the memory limit is hit, the last digit must be either rounded up or down. https://en.wikipedia.org/wiki/IEEE_754
+    // In javascript, all numbers are IEEE754 floating point numbers.
+    Because of the way they are binary and coded,
+    some decimal numbers cannot be expressed perfectly accurately.
+    This is similar to the way the fraction 2/3 => 0.66666666 cannot be represented perfectly as a decimal
+    and at the end of the decimal when the memory limit is hit,
+    the last digit must be either rounded up or down.
+https://en.wikipedia.org/wiki/IEEE_754
 
     // 3 * 300.3 = 900.9000000000001
     // this is because, there is no way to map the decimal 1/10 to a finite binary floating point number. So that is why our original expression returned false to us Because the two numbers we are comparing are actually not equal when they are evaluated.
@@ -1107,3 +1161,33 @@ They allow you to create many objects very quickly and these objects will have t
     // The final way to deal with decimal math operations in javascript is by not using them at all. So instead of using 300.3 * 3 we can multiply our decimal number by 10 since we only have one decimal after the . in this case to make it an integer. Then divide the whole thing by 10 to ffset when we multiplied by 10 to get it back to the correct value.
 
     ((300.3 * 10) * 3) / 10; // 900
+
+## X and Y question
+
+    var x = 10;
+    // we define the variable x in the global scope and we set it equal to 10
+
+    function y() { // we then define a function called y
+    x = 100;  // we set x = 100
+    At first it looks like we are reassigning our global variable x to 100
+    since we are not using any keywords like var let or const. to define our new x variable.
+    When we don't use any keywords to define a variable, it becomes a global variable even if it's
+    inside a function scope or a block scope.
+
+    return;
+
+    function x() {} // inside of our y function, the x function is being hoisted to the top of the scope
+    }
+
+    y();
+
+    console.log(x); // 10
+
+    // We get 10 because of hoisting in Javascript. All variables and all functions are hoisted in javascript
+---
+    function y() {
+    function x() {}
+    x = 100;
+    return;
+
+    // looks more like this because of hoisting and it is being written as a function declaration
