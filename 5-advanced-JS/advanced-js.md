@@ -1387,3 +1387,36 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
     console.log(myArr); // [ { num: 5, str: 'cabbage' }, // reverse order value of --highest c(cabbage), b(banana), a(apple)
                             { num: 7, str: 'banana' },
                             { num: 1, str: 'apple' } ]
+## Arrow Functions
+
+    var addNum = function(a, b) {// for es6 arrow function remove function, (), and {}
+    return a + b;
+    };
+
+    console.log(addNum(3,5)); // 8
+
+    let addNum1 = (a, b) => a + b;
+
+    console.log(addNum1(3,15)); // 18
+---
+
+    var squareNum1 = function(a) {
+    return a * a;
+    };
+    console.log(squareNum1(8));
+
+    let squareNum2 = a => a * a;
+    console.log(squareNum2(9)); // 81
+
+    let squareNum3 = (a) => { return a * a }; // more readable syntax
+    console.log(squareNum3(7));
+
+
+    var c = 4;
+
+    let squareNum4 = () => { return c * c }; // when you're not passing an argument don't forget to use () or _
+    // let squareNum4 = _ => { return c * c }; // works but not recommended
+    console.log(squareNum4()); // grabbing variable from outside scope
+
+    let mult1 = (a, b) => { return a * b };
+    console.log(mult1(2,3));
