@@ -655,6 +655,53 @@ we have defined object myBoat and we defined all of its properties and methods r
         console.log(carlysCar.getColor()); // using getColor method // blue
         console.log(jimsCar.getColor()); // using getColor method // red
 
+## Comparing two Objects
+
+    const user1 = {
+    name: 'Jordan',
+    age: 28,
+    }; // when we assign this object to variable user1, the variable is referencing a different object in memory. Because each object is separate, they are different from one another.
+    Therefore, they can never be equal to each other even if they have all the same properties and values.
+
+
+    const user2 = {
+    name: 'Jordan',
+    age: 28,
+    }; // when we assign this object to variable user2, the variable is referencing a different object in memory.
+    Because each object is separate, they are different from one another.
+    Therefore, they can never be equal to each other even if they have all the same properties and values.
+
+    // We get False returned for both because two different objects are never equal to each other.
+    This is because in Javascript, we pass objects by reference instead of by value
+
+    // If instead we define:
+
+    const user2 = user1;
+    // then will return true because both reference the same object.
+
+    console.log(user1 == user2); // True or False ??? // False
+    console.log(user1 === user2); // True or False ??? // False
+
+    // If you want to compare to see if they have they are equal and have the same values and properties.
+
+    // By turning both objects into strings then compare them.
+
+    // By using JSON stringify with both of the variables in the expressions console.log(user1 == user2); console.log(user1 === user2);
+
+    // JSON strigify turns an object into a JSON object.then turns JSON object into a string.
+        So now we are comparing two strings which should be identical because user1 and user2 have the same properties and values.
+        Since strings are primitive data types, meaning they don't have properties like objects and arrays might have, strings are passed by
+        value instead of by reference.
+
+
+    console.log(JSON.stringify(user1) == JSON.stringify(user2)); //true
+    console.log(JSON.stringify(user1) === JSON.stringify(user2)); //true
+
+    console.log([] == []); // false because the 2 arrays are 2 different pieces of data in memory just like our 2 objects are.
+    console.log(JSON.stringify([]) === JSON.stringify([])); //true becaues stringify compare the values of the two
+
+    // Arrays would work in the same way as Objects do here. In javascript, Arrays are Objects, so they are passed by reference too.
+
 ## Constructor Function
 
 **A constructor function** is a function that creates an object class and allows you to create multiple instances of that class.
