@@ -4,7 +4,7 @@
  */
 'use strict';
 // ES 5
-/*var name5 = 'Jane Smith';
+var name5 = 'Jane Smith';
 var age5 = 23;
 name5 = 'Jane Miller'; // mutated variable
 console.log(name5);
@@ -20,7 +20,7 @@ let age6 = 23; // use let if we want to change the variable
 // console.log(name6); // Uncaught TypeError: Assignment to constant variable.
 
 // functions declared with var are (function scoped) while functions declared with const and let are (block scoped)
-*/
+
 // ES 5
 function driversLicense1(passedTest) {
 
@@ -72,3 +72,98 @@ console.log(i); // 0 1 2 3 4
 console.log(i); // 5 // because variables are not block scoped // we have the final i (5) from the counter variable above
 */
 
+/********
+ * Blocks and IIFE's
+ */
+
+// New way of creating IIFE's
+
+// Previously we would use IIFE for data privacy
+// ES 6 has newer much simpler way. Instead ES 6 uses a block since const and let are block scoped.
+
+/*{                   // a block can be signified by using curly braces {}. Then create some code inside of them
+    const a = 1;
+    let b = 2;      // this block performs exactly like an IIFY
+    var c = 3;     // if we use var here we have access to the variable outside of the block (function scoped)
+}
+console.log(a + b); // you het an error here because the values are not accessible outside of the block.
+                        // the variables here are block scoped and not function scoped
+console.log(c); // 3
+
+
+// ES 5 way for IIFE
+(function() {
+    var c = 3;
+})();
+
+console.log(c);
+
+/***************
+ * Strings in ES 6
+ */
+
+// Template literals with back ticks `  `
+
+
+let firstName = 'John';
+let lastName = 'Smith';
+const yearOfBirth = 1990;
+
+function calcAge(year) {
+    return 2016 - year;
+}
+
+// ES5
+console.log('This is ' + firstName + ' ' + lastName + '. He was born in ' + yearOfBirth + '. Today, he is ' + calcAge(yearOfBirth) + ' years old.');
+
+// ES6
+console.log(`This is ${firstName} ${lastName}. He was born in ${yearOfBirth}. Today, he is ${calcAge(yearOfBirth)} years old.`);
+
+const n =`${firstName} ${lastName}`;
+console.log(n.startsWith('J')); // true // ES 6 method for testing strings for starting  values
+console.log(n.endsWith('th')); //true // ES 6 method for testing strings for ending and values
+console.log(n.includes('S')); //true // ES 6 method for testing strings if they include values
+console.log(`${firstName} `.repeat(5)); // John John John John John // ES 6 method for repeating strings
+
+/****************
+ * Arrow Functions =>
+ */
+
+const years = [1990, 1965, 1982, 1937]; // if variable won't change over time we use const
+
+// ES 5
+var ages5 = years.map(function(el) { // // using callback function and map method we have access to the current element
+    // the current index and the entire years array.
+    return 2016 - el; // gets stored into ages5 variable with the help of .map method
+});
+console.log(ages5); // (4) [26, 51, 34, 79]
+
+// ES 6
+
+let ages6 = years.map(el => 2016 - el); // much easier and cleaner way of using a callback function with one argument
+// using .map we can have access to the current element, the current index and the array itself
+    // we have argument (el ,  we have => arrow operator, then the return statement 2016 - el
+    // we remove function keyword
+    // we remove return keyword
+    // we remove parentheses
+    // we remove curly braces
+    // all we need is the argument (), the => and what we have in the return statement
+console.log(ages6); // (4) [26, 51, 34, 79]
+
+// If we have more than one argument, we have to add parentheses ()
+
+ages6 = years.map((el, index) => `Age element ${index + 1}: ${2016 - el}.`); // here we want to access the element and the index
+// we can also have expressions in ${} like ${2016 - element}
+console.log(ages6); // (4) ["Age element 1: 26.", "Age element 2: 51.", "Age element 3: 34.", "Age element 4: 79."]
+
+ages6 = years.map((el, index) => { // if we need more than one line of code we use the curly braces
+    const now = new Date().getFullYear();
+    const age = now - el;
+    return `Age element ${index + 1}: ${age}.`; // in this case we have to write out the return (keyword) statement
+});
+console.log(ages6); // (4) ["Age element 1: 28.", "Age element 2: 53.", "Age element 3: 36.", "Age element 4: 81."]
+
+// 3 ways of writing arrow functions
+    // 1) with one argument and one line of code (simplest form)---first example
+    // 2) with a second argument and use of parentheses ()---second example
+    // 3) if we add more lines code (more than one) we add curly braces {} and return (keyword) statement at the end
