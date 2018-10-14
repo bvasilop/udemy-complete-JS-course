@@ -311,3 +311,23 @@ const [age2, retirement] = calcAgeRetirement(1990);
 console.log(age2); // 28
 console.log(retirement); // 37
 
+/**************
+ * ES 6 Arrays
+ */
+
+const boxes = document.querySelectorAll('.box'); // querySelectorAll does not return array list but instead returns node list
+
+// ES 5
+
+/*
+var boxesArr5 = Array.prototype.slice.call(boxes);
+boxesArr5.forEach(function(cur) {
+    cur.style.backgroundColor = 'dodgerblue'; // changes all boxes to blue
+});
+*/
+
+/*const boxesArr6 = Array.from(boxes); // new ES6 method called .from // transforms node list (boxes) to an array
+boxesArr6.forEach(cur => cur.style.backgroundColor = 'dodgerblue');*/
+
+
+Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerblue'); // .from method makes our code shorter and more readable
