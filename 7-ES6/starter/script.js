@@ -264,12 +264,50 @@ new Person('John').myFriends5(friends);
 
 Person.prototype.myFriends6 = function(friends) {
 
-
-
     const arr = friends.map(el => `${this.name} is friends with ${el}`);
     // we share the lexical 'this' keyword with our surroundings (the method above)
-
     console.log(arr);
 };
 
-new Person('Mike').myFriends6(friends);
+new Person('Mike').myFriends6(friends); // (3) ["Mike is friends with Bob", "Mike is friends with Jane", "Mike is friends with Mark"]
+
+
+/******************
+ * Destructuring
+ */
+
+// ES 5
+var john = ['John', 26];
+//var name = john[0];
+//var age = john[1];
+
+// ES 6
+
+// we can destructure a data variable like this:
+
+const [name, age] = ['John', 26]; //syntax on the right we 'construct' the data structure. On the left we destruct the data structure
+console.log(name);
+console.log(age);
+
+const obj = {
+    firstName2: 'John',
+    lastName2: 'Smith'
+};
+
+const {firstName2, lastName2} = obj;
+console.log(firstName2); // John
+console.log(lastName2); // Smith
+
+const {firstName2: a, lastName2: b} = obj;
+console.log(a); // John
+console.log(b); // Smith
+
+function calcAgeRetirement(year) {
+    const age = new Date().getFullYear() - year;
+    return [age, 65 - age];
+}
+
+const [age2, retirement] = calcAgeRetirement(1990);
+console.log(age2); // 28
+console.log(retirement); // 37
+
