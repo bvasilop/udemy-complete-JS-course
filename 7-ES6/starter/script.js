@@ -59,7 +59,7 @@ driversLicense2(true);
 // variables declared with var are only accessible inside of the function but not from the outside
 
 
-let i = 23;
+/*let i = 23;
 for (let i = 0; i < 5; i++) {
 console.log(i); // 0 1 2 3 4 // the reason (i) works here is because let i = 0 is used in block scope so it doesn't inherit let i = 23; // two completely different variables
 } // it's like having var i inside of a function and var i outside of a function -- two completely different variables
@@ -319,15 +319,29 @@ const boxes = document.querySelectorAll('.box'); // querySelectorAll does not re
 
 // ES 5
 
-/*
+
 var boxesArr5 = Array.prototype.slice.call(boxes);
 boxesArr5.forEach(function(cur) {
     cur.style.backgroundColor = 'dodgerblue'; // changes all boxes to blue
 });
-*/
+
 
 /*const boxesArr6 = Array.from(boxes); // new ES6 method called .from // transforms node list (boxes) to an array
 boxesArr6.forEach(cur => cur.style.backgroundColor = 'dodgerblue');*/
 
 
 Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerblue'); // .from method makes our code shorter and more readable
+// usually when we want to loop over an array, we use the .forEach or .map method. The problem with them is we cannot break from them. We
+    // also cannot use the continue statement. In this case we have to use a simple for loop ES5
+
+// ES 5
+for(var i = 0; i < boxesArr5.length; i++) {
+
+    if(boxesArr5[i].className === 'box blue') {
+        continue;
+    }
+
+    boxesArr5[i].textContent = 'I changed to blue!';
+
+}
+
