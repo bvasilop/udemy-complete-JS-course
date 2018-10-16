@@ -335,13 +335,19 @@ Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerblue'); // .
     // also cannot use the continue statement. In this case we have to use a simple for loop ES5
 
 // ES 5
-for(var i = 0; i < boxesArr5.length; i++) {
+/*for(var i = 0; i < boxesArr5.length; i++) {
 
     if(boxesArr5[i].className === 'box blue') {
-        continue;
+        continue; // skips this iteration of the loop and go right to the next one. Break will break the loop and not continue
     }
 
-    boxesArr5[i].textContent = 'I changed to blue!';
+    boxesArr5[i].textContent = 'I changed to blue!'; // [i] means current box
 
 }
+*/
+// ES6 For of array helper loop
+for (const cur of boxesArr6) {
+    if(boxes)
+}
+
 
