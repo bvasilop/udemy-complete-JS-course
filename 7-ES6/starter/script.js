@@ -347,7 +347,9 @@ Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerblue'); // .
 */
 // ES6 For of array helper loop
 for (const cur of boxesArr6) {
-    if(boxes)
+    if(boxes) {
+
+    }
 }
 
 
