@@ -25,6 +25,35 @@
 
         // dollars will be equal to ['$2', '$3', '$4', '$5']
 
+
+### How to convert a string of numbers into an array of numbers
+
+http://www.wirfs-brock.com/allen/posts/166
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+
+    const stringNums = '12345';
+    let newArray;
+
+    newArrayNums = stringNums.split('').map(function(item) {
+    // we split the nums array and add commas in between with ('')
+        return parseInt(item, 10); // parseInt takes two args.
+
+    // first arg is an expression, second is a radix (10 based on decimal system because it uses digits 1 through 9)
+        https://en.wikipedia.org/wiki/Radix
+    });
+
+    console.log(newArrayNums); // [ 1, 2, 3, 4, 5 ]
+---
+
+    // Arrow function version
+
+    newArrayNums = stringNums.split('').map (item => parseInt(item, 10));
+
+
+    newArrayNums; // [ 1, 2, 3, 4, 5 ]
+
+
 ## .reduce()
 
 * This often overlooked method uses an accumulator to reduce all items in an array to a single value. Great for calculating totals. The returned value can be of any type (i.e. object, array, string, integer).
