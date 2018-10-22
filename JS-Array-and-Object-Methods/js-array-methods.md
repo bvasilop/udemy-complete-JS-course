@@ -69,6 +69,59 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 * There are some really cool use cases for .reduce() outlined in the MDN docs that provide examples on how to do things likes flattening an array of arrays, grouping objects by a property, and removing duplicate items in array.
 
+### Example 2
+
+* *reduce* helper is one of the most flexible of all the array helpers
+
+      var numbers = [ 10, 20 , 30 ];
+
+      var sum = 0; // we make a sum variable and start it out at 0
+
+      for (var i = 0; i < numbers.length; i++) {
+      sum += numbers[i]; // we have a sum and we add on numbers at [i].
+      }
+      sum;
+---
+    // using reduce method
+
+    numbers.reduce(function(sum, number){ // we pass in sum and number as arguments to the function
+    return sum + number;
+
+    }, 0); // 60 // in reduce, we pass in an initial value (0). The initial value will take the place of the second argument
+     --to reduce (after our function)
+
+    // So the first time the iterator function runs it's going to execute and we return a value of 10 because
+    0 plus 10 is 10.
+
+    // The iterator function returns 10 and that's represented by this line right here( see diagram ).
+
+    This 10 gets piped into the next run of the iterator function as the first argument and then 20 comes in as the second argument.
+
+    So putting this into practice practicality some would now be 10.
+
+    And number would be 20.
+
+    The iterator function would then return 30 and then for the very last through run through the iterator
+
+    the value from the previous iteration comes in is 30 as the first argument.
+
+    And the second argument is 30 out of the array.
+
+    And so 30 plus 30 is 60.
+
+* So in summary the really weird thing about Reduce is that we'd pass in an initial value and then this initial value is sent to our iterator function for every single run through it.
+
+* The main advantage of array helper methods like reduce is they are condensing down our array to a single value
+
+* The initial value that we're starting off with zero we can have any arbitrary initial value that
+we want so we can have zero right here.
+
+* We could have a 1000 or 100 or a -30 or 3000 or whatever it might be.
+
+* Any initial value that we want whatsoever we can pass in here.
+
+* We decide what the initial value is based on what we're trying to do with this reduce function.
+
 ## .forEach()
 
 * Applies a function on each item in an array.
