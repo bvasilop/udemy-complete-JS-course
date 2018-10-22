@@ -62,6 +62,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 ## .reduce()
 
+![alt text](./reduce-array-helper.png)
+
 * This often overlooked method uses an accumulator to reduce all items in an array to a single value. Great for calculating totals. The returned value can be of any type (i.e. object, array, string, integer).
 
 ### Example
@@ -76,8 +78,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 * There are some really cool use cases for .reduce() outlined in the MDN docs that provide examples on how to do things likes flattening an array of arrays, grouping objects by a property, and removing duplicate items in array.
 
 ### Example 2
-
-![alt text](./reduce-array-helper.png)
 
 * *reduce* helper is one of the most flexible of all the array helpers
 
