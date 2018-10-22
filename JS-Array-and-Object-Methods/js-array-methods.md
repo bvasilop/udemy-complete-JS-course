@@ -1,8 +1,12 @@
 # JavaScript Array and Object Methods
 
+![alt text](./array-helper-method.png)
+
 * All the methods in this article are chainable, meaning they can be used in combination with one another and they also don’t mutate data, which is especially important when working with React. With all these array and object methods you’ll find you never have to reach for a for or while loop ever again.
 
 ## .filter()
+
+![alt text](./filter-array-method.png)
 * Creates a new array based on whether the items of an array pass a certain condition.
 
 ### Example
@@ -14,6 +18,8 @@
 
         // ableToDrink will be equal to [19, 21]
 ## .map()
+
+![alt text](./map-array-method.png)
 * Creates a new array by manipulating the values in another array. Great for data manipulation and it is often used in React because it is an immutable method.
 
 ### Example
@@ -71,6 +77,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 ### Example 2
 
+![alt text](./reduce-array-helper.png)
+
 * *reduce* helper is one of the most flexible of all the array helpers
 
       var numbers = [ 10, 20 , 30 ];
@@ -124,6 +132,8 @@ we want so we can have zero right here.
 
 ## .forEach()
 
+![alt text](./forEach-array-helper.png)
+
 * Applies a function on each item in an array.
 
 ### Example
@@ -139,6 +149,8 @@ we want so we can have zero right here.
         // 'angry'
 
 ## .some()
+
+![alt text](./every-and-some.png)
 
 * Checks if any item in an array passes the condition. A good use case would be checking for user privileges. It can also be used similarly to a .forEach() where you would perform an action on each array item and break out of the loop once a truthy value is returned.
 
