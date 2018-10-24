@@ -226,7 +226,7 @@ we want so we can have zero right here.
 **NOTE:** The forEach loop is another type of for loop in JavaScript. However, forEach() is actually an array method, so it can only be used exclusively with arrays. There is also no way to stop or break a forEach loop. If you need that type of behavior in your loop, you’ll have to use a basic for loop.
 
 ## For...of loop
-* The for...of loop is used to loop over any type of data that is iterable.
+* The for...of loop is used to loop over **any** type of data that is iterable.
 
 * You write a for...of loop almost exactly like you would write a for...in loop, except you swap out in with of and you can drop the index.
 ---
@@ -275,9 +275,9 @@ we want so we can have zero right here.
 
 ### Example
 **Write a for...of loop that:
-loops through each day in the days array
+loops through each day in the days array,
 capitalizes the first letter of the day
-and prints the day out to the console
+and prints the day out to the console.
 Your code should log the following to the console:**
 
     Sunday Monday Tuesday Wednesday Thursday Friday Saturday
@@ -287,8 +287,8 @@ Your code should log the following to the console:**
     const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
       for (const day of days) {
-      //console.log(day.charAt(0).toUpperCase() + day.slice(1).toLowerCase());
-      console.log(`${day.charAt(0).toUpperCase()}${day.slice(1)}`);
+      // console.log(day.charAt(0).toUpperCase() + day.slice(1).toLowerCase());
+      console.log(`${day.charAt(0).toUpperCase()}${day.slice(1)}`); // using object literal
     }
 
     // Sunday Monday Tuesday Wednesday Thursday Friday Saturday
