@@ -12,11 +12,11 @@
 ### Example
 
 * Create an array of student ages that meet the legal drinking age.
+---
+    const studentsAge = [17, 16, 18, 19, 21, 17];
+    const ableToDrink = studentsAge.filter( age => age > 18 );
 
-        const studentsAge = [17, 16, 18, 19, 21, 17];
-        const ableToDrink = studentsAge.filter( age => age > 18 );
-
-        // ableToDrink will be equal to [19, 21]
+    // ableToDrink will be equal to [19, 21]
 ## .map()
 
 ![alt text](./map-array-method.png)
@@ -25,11 +25,11 @@
 ### Example
 
 * Create an array that adds a $ to the beginning of each number.
+---
+    const numbers = [2, 3, 4, 5];
+    const dollars = numbers.map( number => '$' + number);
 
-        const numbers = [2, 3, 4, 5];
-        const dollars = numbers.map( number => '$' + number);
-
-        // dollars will be equal to ['$2', '$3', '$4', '$5']
+    // dollars will be equal to ['$2', '$3', '$4', '$5']
 
 
 ### How to convert a string of numbers into an array of numbers
@@ -69,26 +69,26 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 ### Example
 
 * Add up the integers in an array.
+---
+    const numbers = [5, 10, 15];
+    const total = numbers.reduce( (accumulator, currentValue) => accumulator + currentValue);
 
-        const numbers = [5, 10, 15];
-        const total = numbers.reduce( (accumulator, currentValue) => accumulator + currentValue);
-
-        // total will be equal to 30
+    // total will be equal to 30
 
 * There are some really cool use cases for .reduce() outlined in the MDN docs that provide examples on how to do things likes flattening an array of arrays, grouping objects by a property, and removing duplicate items in array.
 
 ### Example 2
 
 * *reduce* helper is one of the most flexible of all the array helpers
+---
+    var numbers = [ 10, 20 , 30 ];
 
-      var numbers = [ 10, 20 , 30 ];
+    var sum = 0; // we make a sum variable and start it out at 0
 
-      var sum = 0; // we make a sum variable and start it out at 0
-
-      for (var i = 0; i < numbers.length; i++) {
-      sum += numbers[i]; // we have a sum and we add on numbers at [i].
-      }
-      sum;
+    for (var i = 0; i < numbers.length; i++) {
+    sum += numbers[i]; // we have a sum and we add on numbers at [i].
+    }
+    sum;
 ---
     // using reduce method
 
@@ -139,14 +139,14 @@ we want so we can have zero right here.
 ### Example
 
 * Log each array item to the console
+---
+    const emotions = ['happy', 'sad', 'angry'];
+    emotions.forEach( emotion => console.log(emotion) );
 
-        const emotions = ['happy', 'sad', 'angry'];
-        emotions.forEach( emotion => console.log(emotion) );
-
-        // Will log the following:
-        // 'happy'
-        // 'sad'
-        // 'angry'
+    // Will log the following:
+    // 'happy'
+    // 'sad'
+    // 'angry'
 
 ## .some()
 
@@ -158,11 +158,11 @@ we want so we can have zero right here.
 
 
 * Check if there is at least one 'admin' in an array.
+---
+    const userPrivileges = ['user', 'user', 'user', 'admin'];
+    const containsAdmin = userPrivileges.some( element => element === 'admin');
 
-        const userPrivileges = ['user', 'user', 'user', 'admin'];
-        const containsAdmin = userPrivileges.some( element => element === 'admin');
-
-        // containsAdmin will be equal to true
+    // containsAdmin will be equal to true
 
 ## .every()
 
@@ -171,11 +171,11 @@ we want so we can have zero right here.
 ### Example
 
 * Check if all ratings are equal to or greater than 3 stars.
+---
+    const ratings = [3, 5, 4, 3, 5];
+    const goodOverallRating = ratings.every( rating => rating >= 3 );
 
-        const ratings = [3, 5, 4, 3, 5];
-        const goodOverallRating = ratings.every( rating => rating >= 3 );
-
-        // goodOverallRating will be equal to true
+    // goodOverallRating will be equal to true
 
 ### .includes()
 
@@ -184,16 +184,17 @@ we want so we can have zero right here.
 ### Example
 
 * Check if the array includes an item with the string ‘waldo’.
+---
 
-        const names = ['sophie', 'george', 'waldo', 'stephen', 'henry'];
-        const includesWaldo = names.includes('waldo');
+    const names = ['sophie', 'george', 'waldo', 'stephen', 'henry'];
+    const includesWaldo = names.includes('waldo');
 
-        // includesWaldo will be equal to true
+    // includesWaldo will be equal to true
 
 ## The for...in loop
 
 * The for...in loop improves upon the weaknesses of the for loop by eliminating the counting logic and exit condition.
-
+---
       const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
       for (const index in digits) {
@@ -203,7 +204,7 @@ we want so we can have zero right here.
 * But, you still have to deal with the issue of using an index to access the values of the array, and that stinks; it almost makes it more confusing than before.
 
 * Also, the for...in loop can get you into big trouble when you need to add an extra method to an array (or another object). Because for...in loops loop over all enumerable properties, this means if you add any additional properties to the array's prototype, then those properties will also appear in the loop.
-
+---
       Array.prototype.decimalfy = function() {
         for (let i = 0; i < this.length; i++) {
           this[i] = this[i].toFixed(2);
@@ -223,6 +224,75 @@ we want so we can have zero right here.
 * This is why for...in loops are discouraged when looping over arrays.
 
 **NOTE:** The forEach loop is another type of for loop in JavaScript. However, forEach() is actually an array method, so it can only be used exclusively with arrays. There is also no way to stop or break a forEach loop. If you need that type of behavior in your loop, you’ll have to use a basic for loop.
+
+## For...of loop
+* The for...of loop is used to loop over any type of data that is iterable.
+
+* You write a for...of loop almost exactly like you would write a for...in loop, except you swap out in with of and you can drop the index.
+---
+      const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+      for (const digit of digits) {
+      console.log(digit);
+      }
+
+* This makes the for...of loop the most concise version of all the for loops.
+
+**TIP:** It’s good practice to use plural names for objects that are collections of values. That way, when you loop over the collection, you can use the singular version of the name when referencing individual values in the collection. For example,
+
+    for (const button of buttons) {...}.
+
+* The for...of loop also has some additional benefits that fix the weaknesses of the for and for...in loops.
+
+* You can stop or break a for...of loop at anytime.
+---
+    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    for (const digit of digits) {
+    if (digit % 2 === 0) {
+    continue;
+    }
+    console.log(digit);
+    }
+
+    // Prints: 1 3 5 7 9
+
+
+* And you don’t have to worry about adding new properties to objects. The for...of loop will only loop over the values in the object.
+---
+    Array.prototype.decimalfy = function() {
+      for (i = 0; i < this.length; i++) {
+      this[i] = this[i].toFixed(2);
+      }
+    };
+---
+    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+      for (const digit of digits) {
+      console.log(digit);
+      }
+    // Prints: 0 1 2 3 4 5 6 7 8 9
+
+### Example
+**Write a for...of loop that:
+loops through each day in the days array
+capitalizes the first letter of the day
+and prints the day out to the console
+Your code should log the following to the console:**
+
+    Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+---
+**Your Code:**
+
+    const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+
+      for (const day of days) {
+      //console.log(day.charAt(0).toUpperCase() + day.slice(1).toLowerCase());
+      console.log(`${day.charAt(0).toUpperCase()}${day.slice(1)}`);
+    }
+
+    // Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+
 
 ## Array.from()
 
