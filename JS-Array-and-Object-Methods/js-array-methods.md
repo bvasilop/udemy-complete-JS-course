@@ -2,7 +2,7 @@
 
 ![alt text](./array-helper-method.png)
 
-* All the methods in this article are chainable, meaning they can be used in combination with one another and they also don’t mutate data, which is especially important when working with React. With all these array and object methods you’ll find you never have to reach for a for or while loop ever again.
+* All the methods in this article are chain-able, meaning they can be used in combination with one another and they also don’t mutate data, which is especially important when working with React. With all these array and object methods you’ll find you never have to reach for a for or while loop ever again.
 
 ## .filter()
 
@@ -189,6 +189,40 @@ we want so we can have zero right here.
         const includesWaldo = names.includes('waldo');
 
         // includesWaldo will be equal to true
+
+## The for...in loop
+
+* The for...in loop improves upon the weaknesses of the for loop by eliminating the counting logic and exit condition.
+
+      const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+      for (const index in digits) {
+      console.log(digits[index]);
+      }
+
+* But, you still have to deal with the issue of using an index to access the values of the array, and that stinks; it almost makes it more confusing than before.
+
+* Also, the for...in loop can get you into big trouble when you need to add an extra method to an array (or another object). Because for...in loops loop over all enumerable properties, this means if you add any additional properties to the array's prototype, then those properties will also appear in the loop.
+
+      Array.prototype.decimalfy = function() {
+        for (let i = 0; i < this.length; i++) {
+          this[i] = this[i].toFixed(2);
+          }
+      };
+---
+    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    for (const index in digits) {
+    console.log(digits[index]);
+    }
+      //1 2 3 4 5 6 7 8 9
+      function() {
+      for (let i = 0; i < this.length; i++)
+      this[i] = this[i].toFixed(2);
+
+* This is why for...in loops are discouraged when looping over arrays.
+
+**NOTE:** The forEach loop is another type of for loop in JavaScript. However, forEach() is actually an array method, so it can only be used exclusively with arrays. There is also no way to stop or break a forEach loop. If you need that type of behavior in your loop, you’ll have to use a basic for loop.
 
 ## Array.from()
 
