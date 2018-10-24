@@ -183,6 +183,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 * *reduce* helper is one of the most flexible of all the array helpers
 ---
+    // using traditional for loop
+
     var numbers = [ 10, 20 , 30 ];
 
     var sum = 0; // we make a sum variable and start it out at 0
@@ -219,12 +221,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
     And so 30 plus 30 is 60.
 
-* So in summary the really weird thing about Reduce is that we'd pass in an initial value and then this initial value is sent to our iterator function for every single run through it.
+* So in summary the really weird thing about **reduce** is that we'd pass in an initial value and then this initial value is sent to our iterator function for every single run through it.
 
 * The main advantage of array helper methods like reduce is they are condensing down our array to a single value
 
-* The initial value that we're starting off with zero we can have any arbitrary initial value that
-we want so we can have zero right here.
+* The initial value that we're starting off with zero we can have any arbitrary initial value that we want so we can have zero right here.
 
 * We could have a 1000 or 100 or a -30 or 3000 or whatever it might be.
 
