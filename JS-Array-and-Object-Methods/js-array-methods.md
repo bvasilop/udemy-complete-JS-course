@@ -134,7 +134,7 @@ Your code should log the following to the console:**
     console.log(dollars); //['$2', '$3', '$4', '$5']
 
 
-### How to convert a string of numbers into an array of numbers
+### How to convert a string of numbers into an array of numbers using .map and parseInt()
 
 http://www.wirfs-brock.com/allen/posts/166
 
