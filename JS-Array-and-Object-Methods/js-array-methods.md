@@ -3,7 +3,7 @@
 ![alt text](./array-helper-method.png)
 
 * All the methods in this article are chain-able, meaning they can be used in combination with one another and they also don’t mutate data, which is especially important when working with React. With all these array and object methods you’ll find you never have to reach for a for or while loop ever again.
-
+---
 ## .filter()
 
 ![alt text](./filter-array-method.png)
@@ -17,12 +17,13 @@
     const ableToDrink = studentsAge.filter( age => age > 18 );
 
     // ableToDrink will be equal to [19, 21]
+---
 ## .map()
 
 ![alt text](./map-array-method.png)
 * Creates a new array by manipulating the values in another array. Great for data manipulation and it is often used in React because it is an immutable method.
 
-### Example
+### Example:
 
 * Create an array that adds a $ to the beginning of each number.
 ---
@@ -58,7 +59,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 
     newArrayNums; // [ 1, 2, 3, 4, 5 ]
-
+---
 
 ## .reduce()
 
@@ -66,7 +67,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 * This often overlooked method uses an accumulator to reduce all items in an array to a single value. Great for calculating totals. The returned value can be of any type (i.e. object, array, string, integer).
 
-### Example
+### Example:
 
 * Add up the integers in an array.
 ---
@@ -77,7 +78,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 * There are some really cool use cases for .reduce() outlined in the MDN docs that provide examples on how to do things likes flattening an array of arrays, grouping objects by a property, and removing duplicate items in array.
 
-### Example 2
+### Example 2:
 
 * *reduce* helper is one of the most flexible of all the array helpers
 ---
@@ -129,14 +130,14 @@ we want so we can have zero right here.
 * Any initial value that we want whatsoever we can pass in here.
 
 * We decide what the initial value is based on what we're trying to do with this reduce function.
-
+---
 ## .forEach()
 
 ![alt text](./forEach-array-helper.png)
 
 * Applies a function on each item in an array.
 
-### Example
+### Example:
 
 * Log each array item to the console
 ---
@@ -147,14 +148,14 @@ we want so we can have zero right here.
     // 'happy'
     // 'sad'
     // 'angry'
-
+---
 ## .some()
 
 ![alt text](./every-and-some.png)
 
 * Checks if any item in an array passes the condition. A good use case would be checking for user privileges. It can also be used similarly to a .forEach() where you would perform an action on each array item and break out of the loop once a truthy value is returned.
 
-### Example
+### Example:
 
 
 * Check if there is at least one 'admin' in an array.
@@ -163,12 +164,12 @@ we want so we can have zero right here.
     const containsAdmin = userPrivileges.some( element => element === 'admin');
 
     // containsAdmin will be equal to true
-
+---
 ## .every()
 
 * Similar to .some(), but checks if all items in an array pass a condition.
 
-### Example
+### Example:
 
 * Check if all ratings are equal to or greater than 3 stars.
 ---
@@ -176,12 +177,12 @@ we want so we can have zero right here.
     const goodOverallRating = ratings.every( rating => rating >= 3 );
 
     // goodOverallRating will be equal to true
-
-### .includes()
+---
+## .includes()
 
 * Checks if an array contains a certain value. It’s similar to .some(),but instead of looking for a condition to pass, it looks if the array contains a specific value.
 
-### Example
+### Example:
 
 * Check if the array includes an item with the string ‘waldo’.
 ---
@@ -190,16 +191,16 @@ we want so we can have zero right here.
     const includesWaldo = names.includes('waldo');
 
     // includesWaldo will be equal to true
-
+---
 ## The for...in loop
 
 * The for...in loop improves upon the weaknesses of the for loop by eliminating the counting logic and exit condition.
 ---
-      const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-      for (const index in digits) {
-      console.log(digits[index]);
-      }
+    for (const index in digits) {
+    console.log(digits[index]);
+    }
 
 * But, you still have to deal with the issue of using an index to access the values of the array, and that stinks; it almost makes it more confusing than before.
 
@@ -222,19 +223,19 @@ we want so we can have zero right here.
       this[i] = this[i].toFixed(2);
 
 * This is why for...in loops are discouraged when looping over arrays.
-
-**NOTE:** The forEach loop is another type of for loop in JavaScript. However, forEach() is actually an array method, so it can only be used exclusively with arrays. There is also no way to stop or break a forEach loop. If you need that type of behavior in your loop, you’ll have to use a basic for loop.
-
+---
+#### NOTE: The forEach loop is another type of for loop in JavaScript. However, forEach() is actually an array method, so it can only be used exclusively with arrays. There is also no way to stop or break a forEach loop. If you need that type of behavior in your loop, you’ll have to use a basic for loop.
+---
 ## For...of loop
 * The for...of loop is used to loop over **any** type of data that is iterable.
 
 * You write a for...of loop almost exactly like you would write a for...in loop, except you swap out in with of and you can drop the index.
 ---
-      const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-      for (const digit of digits) {
-      console.log(digit);
-      }
+    for (const digit of digits) {
+    console.log(digit);
+    }
 
 * This makes the for...of loop the most concise version of all the for loops.
 
@@ -273,7 +274,7 @@ we want so we can have zero right here.
       }
     // Prints: 0 1 2 3 4 5 6 7 8 9
 
-### Example
+### Example:
 **Write a for...of loop that:
 loops through each day in the days array,
 capitalizes the first letter of the day
@@ -292,7 +293,7 @@ Your code should log the following to the console:**
     }
 
     // Sunday Monday Tuesday Wednesday Thursday Friday Saturday
-
+---
 
 ## Array.from()
 
@@ -301,22 +302,22 @@ Your code should log the following to the console:**
 ### Example
 
 * Create an array from a string.
+---
+    const newArray = Array.from('hello');
 
-        const newArray = Array.from('hello');
-
-        // newArray will be equal to ['h', 'e', 'l', 'l', 'o']
+    // newArray will be equal to ['h', 'e', 'l', 'l', 'o']
 
 * Create an array that has double the value for each item in another array.
+---
+    const doubledValues = Array.from([2, 4, 6], number => number * 2);
 
-        const doubledValues = Array.from([2, 4, 6], number => number * 2);
-
-        // doubleValues will be equal to [4, 8, 12]
-
+    // doubleValues will be equal to [4, 8, 12]
+---
 ## Object.values()
 
 * Return an array of the values of an object.
 
-### Example
+### Example:
 
     const icecreamColors = {
     chocolate: 'brown',
@@ -327,12 +328,12 @@ Your code should log the following to the console:**
     const colors = Object.values(icecreamColors);
 
     // colors will be equal to ["brown", "white", "red"]
-
+---
 ## Object.keys()
 
 * Return an array of the keys of an object.
 
-### Example
+### Example:
 
     const icecreamColors = {
     chocolate: 'brown',
@@ -343,12 +344,12 @@ Your code should log the following to the console:**
     const types = Object.keys(icecreamColors);
 
     // types will be equal to ["chocolate", "vanilla", "strawberry"]
-
+---
 ## Object.entries()
 
 * Creates an array which contains arrays of key/value pairs of an object.
 
-### Example
+### Example:
 
     const weather = {
     rain: 0,
@@ -360,120 +361,120 @@ Your code should log the following to the console:**
 
     // entries will be equal to
     // [['rain', 0], ['temperature', 24], ['humidity', 33]]
-
+---
 ## Array spread
 
 * Spreading arrays using the spread operator (…) allows you to expand the elements in an array. It’s useful when concatenating a bunch of arrays together. It’s also a good way to avoid using the splice() method when looking to remove certain elements from an array because it can be combined with the slice() method to prevent direct mutation of an array.
 
-### Example
+### Example:
 
 * Combine two arrays.
+---
+    const spreadableOne = [1, 2, 3, 4];
+    const spreadableTwo = [5, 6, 7, 8];
 
-        const spreadableOne = [1, 2, 3, 4];
-        const spreadableTwo = [5, 6, 7, 8];
+    const combined = [...spreadableOne, ...spreadableTwo];
 
-        const combined = [...spreadableOne, ...spreadableTwo];
-
-        // combined will be equal to [1, 2, 3, 4, 5, 6, 7, 8]
-
+    // combined will be equal to [1, 2, 3, 4, 5, 6, 7, 8]
+---
 * Remove an array element without mutating the original array.
+---
+    const animals = ['squirrel', 'bear', 'deer', 'salmon', 'rat'];
+    const mammals = [...animals.slice(0,3), ...animals.slice(4)];
 
-        const animals = ['squirrel', 'bear', 'deer', 'salmon', 'rat'];
-        const mammals = [...animals.slice(0,3), ...animals.slice(4)];
-
-        // mammals will be equal to ['squirrel', 'bear', 'deer', 'rat']
-
+    // mammals will be equal to ['squirrel', 'bear', 'deer', 'rat']
+---
 ## Object spread
 Spreading an object allows for the addition of new properties and values to an object without mutations (i.e. a new object is created) and it can also be used to combine multiple objects together. It should be noted that spreading objects does not do nested copying.
 
-### Example
+### Example:
 
 * Add a new object property and value without mutating the original object.
+---
+    const spreadableObject = {
+      name: 'Robert',
+      phone: 'iPhone'
+    };
 
-        const spreadableObject = {
-        name: 'Robert',
-        phone: 'iPhone'
-        };
+    const newObject = {
+      ...spreadableObject,
+      carModel: 'Volkswagen'
+    }
 
-        const newObject = {
-        ...spreadableObject,
-        carModel: 'Volkswagen'
-        }
-
-        // newObject will be equal to
-        // { carModel: 'Volkswagen', name: 'Robert', phone: 'iPhone' }
-
+    // newObject will be equal to
+    // { carModel: 'Volkswagen', name: 'Robert', phone: 'iPhone' }
+---
 ## Function Rest
 
 * Functions can use the rest parameter syntax to accept any number of arguments as an array.
 
-### Example
+### Example:
 
 * Display the array of passed arguments.
-
-        function displayArgumentsArray(...theArguments) {
-        console.log(theArguments);
+---
+    function displayArgumentsArray(...theArguments) {
+    console.log(theArguments);
         }
 
-        displayArgumentsArray('hi', 'there', 'bud');
+    displayArgumentsArray('hi', 'there', 'bud');
 
-        // Will print ['hi', 'there', 'bud']
-
+    // Will print ['hi', 'there', 'bud']
+---
 ## Object.freeze()
 
 * Prevents you from modifying existing object properties or adding new properties and values to an object. It’s often what people think const does, however const allows you to modify an object.
 
-### Example
+### Example:
 
 * Freeze an object to prevent the name property from being changed.
+---
+    const frozenObject = {
+    name: 'Robert'
+    }
 
-        const frozenObject = {
-        name: 'Robert'
-        }
-
-
+---
 ## Object.freeze(frozenObject);
 
 
-        frozenObject.name = 'Henry';
+    frozenObject.name = 'Henry';
 
-        // frozenObject will be equal to { name: 'Robert' }
+    // frozenObject will be equal to { name: 'Robert' }
 
 ## Object.seal()
 
 * Stops any new properties from being added to an object, but still allows for existing properties to be changed.
 
-### Example
+### Example:
 
 * Seal an object to prevent the wearsWatch property from being added.
-
-        const sealedObject = {
-        name: 'Robert'
-        }
-
+---
+    const sealedObject = {
+      name: 'Robert'
+    }
+---
 ## Object.seal(sealedObject);
 
-        sealedObject.name = 'Bob';
-        sealedObject.wearsWatch = true;
+    sealedObject.name = 'Bob';
+    sealedObject.wearsWatch = true;
 
-        // sealedObject will be equal to { name: 'Bob' }
-
+    // sealedObject will be equal to { name: 'Bob' }
+---
 ## Object.assign()
 
 * Allows for objects to be combined together. This method is not really needed because you can use the object spread syntax instead. Like the object spread operator, Object.assign() does not do deep cloning. Lodash is your best friend when it comes to deep cloning objects.
 
-### Example
+### Example:
 
 * Combine two objects into one.
+---
+    const firstObject = {
+      firstName: 'Robert'
+    }
 
-        const firstObject = {
-        firstName: 'Robert'
-        }
+    const secondObject = {
+      lastName: 'Cooper'
+    }
 
-        const secondObject = {
-        lastName: 'Cooper'
-        }
+    const combinedObject = Object.assign(firstObject, secondObject);
 
-        const combinedObject = Object.assign(firstObject, secondObject);
-
-        // combinedObject will be equal to { firstName: 'Robert', lastName: 'Cooper' }
+    // combinedObject will be equal to { firstName: 'Robert', lastName: 'Cooper' }
