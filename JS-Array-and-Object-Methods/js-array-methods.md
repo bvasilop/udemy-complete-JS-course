@@ -129,9 +129,9 @@ Your code should log the following to the console:**
 * Create an array that adds a $ to the beginning of each number.
 ---
     const numbers = [2, 3, 4, 5];
-    const dollars = numbers.map( number => '$' + number);
-
-    // dollars will be equal to ['$2', '$3', '$4', '$5']
+    // const dollars = numbers.map( number => '$' + number);
+    const dollars = numbers.map( number => `$${number}`); // object literal syntax
+    console.log(dollars); //['$2', '$3', '$4', '$5']
 
 
 ### How to convert a string of numbers into an array of numbers
