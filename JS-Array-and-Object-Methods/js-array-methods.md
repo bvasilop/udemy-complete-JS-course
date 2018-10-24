@@ -1,5 +1,106 @@
-# JavaScript Array and Object Methods
+# JavaScript Family of For Loops, Array and Object Methods
 
+## The for...in loop
+* The for...in loop improves upon the weaknesses of the for loop by eliminating the counting logic and exit condition.
+---
+    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    for (const index in digits) {
+    console.log(digits[index]);
+    }
+
+* But, you still have to deal with the issue of using an index to access the values of the array, and that stinks; it almost makes it more confusing than before.
+
+* Also, the for...in loop can get you into big trouble when you need to add an extra method to an array (or another object). Because for...in loops loop over all enumerable properties, this means if you add any additional properties to the array's prototype, then those properties will also appear in the loop.
+---
+    Array.prototype.decimalfy = function() {
+      for (let i = 0; i < this.length; i++) {
+        this[i] = this[i].toFixed(2);
+        }
+    };
+---
+    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    for (const index in digits) {
+    console.log(digits[index]);
+    }
+      //1 2 3 4 5 6 7 8 9
+      function() {
+      for (let i = 0; i < this.length; i++)
+      this[i] = this[i].toFixed(2);
+
+* This is why for...in loops are discouraged when looping over arrays.
+---
+#### NOTE: The forEach loop is another type of for loop in JavaScript. However, forEach() is actually an array method, so it can only be used exclusively with arrays. There is also no way to stop or break a forEach loop. If you need that type of behavior in your loop, you’ll have to use a basic for loop.
+---
+## For...of loop
+* The for...of loop is used to loop over **any** type of data that is iterable.
+
+* You write a for...of loop almost exactly like you would write a for...in loop, except you swap out in with of and you can drop the index.
+---
+    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    for (const digit of digits) {
+    console.log(digit);
+    }
+
+* This makes the for...of loop the most concise version of all the for loops.
+
+**TIP:** It’s good practice to use plural names for objects that are collections of values. That way, when you loop over the collection, you can use the singular version of the name when referencing individual values in the collection. For example,
+
+    for (const button of buttons) {...}.
+
+* The for...of loop also has some additional benefits that fix the weaknesses of the for and for...in loops.
+
+* You can stop or break a for...of loop at anytime.
+---
+    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    for (const digit of digits) {
+    if (digit % 2 === 0) {
+    continue;
+    }
+    console.log(digit);
+    }
+
+    // Prints: 1 3 5 7 9
+
+
+* And you don’t have to worry about adding new properties to objects. The for...of loop will only loop over the values in the object.
+---
+    Array.prototype.decimalfy = function() {
+      for (i = 0; i < this.length; i++) {
+      this[i] = this[i].toFixed(2);
+      }
+    };
+---
+    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+      for (const digit of digits) {
+      console.log(digit);
+      }
+    // Prints: 0 1 2 3 4 5 6 7 8 9
+
+### Example:
+**Write a for...of loop that:
+loops through each day in the days array,
+capitalizes the first letter of the day
+and prints the day out to the console.
+Your code should log the following to the console:**
+
+    Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+---
+**Your Code:**
+
+    const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+
+      for (const day of days) {
+      // console.log(day.charAt(0).toUpperCase() + day.slice(1).toLowerCase());
+      console.log(`${day.charAt(0).toUpperCase()}${day.slice(1)}`); // using object literal
+    }
+
+    // Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+---
 ![alt text](./array-helper-method.png)
 
 * All the methods in this article are chain-able, meaning they can be used in combination with one another and they also don’t mutate data, which is especially important when working with React. With all these array and object methods you’ll find you never have to reach for a for or while loop ever again.
@@ -192,109 +293,6 @@ we want so we can have zero right here.
 
     // includesWaldo will be equal to true
 ---
-## The for...in loop
-
-* The for...in loop improves upon the weaknesses of the for loop by eliminating the counting logic and exit condition.
----
-    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-    for (const index in digits) {
-    console.log(digits[index]);
-    }
-
-* But, you still have to deal with the issue of using an index to access the values of the array, and that stinks; it almost makes it more confusing than before.
-
-* Also, the for...in loop can get you into big trouble when you need to add an extra method to an array (or another object). Because for...in loops loop over all enumerable properties, this means if you add any additional properties to the array's prototype, then those properties will also appear in the loop.
----
-      Array.prototype.decimalfy = function() {
-        for (let i = 0; i < this.length; i++) {
-          this[i] = this[i].toFixed(2);
-          }
-      };
----
-    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-    for (const index in digits) {
-    console.log(digits[index]);
-    }
-      //1 2 3 4 5 6 7 8 9
-      function() {
-      for (let i = 0; i < this.length; i++)
-      this[i] = this[i].toFixed(2);
-
-* This is why for...in loops are discouraged when looping over arrays.
----
-#### NOTE: The forEach loop is another type of for loop in JavaScript. However, forEach() is actually an array method, so it can only be used exclusively with arrays. There is also no way to stop or break a forEach loop. If you need that type of behavior in your loop, you’ll have to use a basic for loop.
----
-## For...of loop
-* The for...of loop is used to loop over **any** type of data that is iterable.
-
-* You write a for...of loop almost exactly like you would write a for...in loop, except you swap out in with of and you can drop the index.
----
-    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-    for (const digit of digits) {
-    console.log(digit);
-    }
-
-* This makes the for...of loop the most concise version of all the for loops.
-
-**TIP:** It’s good practice to use plural names for objects that are collections of values. That way, when you loop over the collection, you can use the singular version of the name when referencing individual values in the collection. For example,
-
-    for (const button of buttons) {...}.
-
-* The for...of loop also has some additional benefits that fix the weaknesses of the for and for...in loops.
-
-* You can stop or break a for...of loop at anytime.
----
-    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-    for (const digit of digits) {
-    if (digit % 2 === 0) {
-    continue;
-    }
-    console.log(digit);
-    }
-
-    // Prints: 1 3 5 7 9
-
-
-* And you don’t have to worry about adding new properties to objects. The for...of loop will only loop over the values in the object.
----
-    Array.prototype.decimalfy = function() {
-      for (i = 0; i < this.length; i++) {
-      this[i] = this[i].toFixed(2);
-      }
-    };
----
-    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-      for (const digit of digits) {
-      console.log(digit);
-      }
-    // Prints: 0 1 2 3 4 5 6 7 8 9
-
-### Example:
-**Write a for...of loop that:
-loops through each day in the days array,
-capitalizes the first letter of the day
-and prints the day out to the console.
-Your code should log the following to the console:**
-
-    Sunday Monday Tuesday Wednesday Thursday Friday Saturday
----
-**Your Code:**
-
-    const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-
-      for (const day of days) {
-      // console.log(day.charAt(0).toUpperCase() + day.slice(1).toLowerCase());
-      console.log(`${day.charAt(0).toUpperCase()}${day.slice(1)}`); // using object literal
-    }
-
-    // Sunday Monday Tuesday Wednesday Thursday Friday Saturday
----
-
 ## Array.from()
 
 * This is a static method that creates an array based on another array or string. You can also pass a map callback function as an argument to further shape the data in the new array. Honestly, I’m not too sure why someone would use this over the .map() method.
