@@ -34,6 +34,22 @@
 #### NOTE: The forEach loop is another type of for loop in JavaScript. However, forEach() is actually an array method, so it can only be used exclusively with arrays. There is also no way to stop or break a forEach loop. If you need that type of behavior in your loop, you’ll have to use a basic for loop.
 ---
 ## For...of loop
+
+* For...of loops are just about iterating through an array of data. It's a another tool in our toolbox for iteration. Still highly recommended to use for each or map or reduce helper methods.
+---
+    const colors = ['red', 'green', 'blue'];
+
+      for (let color of colors) {
+      console.log(color); // red green blue
+      }
+---
+    const numbers = [1, 2, 3, 4];
+
+      let total = 0;
+      for (let number of numbers) {
+      total += number;
+      } // 10
+
 * The for...of loop is used to loop over **any** type of data that is iterable.
 
 * You write a for...of loop almost exactly like you would write a for...in loop, except you swap out in with of and you can drop the index.
