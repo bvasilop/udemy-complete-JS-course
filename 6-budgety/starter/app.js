@@ -26,37 +26,45 @@ from the outside scope so that we only expose a public interface which is someti
 // Budget Controller Module
 
 var budgetController = (function() {
-    var x = 23;
 
-    var add = function(a) { // not accessible outside of IFFY
-        return x + a;
-    }
 
-    return {
-        publicTest: function(b) { // the variables above are available and  public because of closures
-            return add(b);
-        }
-    }
+
 })();
 
 // UI Controller Module
 
 var UIController = (function() {
-    // some code3
+    // some code
+
+
 
 })();
 
 
-// App Controller Module
+// Global App Controller Module
 
 var controller = (function(budgetCtrl, UICtrl) {
 
-    var z = budgetCtrl.publicTest(5);
+    var ctrlAddItem = function() {
 
-    return {
-        anotherPublic: function() {
-            console.log(z);
-        }
+         // get field input data
+        // add item to budget controller
+        // add item to UI
+        // calculate budget
+        // display the budget on UI
+
+        console.log('it works');
+
     }
+
+    document.querySelector('.add__btn').addEventListener('click', ctrlAddItem);
+
+    document.addEventListener('keypress', function(event) { // use addEventListener because it applies globally and not to a specific element
+        if (event.keycode === 13 || event.which === 13) { // || or event.which is for older browsers
+            ctrlAddItem();
+        }                                      // can use (e) or (event) as argument
+    });
+
+
 
 })(budgetController, UIController);
