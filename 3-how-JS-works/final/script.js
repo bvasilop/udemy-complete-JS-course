@@ -50,7 +50,7 @@ function first() {
 }
 
 
-// Example to show the differece between execution stack and scope chain
+// Example to show the difference between execution stack and scope chain
 var a = 'Hello!';
 first();
 
@@ -92,7 +92,7 @@ var john = {
     calculateAge: function() {
         console.log(this);
         console.log(2016 - this.yearOfBirth);
-        
+
         function innerFunction() {
             console.log(this);
         }

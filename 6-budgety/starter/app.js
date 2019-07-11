@@ -47,7 +47,7 @@ var controller = (function(budgetCtrl, UICtrl) {
 
     var ctrlAddItem = function() {
 
-         // get field input data
+        // get field input data
         // add item to budget controller
         // add item to UI
         // calculate budget
