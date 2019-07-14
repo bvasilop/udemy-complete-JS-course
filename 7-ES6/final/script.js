@@ -1,7 +1,7 @@
 /////////////////////////////////
 // Lecture: let and const
 
-/*
+
 // ES5
 var name5 = 'Jane Smith';
 var age5 = 23;
@@ -16,36 +16,36 @@ console.log(name6);
 
 
 // ES5
-function driversLicence5(passedTest) {
-    
+function driversLicense5(passedTest) {
+
     if (passedTest) {
         console.log(firstName);
         var firstName = 'John';
         var yearOfBirth = 1990;
     }
-    
-    
+
+
     console.log(firstName + ', born in ' + yearOfBirth + ', is now officially allowed to drive a car.');
 }
 
-driversLicence5(true);
+driversLicense5(true);
 
 
 // ES6
-function driversLicence6(passedTest) {
-    
+function driversLicense6(passedTest) {
+
     //console.log(firstName);
     let firstName;
     const yearOfBirth = 1990;
-    
+
     if (passedTest) {
         firstName = 'John';
     }
-    
+
     console.log(firstName + ', born in ' + yearOfBirth + ', is now officially allowed to drive a car.');
 }
 
-driversLicence6(true);
+driversLicense6(true);
 
 
 
@@ -64,7 +64,7 @@ console.log(i);
 /////////////////////////////////
 // Lecture: Blocks and IIFEs
 
-/*
+
 // ES6
 {
     const a = 1;
@@ -82,7 +82,7 @@ console.log(c);
 })();
 
 //console.log(c);
-*/
+
 
 
 
@@ -90,7 +90,7 @@ console.log(c);
 /////////////////////////////////
 // Lecture: Strings
 
-/*
+
 let firstName = 'John';
 let lastName = 'Smith';
 const yearOfBirth = 1990;
@@ -156,7 +156,7 @@ var box5 = {
     color: 'green',
     position: 1,
     clickMe: function() {
-       
+
        var self = this; document.querySelector('.green').addEventListener('click', function() {
             var str = 'This is box number ' + self.position + ' and it is ' + self.color;
             alert(str);
@@ -199,11 +199,11 @@ function Person(name) {
 
 // ES5
 Person.prototype.myFriends5 = function(friends) {
-    
+
     var arr = friends.map(function(el) {
-       return this.name + ' is friends with ' + el; 
+       return this.name + ' is friends with ' + el;
     }.bind(this));
-    
+
     console.log(arr);
 }
 
@@ -288,13 +288,13 @@ Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerblue');
 
 //ES5
 for(var i = 0; i < boxesArr5.length; i++) {
-    
+
     if(boxesArr5[i].className === 'box blue') {
         continue;
     }
-    
+
     boxesArr5[i].textContent = 'I changed to blue!';
-    
+
 }
 
 
@@ -374,7 +374,7 @@ Array.from(all).forEach(cur => cur.style.color = 'purple');
 function isFullAge5() {
     //console.log(arguments);
     var argsArr = Array.prototype.slice.call(arguments);
-    
+
     argsArr.forEach(function(cur) {
         console.log((2016 - cur) >= 18);
     })
@@ -424,10 +424,10 @@ isFullAge6(16, 1990, 1999, 1965, 2016, 1987);
 /*
 // ES5
 function SmithPerson(firstName, yearOfBirth, lastName, nationality) {
-    
+
     lastName === undefined ? lastName = 'Smith' : lastName = lastName;
     nationality === undefined ? nationality = 'american' : nationality = nationality;
-    
+
     this.firstName = firstName;
     this.lastName = lastName;
     this.yearOfBirth = yearOfBirth;
@@ -518,12 +518,12 @@ class Person6 {
         this.yearOfBirth = yearOfBirth;
         this.job = job;
     }
-    
+
     calculateAge() {
         var age = new Date().getFullYear - this.yearOfBirth;
         console.log(age);
     }
-    
+
     static greeting() {
         console.log('Hey there!');
     }
@@ -594,7 +594,7 @@ class Athlete6 extends Person6 {
         this.olympicGames = olympicGames;
         this.medals = medals;
     }
-    
+
     wonMedal() {
         this.medals++;
         console.log(this.medals);
@@ -649,7 +649,7 @@ class Park extends Element {
         this.area = area; //km2
         this.numTrees = numTrees;
     }
-    
+
     treeDensity() {
         const density = this.numTrees / this.area;
         console.log(`${this.name} has a tree density of ${density} trees per square km.`);
@@ -663,7 +663,7 @@ class Street extends Element {
         this.length = length;
         this.size = size;
     }
-    
+
     classifyStreet () {
         const classification = new Map();
         classification.set(1, 'tiny');
@@ -687,41 +687,41 @@ const allStreets = [new Street('Ocean Avenue', 1999, 1.1, 4),
 
 
 function calc(arr) {
-    
+
     const sum = arr.reduce((prev, cur, index) => prev + cur, 0);
-    
+
     return [sum, sum / arr.length];
-    
+
 }
 
 
 function reportParks(p) {
-    
+
     console.log('-----PARKS REPORT-----');
-    
+
     // Density
     p.forEach(el => el.treeDensity());
-    
+
     // Average age
     const ages = p.map(el => new Date().getFullYear() - el.buildYear);
     const [totalAge, avgAge] = calc(ages);
     console.log(`Our ${p.length} parks have an average of ${avgAge} years.`);
-    
+
     // Which park has more than 1000 trees
     const i = p.map(el => el.numTrees).findIndex(el => el >= 1000);
     console.log(`${p[i].name} has more than 1000 trees.`);
-    
+
 }
 
 
 function reportStreets(s) {
-    
+
     console.log('-----STREETS REPORT-----');
-    
+
     //Total and average length of the town's streets
     const [totalLength, avgLength] = calc(s.map(el => el.length));
     console.log(`Our ${s.length} streets have a total length of ${totalLength} km, with an average of ${avgLength} km.`);
-    
+
     // CLassify sizes
     s.forEach(el => el.classifyStreet());
 }
